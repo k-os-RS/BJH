@@ -7,19 +7,19 @@ https://docs.google.com/spreadsheets/d/1j9-HYIcpKYvv7EqlVX-pOl5PsnSs-5K5Xmzz_EUI
 Diagrama E/R - Listo
 Subido en github
 
-
 Diagrama de flujo - 
 Incluir en analisis
+
+Diagrama de clases - listo con posible actualización
+subido al github
+
+Diagrama de caso de uso - en proceso
+en base de las funciones
+cada actor debe tener sus tareas 
 
 Pseudocódigo - 
 Incluir en analisis
 
 JAVA - en proceso
 Subido en github
-
-Diagrama de clases - listo con posible actualización
-subido al github
-
-
-Diagrama de caso de uso - en proceso
 
