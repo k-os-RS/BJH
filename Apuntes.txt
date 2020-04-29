@@ -1,0 +1,25 @@
+Analisis - En proceso
+https://docs.google.com/document/d/1UjOkoe_8wB8ahzjq5DgYgKwzb1lIlRygZDA7DwALxZg/edit?usp=sharing
+
+Diagrama de Gantt - Listo con posible actualizacion
+https://docs.google.com/spreadsheets/d/1j9-HYIcpKYvv7EqlVX-pOl5PsnSs-5K5Xmzz_EUI2E8/edit?usp=sharing
+
+Diagrama E/R - Listo
+Subido en github
+
+
+Diagrama de flujo - 
+Incluir en analisis
+
+Pseudocódigo - 
+Incluir en analisis
+
+JAVA - en proceso
+Subido en github
+
+Diagrama de clases - listo con posible actualización
+subido al github
+
+
+Diagrama de caso de uso - en proceso
+
