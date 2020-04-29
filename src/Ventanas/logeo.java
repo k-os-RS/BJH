@@ -1,17 +1,30 @@
-package Ventanas;
+package ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class Log extends JFrame {
+public class logeo extends JFrame {
 
 	private JPanel contentPane;
 	
-	public Log() {
-		setVisible(true);
+	public void iniciar() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					logeo frame = new logeo();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	public logeo() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
