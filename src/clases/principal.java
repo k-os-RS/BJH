@@ -1,8 +1,8 @@
 package clases;
-import ventanas.logeo;
+import ventanas.inicio;
 public class principal {
 	public static void main(String [] args) {
-		logeo iniciador = new logeo();
+		inicio iniciador = new inicio();
 		iniciador.iniciar();
 	}
 }
