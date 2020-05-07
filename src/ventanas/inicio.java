@@ -5,21 +5,20 @@ import gestion_db.metodos_db;
 
 import java.sql.*;
 
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.awt.EventQueue;
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JButton;
 
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 
-import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
@@ -36,6 +35,8 @@ public class inicio extends JFrame implements ActionListener {
 	private JLabel lblFondo;
 	private JLabel lblUsername;
 	private JLabel lblPassword;
+	private JLabel lblIncorrect;
+	private JLabel lblcorrect;
 	private JButton btnIniciarSesion;
 	private JButton btnCerrar;
 	private JTextField txtUser;
@@ -67,6 +68,7 @@ public class inicio extends JFrame implements ActionListener {
 		//Fuentes
 		Font titulo = new Font("Frank Ruehl CLM", Font.BOLD, 72);
 		Font campos = new Font("Comic Sans MS", Font.BOLD, 18);
+		Font text_message = new Font("Comic Sans MS", Font.BOLD, 14);
 		
 		//Componentes
 		lblBjh = new JLabel("BJH");
@@ -122,6 +124,22 @@ public class inicio extends JFrame implements ActionListener {
 		btnCerrar.setBounds(195, 300, 100, 30);
 		contentPane.add(btnCerrar);
 		
+		lblIncorrect = new JLabel("Incorrect username or password");
+		lblIncorrect.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIncorrect.setForeground(new Color(255, 40, 16));
+		lblIncorrect.setBounds(50, 261, 245, 25);
+		lblIncorrect.setFont(text_message);
+		lblIncorrect.setVisible(false);
+		contentPane.add(lblIncorrect);
+		
+		lblcorrect = new JLabel("Correct username and password");
+		lblcorrect.setHorizontalAlignment(SwingConstants.CENTER);
+		lblcorrect.setForeground(new Color(16, 255, 40));
+		lblcorrect.setBounds(50, 261, 245, 25);
+		lblcorrect.setFont(text_message);
+		lblcorrect.setVisible(false);
+		contentPane.add(lblcorrect);
+		
 		lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(inicio.class.getResource("/imagenes/fondo_login.png")));
 		lblFondo.setBounds(0, 0, 350, 450);
@@ -143,7 +161,27 @@ public class inicio extends JFrame implements ActionListener {
 				String pass = new String(ArrayPass);
 						
 				if (txtUser.getText().isEmpty() || pass.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Username and/or password incorrect or empty.", "ERROR", JOptionPane.ERROR_MESSAGE);
+					lblIncorrect.setVisible(true);
+					contentPane.revalidate();
+					contentPane.repaint();
+					//JOptionPane.showMessageDialog(null, "Username and/or password are empty.", "ERROR", JOptionPane.ERROR_MESSAGE);
+				} else if (txtUser.getText().equalsIgnoreCase("admin") && pass.equalsIgnoreCase("admin")) {
+					if (lblIncorrect.isVisible()) {
+						lblIncorrect.setVisible(false);
+						lblcorrect.setVisible(true);
+						contentPane.revalidate();
+						contentPane.repaint();
+					} else {
+						lblcorrect.setVisible(true);
+						contentPane.revalidate();
+						contentPane.repaint();
+					}
+					//administracion frame = new administracion();
+					//frame.setVisible(true);
+				} else {
+					lblIncorrect.setVisible(true);
+					contentPane.revalidate();
+					contentPane.repaint();
 				}
 				
 			} catch (Exception e2) {
@@ -156,5 +194,4 @@ public class inicio extends JFrame implements ActionListener {
 			System.exit(0);
 		}
 	}
-	
 }
