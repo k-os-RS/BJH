@@ -1,0 +1,400 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap');
+/* <- 37 -> 39 var teclaPulsada = evObject.keyCode;*/
+:root {
+  /* --- Colors --- */
+  --gris-fondo: #e4e4e4;
+  --rojo-general: #a91400;
+  --oscuro-letras: #363636;
+  /* --- Fonts --- */
+  --font-poppins: 'Poppins', sans-serif;
+  --font-baloo: 'Baloo Chettan 2', cursive;
+  /* --- Social --- */
+  --facebook: #3b5999;
+  --twitter: #55acee;
+  --linkedin: #66adcb;
+  --youtube: #c92228;
+  --googleplus: #dd4b39;
+  --instagram: #e4405f;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+    background: var(--gris-fondo);
+    font-family: var(--font-poppins);
+    font-size: 16px;
+  }
+  
+  .fadeIn {
+    animation-name: fadeIn;
+      animation-duration: 1.5s;
+      animation-timing-function: ease-in-out;
+      visibility: visible!important;
+  }
+  
+  @keyframes fadeIn {
+      0% {
+          transform: scale(0);
+          opacity: 0.0;
+      }
+      60% {
+          transform: scale(1.1);
+      }
+      80% {
+          transform: scale(0.9);
+          opacity: 1;
+      }
+      100% {
+          transform: scale(1);
+          opacity: 1;
+      }
+  }
+  
+ul, ol {
+    list-style: none;
+  }
+.navegation {
+    background: #fefefe;
+    padding-right: 1rem;
+    position: sticky;
+    top: 0;
+    padding: .5rem 1rem;
+    z-index: 999;
+    box-shadow: 0px 5px 6px 2px rgba(245,245,245,0.7);
+  }
+    .navegation .nav-container {
+      padding-right: 25px;
+      padding-left: 25px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+      .navegation .nav-bar {
+        position: relative;
+        min-height: 50px;
+      }
+        .navegation .nav-bar .menu {
+          display: block;
+          height: auto;
+          padding-bottom: 0;
+          padding-right: 15px;
+          margin-top: 25px;
+          margin-bottom: 25px;
+          overflow: visible;
+          max-height: 340px;
+          width: auto;
+        }
+          .navegation .nav-bar .menu ul {
+            float: left;
+            margin: 0;
+          }
+            .menu .nav > li {
+              position: relative;
+              margin-right: 7px;
+              display: block;
+              float: left;
+            }
+          .nav-bar .nav > li > a {
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-weight: normal;
+            line-height: 20px;
+            font-size: 14px;
+            color: #222;
+            transition: all 0.3s ease 0s;
+          }
+            .navegation .nav-bar .nav > .nav-active > a {
+              font-weight: normal;
+              font-size: 14px;
+              background: #df0e0e;
+              border-top: 3px solid var(--rojo-general);
+              color: #fefefe;
+              box-shadow: 3px 3px 0 rgba(201, 201, 201, 1);
+            }
+              .dropMenu {
+                display: none;
+                font-family: var(--font-baloo);
+                position: absolute;
+                right: auto;
+                border-radius: 7px;
+                background: #66adcb;
+                left: -2px;
+                float: left;
+                min-width: 200px;
+                padding: 0;
+                margin: 2px 0 0;
+                font-size: 16px;
+                z-index: 999;
+              }
+                .background-dropdown {
+                  background: var(--rojo-general);
+                  color: #fefefe!important;
+                  font-size: 14px!important;
+                }
+                .nav-bar .menu .nav> li.open > a,
+                .nav-bar .menu .nav> li.open > a:hover,
+                .nav-bar .menu .nav> li.open > a:focus {
+                  border-radius: 0px;
+                  border-top: 3px solid var(--rojo-general);
+                  font-weight: normal;
+                  font-size: 18px;
+                }
+                  .open .dropMenu {
+                    display: block!;
+                    top:  40px;
+                    transition: all 0.3s ease 0s;
+                  }
+                    .dropMenu > li > a {
+                      display: block;
+                      clear: both;
+                      font-weight: normal;
+                      white-space: nowrap;
+                      color: #fefefe;
+                      text-decoration: none;
+                      padding: 7px 32px 7px 10px;
+                      transition: padding 400ms;
+                    }
+                      .dropMenu > li > a:hover {
+                        background: #cce3ed;
+                        color: var(--oscuro-letras);
+                        text-decoration: none;
+                        padding: 7px 20px;
+                      }
+
+/*-- Img Slide --*/    
+.general-container {
+    width: 100%;
+    height: 50%;
+}
+/* --- Sections of all the @media --- */
+@media screen and (min-width: 768px) {
+    .general-container {
+      width: 750px;
+    }
+  }
+  @media screen and (min-width: 992px) {
+    .general-container {
+      width: 940px;
+    }
+    .section-footer {
+      width: 100%;
+    }
+  }
+  @media (min-width: 1200px) {
+    .general-container {
+      width: 1140px;
+    }
+  }
+.container .slider-head {
+    position: relative;
+  }
+    .container .slider-head .slider-img {
+      display: none;
+    }
+      .container .slider-head img {
+        width: 40%;
+        height: 30%;
+        animation: slide 1.5s;
+        overflow: hidden;
+      }
+  
+  @keyframes slide {
+    from {
+      opacity: .4;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .btn-dots {
+    background: transparent;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    width: 30%;
+    z-index: 1;
+  }
+    .btn-dots .dot {
+      display: inline-block;
+      background-color: #777;
+      margin: 0 2px;
+      width: 15px;
+      height: 15px;
+      border-radius: 25%;
+      transition: background-color 0.6s ease;
+    }
+  .active, .dot:hover {
+    background-color: #333!important;
+  }
+  
+  .prev, .next {
+    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 5%;
+    width: auto;
+    cursor: pointer;
+    padding: 16px;
+    margin-top: -16px;
+    color: #fefefe;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 0 3px 3px 0;
+    transition: background 0.6s ease;
+    user-select: none;
+  }
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+    .prev:hover, .next:hover {
+      background: rgba(0, 0, 0, 0.6);
+    }
+  
+/* --- ScrollBar --- */
+
+body::-webkit-scrollbar {
+    width: 10px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+    body::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background:var(--rojo-general);
+      border-right: 2px solid rgba(255, 255, 255, 0.2);
+    }
+  
+/*Probando*/
+a {
+    text-decoration: none;
+}  
+table{
+    border: solid black;
+}
+.uptotal{
+    background-color: rgba(72, 74, 77, 0.918);
+}
+.enlace{
+    color: rgba(0, 0, 0, 0.788);
+}
+.enlace:hover{
+    color: rgba(255, 255, 58, 0.836);
+}
+img{
+    display: inline;
+}
+.links li {
+    line-height: 18px;
+    display: inline;
+}
+.links a {
+    color: #7e7e7e;
+    text-decoration: none;
+    padding: 0 8px 0 7px;
+    border-right: 1px solid #d7d7d7;
+}
+.links li a {
+    padding-left: 0px;
+}
+.section-btn{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding:10px;
+    text-decoration: none;
+    color: var(--rojo-general);
+    color: #363636;
+    border-width: 2px;
+    padding-bottom: 11px;
+    border-bottom: 1px solid var(--rojo-general);
+    text-align: center;
+}
+/*-- zona donde se engloba la seccion paginas y su var --*/
+.control-table{
+    width: 700px;
+}
+/*-- zona de var que controla las paginas --*/
+    .section-var {
+        flex: unset;
+        -webkit-flex: unset;    
+    }
+    .section-control {
+        position: static;
+        padding-left: 30%;
+    }
+/*-- paginas de la seccion principal donde muestras ultimas unidades,proximos estrenos y lo mas popular --*/
+        .first-page {
+            display: flex;
+            margin-right: 3%;
+        }
+        .second-page {
+            display: flex;
+            margin-right: 3%;
+        }
+        .third-page {
+            display: flex;
+        }
+        .img-news { 
+            display: flex;
+            list-style-type: none;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            padding-inline-start: 40px;
+        }
+        li {
+            display: list-item;
+            text-align: -webkit-match-parent;    
+            clear: none;
+            margin-right: 3%;
+        }
+
+/*-- Zona de manga productos--*/
+.content {
+    width: 990px;
+    flex-direction: row;
+}
+    .content-panel {
+        display: block;
+        position: relative;
+    }
+        .subpanel {
+            display: flex;
+            flex-direction: row; 
+            justify-content: space-between;
+        }
+/*-- Esto son los productos--*/
+.content-control {
+    display: block;
+}
+    .conntent-bck {
+        display: flex;
+        position: relative;
+    }
+        .product-class {
+            display: flex;
+            width:153.750px;
+        }
+        .product-center {
+            display: flex;
+            width: 700px;
+            }
+            .product-control {
+                list-style-type: none;
+                display: flex;
+                font-size: 12px;
+                text-transform: uppercase;
+            }
+                .imagen {
+                    height: 300px;
+                }
+                h2:hover {
+                    color: #df0e0e;
+                }
+        .product-class {
+            display: flex;
+            width:153.750px;
+        }

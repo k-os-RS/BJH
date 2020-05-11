@@ -7,13 +7,13 @@ https://docs.google.com/spreadsheets/d/1j9-HYIcpKYvv7EqlVX-pOl5PsnSs-5K5Xmzz_EUI
 Diagrama E/R - Listo
 Subido en github
 
-Diagrama de flujo - 
+Diagrama de flujo - ?
 Incluir en analisis
 
 Diagrama de clases - listo con posible actualización
 subido al github
 
-Diagrama de caso de uso - en proceso
+Diagrama de caso de uso - listo pero falta comprobacion
 en base de las funciones
 cada actor debe tener sus tareas 
 
@@ -21,9 +21,21 @@ diagrama de secuencia ?
 diagrama de facturacion ?
 
 
-Pseudocódigo - 
+Pseudocódigo - ?
 Incluir en analisis
 
 JAVA - en proceso
+//trabajar con objetos (facturas)
 Subido en github
+
+pagina html-css-js-php
+colores rojo naranja y verde /gris claro y rojo
+pagina principal de playstation
+inspirado en :
+https://juegacescomics.es/
+http://www.omegacenter.es/
+https://elektracomic.com/
+https://atlantica30.com/
+https://www.playstation.com/es-es/
+
 
