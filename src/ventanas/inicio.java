@@ -1,9 +1,6 @@
 package ventanas;
 
-import gestion_db.conexion_db;
 import gestion_db.metodos_db;
-
-import java.sql.*;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -23,12 +20,13 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+@SuppressWarnings("serial")
 public class inicio extends JFrame implements ActionListener {
 	
-	private conexion_db conexion;
-	private Connection connect;
+	//private conexion_db conexion;
+	//private Connection connect;
 	private metodos_db mtd;
-	private ResultSet data;
+	//private ResultSet data;
 
 	private JPanel contentPane;
 	private JLabel lblBjh;
@@ -36,7 +34,6 @@ public class inicio extends JFrame implements ActionListener {
 	private JLabel lblUsername;
 	private JLabel lblPassword;
 	private JLabel lblIncorrect;
-	private JLabel lblcorrect;
 	private JButton btnIniciarSesion;
 	private JButton btnCerrar;
 	private JTextField txtUser;
@@ -55,16 +52,20 @@ public class inicio extends JFrame implements ActionListener {
 		});
 	}
 
+	//Add limit password 6 char (open english)
+	//Ready player one
+	//Factura con objetos tipo toString
+
 	public inicio() {
 		//Ventana principal	
-		setUndecorated(true);
-		setSize(350, 450);
+		//setUndecorated(true);
+		setBounds(0, 0, 350, 450);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		//Fuentes
 		Font titulo = new Font("Frank Ruehl CLM", Font.BOLD, 72);
 		Font campos = new Font("Comic Sans MS", Font.BOLD, 18);
@@ -112,7 +113,7 @@ public class inicio extends JFrame implements ActionListener {
 		btnIniciarSesion.setBorder(null);
 		btnIniciarSesion.setFocusable(false);
 		btnIniciarSesion.addActionListener(this);
-		btnIniciarSesion.setBounds(50, 300, 115, 30);
+		btnIniciarSesion.setBounds(50, 310, 115, 30);
 		contentPane.add(btnIniciarSesion);
 		
 		btnCerrar = new JButton("Close");
@@ -121,63 +122,47 @@ public class inicio extends JFrame implements ActionListener {
 		btnCerrar.setBorder(null);
 		btnCerrar.setFocusable(false);
 		btnCerrar.addActionListener(this);
-		btnCerrar.setBounds(195, 300, 100, 30);
+		btnCerrar.setBounds(195, 310, 100, 30);
 		contentPane.add(btnCerrar);
 		
 		lblIncorrect = new JLabel("Incorrect username or password");
 		lblIncorrect.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIncorrect.setForeground(new Color(255, 40, 16));
-		lblIncorrect.setBounds(50, 261, 245, 25);
+		lblIncorrect.setBounds(50, 280, 245, 25);
 		lblIncorrect.setFont(text_message);
 		lblIncorrect.setVisible(false);
 		contentPane.add(lblIncorrect);
 		
-		lblcorrect = new JLabel("Correct username and password");
-		lblcorrect.setHorizontalAlignment(SwingConstants.CENTER);
-		lblcorrect.setForeground(new Color(16, 255, 40));
-		lblcorrect.setBounds(50, 261, 245, 25);
-		lblcorrect.setFont(text_message);
-		lblcorrect.setVisible(false);
-		contentPane.add(lblcorrect);
-		
 		lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(inicio.class.getResource("/imagenes/fondo_login.png")));
-		lblFondo.setBounds(0, 0, 350, 450);
+		lblFondo.setBounds(0, 0, 335, 415);
 		contentPane.add(lblFondo);
 
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Object evento = e.getSource();
+		Object event = e.getSource();
 		
-		conexion = new conexion_db();
+		//conexion = new conexion_db();
 		mtd = new metodos_db();
 		
-		if (evento.equals(btnIniciarSesion)) {
+		if (event.equals(btnIniciarSesion)) {
 			try {
 				
 				char[] ArrayPass = txtPass.getPassword();
+				String user = txtUser.getText().toString();
 				String pass = new String(ArrayPass);
 						
 				if (txtUser.getText().isEmpty() || pass.isEmpty()) {
 					lblIncorrect.setVisible(true);
 					contentPane.revalidate();
 					contentPane.repaint();
-					//JOptionPane.showMessageDialog(null, "Username and/or password are empty.", "ERROR", JOptionPane.ERROR_MESSAGE);
-				} else if (txtUser.getText().equalsIgnoreCase("admin") && pass.equalsIgnoreCase("admin")) {
-					if (lblIncorrect.isVisible()) {
-						lblIncorrect.setVisible(false);
-						lblcorrect.setVisible(true);
-						contentPane.revalidate();
-						contentPane.repaint();
-					} else {
-						lblcorrect.setVisible(true);
-						contentPane.revalidate();
-						contentPane.repaint();
-					}
-					//administracion frame = new administracion();
-					//frame.setVisible(true);
+				} else if (mtd.LogInCorrect(user, pass)) {
+					cambiarpass changepass = new cambiarpass();
+					
+					contentPane.setVisible(false);
+					changepass.setVisible(true);
 				} else {
 					lblIncorrect.setVisible(true);
 					contentPane.revalidate();
@@ -190,7 +175,7 @@ public class inicio extends JFrame implements ActionListener {
 		}
 		
 		//Acción de cerrar ventana principal
-		if (evento.equals(btnCerrar)) {
+		if (event.equals(btnCerrar)) {
 			System.exit(0);
 		}
 	}
