@@ -1,3 +1,4 @@
 eclipse.preferences.version=1
-encoding//src/ventanas/cambiarpass.java=UTF-8
-encoding//src/ventanas/inicio.java=UTF-8
+encoding//src/ventanas/changepass.java=UTF-8
+encoding//src/ventanas/employee.java=UTF-8
+encoding//src/ventanas/login.java=UTF-8

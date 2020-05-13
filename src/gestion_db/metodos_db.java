@@ -33,7 +33,7 @@ public class metodos_db {
 		return verify;
 		
 	}
-	public boolean ChangePassword (String username, String password, String newpassword) throws SQLException {
+	public boolean ChangePassword (String username, String newpassword) throws SQLException {
 		
 		boolean verify = false;
 		int confirm = 0;
