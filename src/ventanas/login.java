@@ -8,7 +8,7 @@ import java.awt.event.*;
 
 @SuppressWarnings("serial")
 public class login extends JFrame implements ActionListener {
-	
+
 	public static String user = "";
 	public static String pass= "";
 	private JLabel lblFondo, lblBjh, lblLogin, lblUser, lblPass, lblIncorrect, lblFooter;

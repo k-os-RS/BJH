@@ -10,14 +10,14 @@ import java.awt.event.*;
 public class management extends JFrame implements ActionListener {
 
 	private JLabel lblBjh, lblFooter;
-	private JButton btnHire, btnFired, btnShow, btnShowAll, btnModify, btnRequest, btnChangePass, btnLogout;
+	private JButton btnHire, btnFired, btnShow, btnShowFired, btnShowAll, btnModify, btnRequest, btnShowItem, btnShowAllItem, btnChangePass, btnLogout;
 	private JTextArea txtaShow;
 	private JScrollPane spShow;
 	metodos_db metodo = new metodos_db();
 	
 	public management() {
 		//Frame
-		getContentPane().setLayout(null);
+		setLayout(null);
 		setResizable(false);
 		setTitle("Administration Panel | Admin");
 		setBounds(0, 0, 640, 540);
@@ -34,7 +34,7 @@ public class management extends JFrame implements ActionListener {
 		lblBjh.setFont(title);
 		lblBjh.setBounds(220, 20, 170, 70);
 		lblBjh.setForeground(new Color(246, 190, 82));
-		getContentPane().add(lblBjh);
+		add(lblBjh);
 		
 		btnHire = new JButton("Hire employee");
 		btnHire.setBorder(null);
@@ -43,7 +43,7 @@ public class management extends JFrame implements ActionListener {
 		btnHire.setBounds(50, 120, 115, 30);
 		btnHire.setForeground(new Color(54, 54, 54));
 		btnHire.setBackground(new Color(246, 190, 82));
-		getContentPane().add(btnHire);
+		add(btnHire);
 
 		btnFired = new JButton("Fire employee");
 		btnFired.setBorder(null);
@@ -52,7 +52,7 @@ public class management extends JFrame implements ActionListener {
 		btnFired.setBounds(50, 170, 115, 30);
 		btnFired.setForeground(new Color(54, 54, 54));
 		btnFired.setBackground(new Color(246, 190, 82));
-		getContentPane().add(btnFired);
+		add(btnFired);
 		
 		btnModify = new JButton("Modify employee");
 		btnModify.setBorder(null);
@@ -61,7 +61,7 @@ public class management extends JFrame implements ActionListener {
 		btnModify.setBounds(50, 220, 115, 30);
 		btnModify.setForeground(new Color(54, 54, 54));
 		btnModify.setBackground(new Color(246, 190, 82));
-		getContentPane().add(btnModify);
+		add(btnModify);
 		
 		btnShow = new JButton("Show employee");
 		btnShow.setBorder(null);
@@ -70,16 +70,25 @@ public class management extends JFrame implements ActionListener {
 		btnShow.setBounds(50, 270, 115, 30);
 		btnShow.setForeground(new Color(54, 54, 54));
 		btnShow.setBackground(new Color(246, 190, 82));
-		getContentPane().add(btnShow);
+		add(btnShow);
 		
+		btnShowFired = new JButton("Show fired employee");
+		btnShowFired.setBorder(null);
+		btnShowFired.setFocusable(false);
+		btnShowFired.addActionListener(this);
+		btnShowFired.setBounds(50, 320, 115, 30);
+		btnShowFired.setForeground(new Color(54, 54, 54));
+		btnShowFired.setBackground(new Color(246, 190, 82));
+		add(btnShowFired);
+
 		btnShowAll = new JButton("Show all employees");
 		btnShowAll.setBorder(null);
 		btnShowAll.setFocusable(false);
 		btnShowAll.addActionListener(this);
-		btnShowAll.setBounds(50, 320, 115, 30);
+		btnShowAll.setBounds(50, 370, 115, 30);
 		btnShowAll.setForeground(new Color(54, 54, 54));
 		btnShowAll.setBackground(new Color(246, 190, 82));
-		getContentPane().add(btnShowAll);
+		add(btnShowAll);
 		
 		btnRequest = new JButton("Request Item");
 		btnRequest.setBorder(null);
@@ -88,7 +97,25 @@ public class management extends JFrame implements ActionListener {
 		btnRequest.setBounds(435, 120, 115, 30);
 		btnRequest.setForeground(new Color(54, 54, 54));
 		btnRequest.setBackground(new Color(246, 190, 82));
-		getContentPane().add(btnRequest);
+		add(btnRequest);
+		
+		btnShowItem = new JButton("Show Item");
+		btnShowItem.setBorder(null);
+		btnShowItem.setFocusable(false);
+		btnShowItem.addActionListener(this);
+		btnShowItem.setBounds(435, 170, 115, 30);
+		btnShowItem.setForeground(new Color(54, 54, 54));
+		btnShowItem.setBackground(new Color(246, 190, 82));
+		add(btnShowItem);
+		
+		btnShowAllItem = new JButton("Show inventory");
+		btnShowAllItem.setBorder(null);
+		btnShowAllItem.setFocusable(false);
+		btnShowAllItem.addActionListener(this);
+		btnShowAllItem.setBounds(435, 220, 115, 30);
+		btnShowAllItem.setForeground(new Color(54, 54, 54));
+		btnShowAllItem.setBackground(new Color(246, 190, 82));
+		add(btnShowAllItem);
 		
 		btnChangePass = new JButton("Change Password");
 		btnChangePass.setBorder(null);
@@ -97,7 +124,7 @@ public class management extends JFrame implements ActionListener {
 		btnChangePass.setBounds(170, 420, 115, 30);
 		btnChangePass.setForeground(new Color(54, 54, 54));
 		btnChangePass.setBackground(new Color(246, 190, 82));
-		getContentPane().add(btnChangePass);
+		add(btnChangePass);
 		
 		btnLogout = new JButton("Log out");
 		btnLogout.setBorder(null);
@@ -106,7 +133,7 @@ public class management extends JFrame implements ActionListener {
 		btnLogout.setBounds(310, 420, 115, 30);
 		btnLogout.setForeground(new Color(54, 54, 54));
 		btnLogout.setBackground(new Color(246, 190, 82));
-		getContentPane().add(btnLogout);
+		add(btnLogout);
 		
 		txtaShow = new JTextArea();
 		txtaShow.setFont(scroll);
@@ -114,14 +141,14 @@ public class management extends JFrame implements ActionListener {
 		txtaShow.setBackground(new Color (224, 224, 224));
 		spShow = new JScrollPane(txtaShow);
 		spShow.setBounds(190, 90, 220, 320);
-		getContentPane().add(spShow);
+		add(spShow);
 		
 		lblFooter = new JLabel("© 2020 BJH Anime Store | All rights reserved");
 		lblFooter.setFont(text_message);
 		lblFooter.setBounds(240, 470, 385, 30);
 		lblFooter.setForeground(new Color(246, 190, 82));
-		getContentPane().add(lblFooter);
-		
+		add(lblFooter);
+
 	}
 
 	public void actionPerformed(ActionEvent e) {
