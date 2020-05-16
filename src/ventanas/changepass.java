@@ -27,7 +27,7 @@ public class changepass extends JFrame implements ActionListener {
 		setUndecorated(true);
 		setBounds(0, 0, 350, 450);
 		setLocationRelativeTo(null);
-		//setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo_bjh.png")).getImage());
+		setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo_bjh.png")).getImage());
 		
 		//Fonts
 		Font title = new Font("Frank Ruehl CLM", 1, 62);

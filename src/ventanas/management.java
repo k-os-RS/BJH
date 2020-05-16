@@ -9,152 +9,189 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class management extends JFrame implements ActionListener {
 
-	private JLabel lblBjh, lblFooter;
-	private JButton btnHire, btnFired, btnShow, btnShowFired, btnShowAll, btnModify, btnRequest, btnShowItem, btnShowAllItem, btnChangePass, btnLogout;
-	private JTextArea txtaShow;
-	private JScrollPane spShow;
+	private JLabel lblBjh, lblHired, lblFired, lblFooter;
+	private JButton btnHire, btnFired, btnEmployees, btnModify, btnRequest, btnShowStock, btnChangePass, btnLogout;
+	//private JTextArea txtaShow;
+	//private JScrollPane spShow;
 	metodos_db metodo = new metodos_db();
-	
+
 	public management() {
 		//Frame
-		setLayout(null);
+		getContentPane().setLayout(null);
 		setResizable(false);
 		setTitle("Administration Panel | Admin");
 		setBounds(0, 0, 640, 540);
 		setLocationRelativeTo(null);
-		//setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo_bjh.png")).getImage());
+		setBackground(new Color(54, 54, 54));
+		setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo_bjh.png")).getImage());
 		
 		//Fonts
 		Font title = new Font("Frank Ruehl CLM", 1, 62);
-		Font scroll = new Font("Andale Mono", 0, 14);
+		Font scroll = new Font("Andale Mono", 0, 18);
 		Font text_message = new Font("Comic Sans MS", 3, 16);
 		
 		//Components
 		lblBjh = new JLabel("B J H");
 		lblBjh.setFont(title);
-		lblBjh.setBounds(220, 20, 170, 70);
+		lblBjh.setBounds(230, 20, 170, 70);
 		lblBjh.setForeground(new Color(246, 190, 82));
-		add(lblBjh);
-		
+		getContentPane().add(lblBjh);
+
 		btnHire = new JButton("Hire employee");
 		btnHire.setBorder(null);
 		btnHire.setFocusable(false);
 		btnHire.addActionListener(this);
-		btnHire.setBounds(50, 120, 115, 30);
+		btnHire.setBounds(150, 150, 130, 30);
 		btnHire.setForeground(new Color(54, 54, 54));
 		btnHire.setBackground(new Color(246, 190, 82));
-		add(btnHire);
+		getContentPane().add(btnHire);
 
 		btnFired = new JButton("Fire employee");
 		btnFired.setBorder(null);
 		btnFired.setFocusable(false);
 		btnFired.addActionListener(this);
-		btnFired.setBounds(50, 170, 115, 30);
+		btnFired.setBounds(150, 200, 130, 30);
 		btnFired.setForeground(new Color(54, 54, 54));
 		btnFired.setBackground(new Color(246, 190, 82));
-		add(btnFired);
+		getContentPane().add(btnFired);
 		
 		btnModify = new JButton("Modify employee");
 		btnModify.setBorder(null);
 		btnModify.setFocusable(false);
 		btnModify.addActionListener(this);
-		btnModify.setBounds(50, 220, 115, 30);
+		btnModify.setBounds(150, 250, 130, 30);
 		btnModify.setForeground(new Color(54, 54, 54));
 		btnModify.setBackground(new Color(246, 190, 82));
-		add(btnModify);
+		getContentPane().add(btnModify);
 		
-		btnShow = new JButton("Show employee");
-		btnShow.setBorder(null);
-		btnShow.setFocusable(false);
-		btnShow.addActionListener(this);
-		btnShow.setBounds(50, 270, 115, 30);
-		btnShow.setForeground(new Color(54, 54, 54));
-		btnShow.setBackground(new Color(246, 190, 82));
-		add(btnShow);
-		
-		btnShowFired = new JButton("Show fired employee");
-		btnShowFired.setBorder(null);
-		btnShowFired.setFocusable(false);
-		btnShowFired.addActionListener(this);
-		btnShowFired.setBounds(50, 320, 115, 30);
-		btnShowFired.setForeground(new Color(54, 54, 54));
-		btnShowFired.setBackground(new Color(246, 190, 82));
-		add(btnShowFired);
-
-		btnShowAll = new JButton("Show all employees");
-		btnShowAll.setBorder(null);
-		btnShowAll.setFocusable(false);
-		btnShowAll.addActionListener(this);
-		btnShowAll.setBounds(50, 370, 115, 30);
-		btnShowAll.setForeground(new Color(54, 54, 54));
-		btnShowAll.setBackground(new Color(246, 190, 82));
-		add(btnShowAll);
+		btnEmployees = new JButton("Employees");
+		btnEmployees.setBorder(null);
+		btnEmployees.setFocusable(false);
+		btnEmployees.addActionListener(this);
+		btnEmployees.setBounds(350, 150, 130, 30);
+		btnEmployees.setForeground(new Color(54, 54, 54));
+		btnEmployees.setBackground(new Color(246, 190, 82));
+		getContentPane().add(btnEmployees);
 		
 		btnRequest = new JButton("Request Item");
 		btnRequest.setBorder(null);
 		btnRequest.setFocusable(false);
 		btnRequest.addActionListener(this);
-		btnRequest.setBounds(435, 120, 115, 30);
+		btnRequest.setBounds(350, 200, 130, 30);
 		btnRequest.setForeground(new Color(54, 54, 54));
 		btnRequest.setBackground(new Color(246, 190, 82));
-		add(btnRequest);
+		getContentPane().add(btnRequest);
 		
-		btnShowItem = new JButton("Show Item");
-		btnShowItem.setBorder(null);
-		btnShowItem.setFocusable(false);
-		btnShowItem.addActionListener(this);
-		btnShowItem.setBounds(435, 170, 115, 30);
-		btnShowItem.setForeground(new Color(54, 54, 54));
-		btnShowItem.setBackground(new Color(246, 190, 82));
-		add(btnShowItem);
+		btnShowStock = new JButton("Stock");
+		btnShowStock.setBorder(null);
+		btnShowStock.setFocusable(false);
+		btnShowStock.addActionListener(this);
+		btnShowStock.setBounds(350, 250, 130, 30);
+		btnShowStock.setForeground(new Color(54, 54, 54));
+		btnShowStock.setBackground(new Color(246, 190, 82));
+		getContentPane().add(btnShowStock);
 		
-		btnShowAllItem = new JButton("Show inventory");
-		btnShowAllItem.setBorder(null);
-		btnShowAllItem.setFocusable(false);
-		btnShowAllItem.addActionListener(this);
-		btnShowAllItem.setBounds(435, 220, 115, 30);
-		btnShowAllItem.setForeground(new Color(54, 54, 54));
-		btnShowAllItem.setBackground(new Color(246, 190, 82));
-		add(btnShowAllItem);
+		
+		lblHired = new JLabel("The employee has been successfully hired.");
+		lblHired.setFont(scroll);
+		lblHired.setBounds(140, 350, 350, 30);
+		lblHired.setForeground(new Color(0, 255, 0));
+		if (hire.hired) {
+			lblHired.setVisible(true);
+		} else {
+			lblHired.setVisible(false);
+		}
+		getContentPane().add(lblHired);
+
+		lblFired = new JLabel("The employee has been successfully fired.");
+		lblFired.setFont(scroll);
+		lblFired.setBounds(140, 350, 350, 30);
+		lblFired.setForeground(new Color(0, 255, 0));
+		if (fire.fired) {
+			lblFired.setVisible(true);
+		} else {
+			lblFired.setVisible(false);
+		}
+		getContentPane().add(lblFired);
 		
 		btnChangePass = new JButton("Change Password");
 		btnChangePass.setBorder(null);
 		btnChangePass.setFocusable(false);
 		btnChangePass.addActionListener(this);
-		btnChangePass.setBounds(170, 420, 115, 30);
+		btnChangePass.setBounds(180, 420, 130, 30);
 		btnChangePass.setForeground(new Color(54, 54, 54));
 		btnChangePass.setBackground(new Color(246, 190, 82));
-		add(btnChangePass);
+		getContentPane().add(btnChangePass);
 		
 		btnLogout = new JButton("Log out");
 		btnLogout.setBorder(null);
 		btnLogout.setFocusable(false);
 		btnLogout.addActionListener(this);
-		btnLogout.setBounds(310, 420, 115, 30);
+		btnLogout.setBounds(320, 420, 130, 30);
 		btnLogout.setForeground(new Color(54, 54, 54));
 		btnLogout.setBackground(new Color(246, 190, 82));
-		add(btnLogout);
-		
-		txtaShow = new JTextArea();
-		txtaShow.setFont(scroll);
-		txtaShow.setEditable(false);
-		txtaShow.setBackground(new Color (224, 224, 224));
-		spShow = new JScrollPane(txtaShow);
-		spShow.setBounds(190, 90, 220, 320);
-		add(spShow);
+		getContentPane().add(btnLogout);
 		
 		lblFooter = new JLabel("© 2020 BJH Anime Store | All rights reserved");
 		lblFooter.setFont(text_message);
-		lblFooter.setBounds(240, 470, 385, 30);
+		lblFooter.setBounds(250, 480, 385, 30);
 		lblFooter.setForeground(new Color(246, 190, 82));
-		add(lblFooter);
+		getContentPane().add(lblFooter);
 
 	}
-
+	
 	public void actionPerformed(ActionEvent e) {
-		//Object event = e.getSource();
+		Object event = e.getSource();
 		
+		if (event.equals(btnChangePass) ) {
+			changepass FrameChangePass = new changepass();
+			FrameChangePass.setVisible(true);
+			this.setVisible(false);
+			
+		}
 		
+		if (event.equals(btnLogout) ) {
+			login FrameLogin = new login();
+			FrameLogin.setVisible(true);
+			this.setVisible(false);
+			
+		}
+		
+		if (event.equals(btnHire) ) {
+			hire FrameHire = new hire();
+			FrameHire.setVisible(true);
+			this.setVisible(false);
+		}
+		
+		if (event.equals(btnFired) ) {
+			fire FrameFire = new fire();
+			FrameFire.setVisible(true);
+			this.setVisible(false);
+		}
+		
+		if (event.equals(btnModify)) {
+			modify FrameModify = new modify();
+			FrameModify.setVisible(true);
+			this.setVisible(false);
+		}
+		
+		if (event.equals(btnEmployees)) {
+			workers FrameWorkers = new workers();
+			FrameWorkers.setVisible(true);
+			this.setVisible(false);
+		}
+		
+		if (event.equals(btnRequest)) {
+			modify FrameModify = new modify();
+			FrameModify.setVisible(true);
+			this.setVisible(false);
+		}
+		
+		if (event.equals(btnShowStock)) {
+			stock FrameStock = new stock();
+			FrameStock.setVisible(true);
+			this.setVisible(false);
+		}
 		
 	}
 	
