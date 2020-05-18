@@ -47,4 +47,9 @@ He creado pagina de "correccion" junto a su php y js
 Personalización de php incluida
 RESPONSIVE terminado
 El php esta adaptado a la base de datos
-
+base de datos corregida? foreign keys ?
+triggers???????
+	-cliente
+persona
+	-empleado	
+		-cargo

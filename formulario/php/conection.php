@@ -72,6 +72,9 @@
                     </body>
                     ";
                     mysqli_query($link,"INSERT INTO persona(name,last_names,email,DNI,address,username,password) VALUES ('$Nombre','$Apellidos','$Email','$Dni','$Direccion','$Usuario','$Contrasena')");    
+                    $id_array = mysqli_fetch_array(mysqli_query($link, "SELECT id_persona FROM persona where username = '$Usuario'"));
+                    $id = $id_array["id_persona"];
+                    mysqli_query($link,"INSERT INTO cliente(id_persona_aux,purchases) VALUES ('$id',0)");
                 }
             }
         ?>    
