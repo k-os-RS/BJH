@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>BJH</title>
+        <link rel="stylesheet" href="css/update.css">
+    </head>
+    <body>
+        <form name="formulario" action="php/conex.php" method="POST">
+            <div class="container">
+                <div class="container-control">
+                    <div class="head">
+                        <h2>BJH</h2>
+                    </div>
+                    <fieldset class="box">
+                        <h1>Inicio</h1>
+                        <h3>Usuario<span>*</span></h3>
+                        <input type="text" name="usuario" id="usuario" value="" class="texto">
+                        <h3>Contraseña<span>*</span></h3>
+                        <input type="password" name="contrasena" id="contrasena" value="" class="texto">
+                        <hr>
+                        <div class="button">
+                            <input type="submit" name="evaluar" value="Entrar" class="boton" onfocus="registro()">
+                            <a class="olvido" href="olvido.html">¿Olvidaste la contraseña?</a>
+                            <hr>
+                            <a class="" href="index.html">
+                            <input class="nuevo" type="button" value="Crea una nueva cuenta">
+                            </a>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+        <script src="js/animation2.js"></script>
+    </body>
+</html>

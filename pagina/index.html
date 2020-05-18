@@ -10,161 +10,163 @@
         <script type="text/javascript" src="js/surgery.js"></script>
     </head>
     <body>
-        <div class="container">
-            <div >
-                <ul class="links">
-                    <li><a href="#" class="enlace">Mi lista de deseos</a></li>
-                    <li><a href="#" class="enlace">Realizar pedidos</a></li>
-                    <li><a href="#" class="enlace">inicia sesión o registrate</a></li>
-                    <li><a href="#" class="enlace">carrito</a></li>
-                </ul>
+        <section>
+            <div class="container">
+                <div >
+                    <ul class="links">
+                        <li><a href="#" class="enlace">Mi lista de deseos</a></li>
+                        <li><a href="#" class="enlace">Realizar pedidos</a></li>
+                        <li><a href="#" class="enlace">inicia sesión o registrate</a></li>
+                        <li><a href="#" class="enlace">carrito</a></li>
+                    </ul>
+                </div>
+                <header>
+                    <div class="navegation">
+                        <div class="nav-container">
+                            <nav class="nav-bar">
+                                <div class="menu">
+                                    <ul class="nav">
+                                        <li class="nav-active">
+                                            <a href="index.html">Inicio</a>
+                                        </li>
+                                        <li class="dropdown"><a href="novedades.html">Novedades <i class="fas fa-chevron-down"></i></a></li>
+                                        <ul class="dropMenu">
+                                            <li><a href="#">Novedades en Manga</a></li>
+                                            <li><a href="#">Novedades en Cómic</a></li>
+                                            <li><a href="#">Novedades en Merchandising</a></li>
+                                        </ul>
+                                        <li class="dropdown"><a href="reserva.html">Reservas <i class="fas fa-chevron-down"></i></a></li>
+                                        <ul class="dropMenu">
+                                            <li><a href="#">Reservas Manga</a></li>
+                                            <li><a href="#">Reservas Cómic</a></li>
+                                            <li><a href="#">Reservas figuras</a></li>
+                                            <li><a href="#">reservas Blu-ray</a></li>
+                                        </ul>
+                                        <li class="dropdown"><a href="manga.html">Manga <i class="fas fa-chevron-down"></i></a></li>
+                                        <ul class="dropMenu">
+                                            <li><a href="#">Mecha</a></li>
+                                            <li><a href="#">Harem</a></li>
+                                            <li><a href="#">Shounen</a></li>
+                                            <li><a href="#">Shoujo</a></li>
+                                            <li><a href="#">Yaoi</a></li>
+                                            <li><a href="#">Yuri</a></li>
+                                        </ul>
+                                        <li class="dropdown"><a href="comic.html">Cómic <i class="fas fa-chevron-down"></i></a></li>
+                                        <ul class="dropMenu">
+                                            <li><a href="#">Acción</a></li>
+                                            <li><a href="#">Romance</a></li>
+                                            <li><a href="#">Sobrenatural</a></li>
+                                        </ul>
+                                        <li class="dropdown"><a href="figuras.html">Figuras <i class="fas fa-chevron-down"></i></a></li>
+                                        <ul class="dropMenu">
+                                            <li><a href="#">Manga/Anime</a></li>
+                                            <li><a href="#">Cómic</a></li>
+                                            <li><a href="#">Videojuegos</a></li>
+                                            <li><a href="#">Series/Peliculas</a></li>
+                                            <li><a href="#">Funko Pop!</a></li>
+                                        </ul>
+                                        <li class="dropdown"><a href="merchandising.html">Merchandising</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                <div class="general-container">
+                    <div class="slider-head">
+                        <div class="slider-img">
+                          <img src="img/ram.png">
+                        </div>
+                        <div class="slider-img">
+                          <img src="img/goku.png">
+                        </div>
+                        <div class="slider-img">
+                          <img src="img/zoro.jpg">
+                        </div>
+                        <div class="slider-img">
+                          <img src="img/lonk.jpg">
+                        </div>
+                        <a class="prev" onclick="plusSlide(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlide(1)">&#10095;</a>
+                        <div class="btn-dots">
+                          <span class="dot" onclick="currentSlide(1)"></span>
+                          <span class="dot" onclick="currentSlide(2)"></span>
+                          <span class="dot" onclick="currentSlide(3)"></span>
+                          <span class="dot" onclick="currentSlide(4)"></span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <script type="text/javascript" src="js/animation.js"></script> 
+                </header>
             </div>
-            <header>
-                <div class="navegation">
-                    <div class="nav-container">
-                        <nav class="nav-bar">
-                            <div class="menu">
-                                <ul class="nav">
-                                    <li class="nav-active">
-                                        <a href="index.html">Inicio</a>
+            <div class="news">
+                <div class="horizontal-news">
+                    <div class="control-bckgrnd">
+                        <div class="section-var">
+                            <div class="section-control">
+                                <a href="#" class="section-btn btn-1 selected">Últimas unidades</a>
+                                <a href="#" class="section-btn btn-2">Próximos estrenos</a>
+                                <a href="#" class="section-btn btn-3">Lo más vendido</a>
+                            </div>
+                        </div>
+                        <div class="soction-table">
+                            <div class="control-table">
+                                <ul class="img-news">
+                                    <li class="first-page title-1">
+                                        <div class="container-img">
+                                            <a href="manga.html"><img src="img/la-bestia.jpg" alt="La bestia" width="500px" height="600px"></a>
+                                            <div class="tittle">
+                                                <h3>
+                                                    La bestia
+                                                </h3>
+                                            </div>
+                                            <div class="details">
+                                                <p>Su camino será el camino de la espada. <br>
+                                                    Se convertirá en el samurái más famoso de Japón. <br>
+                                                    Pero él no lo sabe.</p>
+                                            </div>
+                                        </div>
                                     </li>
-                                    <li class="dropdown"><a href="novedades.html">Novedades <i class="fas fa-chevron-down"></i></a></li>
-                                    <ul class="dropMenu">
-                                        <li><a href="#">Novedades en Manga</a></li>
-                                        <li><a href="#">Novedades en Cómic</a></li>
-                                        <li><a href="#">Novedades en Merchandising</a></li>
-                                    </ul>
-                                    <li class="dropdown"><a href="reserva.html">Reservas <i class="fas fa-chevron-down"></i></a></li>
-                                    <ul class="dropMenu">
-                                        <li><a href="#">Reservas Manga</a></li>
-                                        <li><a href="#">Reservas Cómic</a></li>
-                                        <li><a href="#">Reservas figuras</a></li>
-                                        <li><a href="#">reservas Blu-ray</a></li>
-                                    </ul>
-                                    <li class="dropdown"><a href="manga.html">Manga <i class="fas fa-chevron-down"></i></a></li>
-                                    <ul class="dropMenu">
-                                        <li><a href="#">Mecha</a></li>
-                                        <li><a href="#">Harem</a></li>
-                                        <li><a href="#">Shounen</a></li>
-                                        <li><a href="#">Shoujo</a></li>
-                                        <li><a href="#">Yaoi</a></li>
-                                        <li><a href="#">Yuri</a></li>
-                                    </ul>
-                                    <li class="dropdown"><a href="comic.html">Cómic <i class="fas fa-chevron-down"></i></a></li>
-                                    <ul class="dropMenu">
-                                        <li><a href="#">Acción</a></li>
-                                        <li><a href="#">Romance</a></li>
-                                        <li><a href="#">Sobrenatural</a></li>
-                                    </ul>
-                                    <li class="dropdown"><a href="figuras.html">Figuras <i class="fas fa-chevron-down"></i></a></li>
-                                    <ul class="dropMenu">
-                                        <li><a href="#">Manga/Anime</a></li>
-                                        <li><a href="#">Cómic</a></li>
-                                        <li><a href="#">Videojuegos</a></li>
-                                        <li><a href="#">Series/Peliculas</a></li>
-                                        <li><a href="#">Funko Pop!</a></li>
-                                    </ul>
-                                    <li class="dropdown"><a href="merchandising.html">Merchandising</a></li>
+                                    <li class="second-page title-2">
+                                        <div class="container-img">
+                                            <a href="figuras.html"><img src="img/supergirl.jpg" alt="Supergirl" width="200px" height="200px"></a>
+                                            <div class="tittle">
+                                                <h3>
+                                                    Supergirl
+                                                </h3>
+                                            </div>
+                                            <div class="details">
+                                                <p>Figura de la línea ´Bishoujo´. <br>
+                                                     Fabricada en PVC en escala 1/7, mide un tamaño de aprox. <br>
+                                                     25 cm.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="third-page title-3">
+                                        <div class="container-img">
+                                            <a href="comics.html"><img src="img/2099-omega.jpg" alt="Spiderman-2099" width="170px" height="200px"></a>
+                                            <div class="tittle">
+                                                <h3>
+                                                    Spiderman-2099
+                                                </h3>
+                                            </div>
+                                            <div class="details">
+                                                <p>Omega Regreso al futuro! La conclusión de la saga en la que la realidad del año 2099 se ve amenazada.Con la segunda oportunidad del Motorista Fantasma, Veneno convertido en una medicina,
+                                                el Doctor Muerte igual que siempre y Miguel O Hara afrontando el destino de su línea temporal.</p>
+                                            </div>
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
-                        </nav>
-                    </div>
-                </div>
-            <div class="general-container">
-                <div class="slider-head">
-                    <div class="slider-img">
-                      <img src="img/ram.png">
-                    </div>
-                    <div class="slider-img">
-                      <img src="img/goku.png">
-                    </div>
-                    <div class="slider-img">
-                      <img src="img/zoro.jpg">
-                    </div>
-                    <div class="slider-img">
-                      <img src="img/lonk.jpg">
-                    </div>
-                    <a class="prev" onclick="plusSlide(-1)">&#10094;</a>
-                    <a class="next" onclick="plusSlide(1)">&#10095;</a>
-                    <div class="btn-dots">
-                      <span class="dot" onclick="currentSlide(1)"></span>
-                      <span class="dot" onclick="currentSlide(2)"></span>
-                      <span class="dot" onclick="currentSlide(3)"></span>
-                      <span class="dot" onclick="currentSlide(4)"></span>
-                    </div>
-                  </div>
-                </div>
-            </div>
-            <script type="text/javascript" src="js/animation.js"></script> 
-            </header>
-        </div>
-        <div class="news">
-            <div class="horizontal-news">
-                <div class="control-bckgrnd">
-                    <div class="section-var">
-                        <div class="section-control">
-                            <a href="#" class="section-btn btn-1 selected">Últimas unidades</a>
-                            <a href="#" class="section-btn btn-2">Próximos estrenos</a>
-                            <a href="#" class="section-btn btn-3">Lo más vendido</a>
-                        </div>
-                    </div>
-                    <div class="soction-table">
-                        <div class="control-table">
-                            <ul class="img-news">
-                                <li class="first-page title-1">
-                                    <div class="container-img">
-                                        <a href="manga.html"><img src="img/la-bestia.jpg" alt="La bestia" width="500px" height="500px"></a>
-                                        <div class="tittle">
-                                            <h3>
-                                                La bestia
-                                            </h3>
-                                        </div>
-                                        <div class="details">
-                                            <p>Su camino será el camino de la espada. <br>
-                                                Se convertirá en el samurái más famoso de Japón. <br>
-                                                Pero él no lo sabe.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="second-page title-2">
-                                    <div class="container-img">
-                                        <a href="figuras.html"><img src="img/supergirl.jpg" alt="Supergirl" width="200px" height="200px"></a>
-                                        <div class="tittle">
-                                            <h3>
-                                                Supergirl
-                                            </h3>
-                                        </div>
-                                        <div class="details">
-                                            <p>Figura de la línea ´Bishoujo´. <br>
-                                                 Fabricada en PVC en escala 1/7, mide un tamaño de aprox. <br>
-                                                 25 cm.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="third-page title-3">
-                                    <div class="container-img">
-                                        <a href="comics.html"><img src="img/2099-omega.jpg" alt="Spiderman-2099" width="200px" height="200px"></a>
-                                        <div class="tittle">
-                                            <h3>
-                                                Spiderman-2099
-                                            </h3>
-                                        </div>
-                                        <div class="details">
-                                            <p>Omega Regreso al futuro! La conclusión de la saga en la que la realidad del año 2099 se ve amenazada.Con la segunda oportunidad del Motorista Fantasma, Veneno convertido en una medicina,
-                                            el Doctor Muerte igual que siempre y Miguel O Hara afrontando el destino de su línea temporal.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div>
-            <footer>
-                <!--Pendiente de hacer-->
-            </footer>
-        </div>
+            <div>
+                <footer>
+                    <!--Pendiente de hacer-->
+                </footer>
+            </div>   
+        </section>
     </body>
 </html>

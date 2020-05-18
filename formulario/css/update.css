@@ -1,0 +1,182 @@
+:root {
+    /* --- Colors --- */
+    --gris-luminoso: #e4e4e4;
+    --naranja-fruta: #dd4b39;
+    --oscuro-fondo: #4e4e4e;
+    --gris-transparente: #e4e4e44d;
+    --azul-bonito: #55acee;
+}
+/*-- General --*/
+body {
+    width: 100%;
+    height: 100%;
+    background-image: url(fondo.jpg);
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    overflow-x: hidden;
+}
+/*-- Principal medidas --*/
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+}
+/*-- personalizacion para inicio sesion*/ 
+    .container-control {
+        height: 380px;
+        color: var(--gris-luminoso);
+        width: 20%;
+        position: absolute;
+        border-radius: 10px;
+        left: 40%;
+        right: 40%;
+    }
+        .head{
+            border-radius: 8px;
+            text-align: center;
+            background-color: var(--gris-transparente);
+            color: var(--gris-luminoso);
+        }
+        .box {
+            height: -webkit-fill-available;
+            margin: 2%;
+            border-radius: 8px;
+        }
+            span:focus{
+                color: red;
+            }
+            .texto {
+                border: none;
+                border-radius: 5px;
+                width: 100%;
+                background-color: var(--oscuro-fondo);
+            }
+            .button {
+                display: block;
+                height: 70px;
+            }
+                .boton {
+                    width: 100%;
+                    height: 70%;
+                    border-radius: 3px;
+                    background-color: var(--azul-bonito);
+                    color: var(--gris-luminoso);
+                    border: none;
+                }
+                .boton:hover {
+                    color: var(--naranja-fruta);
+                    background-color: var(--gris-transparente);
+                    transition: 0.7s;
+                }
+                .nuevo {
+                    width: 100%;
+                    height: 70%;
+                    border-radius: 3px;
+                    background-color: var(--gris-luminoso);
+                    color: var(--naranja-fruta)   ;
+                    border: none;
+                }
+                .nuevo:hover {
+                    background-color: var(--gris-transparente);
+                    color: var(--azul-bonito)   ;
+                    transition: 0.7s;
+                }
+                .olvido {
+                    color: var(--naranja-fruta);
+                    text-decoration: none;
+                }
+                .olvido:hover {
+                    transition: 1s;
+                    color: var(--gris-luminoso);
+                }
+                /*--Personalizacion para correcion--*/
+#cont2 {
+    height: 520px;
+}
+
+@media only screen and (min-width:500px) and (max-width:768px){
+    .container-control {
+        height: 320px;
+        color: var(--gris-luminoso);
+        width: 20%;
+        position: absolute;
+        border-radius: 10px;
+        left: 40%;
+        right: 40%;
+    }
+    .button {
+        display: block;
+        height: 30px;
+    }
+    
+}
+@media only screen and (min-width:1800px) and (max-width:2300px){
+    .container-control {
+        height: 480px;
+        color: var(--gris-luminoso);
+        width: 20%;
+        position: absolute;
+        border-radius: 10px;
+        left: 40%;
+        right: 40%;
+    }
+    #cont {
+        height: 570px;
+    }
+    #cont2 {
+        height: 730px;
+    }
+    .button {
+        display: block;
+        height: 80px;
+        font-size: 20px;
+    }
+    .boton, .nuevo{
+        font-size: 1em;
+    }
+    .head {
+        font-size: 1.8em;
+    }
+    h1 {
+        font-size: 2.3em;
+    }
+    .texto {
+        height: 23px;
+    }
+    h3 {
+        font-size: 1.8em;
+    }
+}
+/*-- Personalizacion para registro--*/
+.container-control2 {
+    height: 430px;
+    color: var(--gris-luminoso);
+    width: 20%;
+    position: absolute;
+    border-radius: 10px;
+    left: 40%;
+    right: 40%;
+}
+.box2 {
+    height: -webkit-fill-available;
+    margin: 2%;
+    border-radius: 8px;
+}
+#dos {
+    display: none;
+}
+#registro{
+    width: 100%;
+    height: 70%;
+    border-radius: 3px;
+    background-color: var(--azul-bonito);
+    color: var(--gris-luminoso);
+    border: none;
+    display: none;
+}
+#registro:hover {
+    color: var(--naranja-fruta);
+    background-color: var(--gris-transparente);
+    transition: 0.7s;
+}

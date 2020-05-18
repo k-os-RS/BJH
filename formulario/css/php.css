@@ -1,0 +1,66 @@
+:root {
+    /* --- Colors --- */
+    --gris-luminoso: #e4e4e4;
+    --naranja-fruta: #dd4b39;
+    --oscuro-fondo: #4e4e4e;
+    --gris-transparente: #e4e4e44d;
+    --azul-bonito: #55acee;
+}
+/*-- General --*/
+body {
+    width: 100%;
+    height: 100%;
+    background-image: url(fondo.jpg);
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    overflow-x: hidden;
+}
+/*-- PhP --*/
+.php {
+    padding: 2%;
+    text-align: center;
+    border: 1px solid var(--gris-luminoso);
+    border-radius: 8px;
+    color: var(--gris-luminoso);
+    margin-left: 40%;
+    margin-right: 40%;
+}
+#head{
+    padding: 0%;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    background-color: var(--gris-transparente);
+    color: var(--gris-luminoso);
+    margin-bottom: 1%;
+}
+h2{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.boton {
+    width:200px;
+    height:  50px;
+    border-radius: 3px;
+    background-color: var(--azul-bonito);
+    color: var(--gris-luminoso);
+    border: none;
+}
+.boton:hover {
+    color: var(--naranja-fruta);
+    background-color: var(--gris-transparente);
+    transition: 0.7s;
+}
+.nuevo {
+    width:200px;
+    height:  50px;
+    border-radius: 3px;
+    background-color: var(--gris-luminoso);
+    color: var(--naranja-fruta)   ;
+    border: none;
+}
+.nuevo:hover {
+    background-color: var(--gris-transparente);
+    color: var(--azul-bonito)   ;
+    transition: 0.7s;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>BJH</title>
+        <link rel="stylesheet" href="css/update.css">
+    </head>
+    <body>
+        <form name="formulario" action="php/overwrite.php" method="POST">
+            <div class="container">
+                <div  class="container-control2" id="cont2">
+                    <div class="head">
+                        <h2>BJH</h2>
+                    </div>
+                    <fieldset class="box2">
+                        <div >
+                            <h3>Nombre<span>*</span></h3>
+                            <input type="text" id="nombre" name="nombre" class="texto">
+                            <h3>Apellidos<span>*</span></h3>
+                            <input type="text" id="apellidos" name="apellidos" class="texto">
+                            <h3>Dni<span>*</span></h3>
+                            <input type="text" id="dni" name="dni" class="texto" maxlength="9">
+                            <h3>Dirección<span>*</span></h3>
+                            <input type="text" id="direccion" name="direccion" class="texto">
+                            <h3>Usuario<span>*</span></h3>
+                            <input type="text" id="usuario" name="usuario" class="texto">
+                        </div>
+                        <hr>
+                        <div class="button">
+                            <input type="submit" id="siguiente" value="Corregir" class="boton" onclick="return validar()" onfocus="return validar()"> 
+                            <hr id="Keh">
+                            <a href="log.html" >
+                                <input class="nuevo" type="button" value="Ya tengo cuenta" id="cuenta">
+                            </a>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+        <script src="js/animation4.js"></script>
+    </body>
+</html>

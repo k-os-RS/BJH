@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>BJH</title>
+        <link rel="stylesheet" href="css/update.css">
+    </head>
+    <body>
+        <form name="formulario" action="php/conection.php" method="POST">
+            <div class="container">
+                <div class="container-control2" id="cont">
+                    <div class="head">
+                        <h2>BJH</h2>
+                    </div>
+                    <fieldset class="box2" onsubmit=" return validar();">
+                        <div id="uno">
+                            <h1>Crear una cuenta</h1>
+                            <h3>Email<span>*</span></h3>
+                            <input type="text" id="email" name="email" class="texto">
+                            <h3>Contraseña<span>*</span></h3>
+                            <input type="text" id="contrasena" value="" name="contrasena" class="texto">
+                            <h3>Confirma Contraseña<span>*</span></h3>
+                            <input type="text" id="comprobar" value="" name="comprobar" class="texto">
+                        </div>
+                        <div id="dos">
+                            <h3>Nombre<span>*</span></h3>
+                            <input type="text" id="nombre" name="nombre" class="texto">
+                            <h3>Apellidos<span>*</span></h3>
+                            <input type="text" id="apellidos" name="apellidos" class="texto">
+                            <h3>Dni<span>*</span></h3>
+                            <input type="text" id="dni" name="dni" class="texto" maxlength="9">
+                            <h3>Dirección<span>*</span></h3>
+                            <input type="text" id="direccion" name="direccion" class="texto">
+                            <h3>Usuario<span>*</span></h3>
+                            <input type="text" id="usuario" name="usuario" class="texto">
+                        </div>
+                        <hr>
+                        <div class="button">
+                            <input type="button" id="siguiente" value="Siguiente" class="boton" onclick="return validar()" onfocus="return validar()"> 
+                            <input type="submit" name="registro" value="Enviar" id="registro" onclick="return registros()" onfocus="return registro()">
+                            <hr id="Keh">
+                            <a href="log.html" >
+                                <input class="nuevo" type="button" value="Ya tengo cuenta" id="cuenta">
+                            </a>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+        <script src="js/animation.js"></script>
+    </body>
+</html>

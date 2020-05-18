@@ -39,3 +39,12 @@ https://atlantica30.com/
 https://www.playstation.com/es-es/
 
 
+He creado el "index" que seria el registro junto a su validacion en js
+He creado el php que resgistra y comprueba si ya existe el usuario
+He creado el "login" junto a la validacion de js y php
+He creado la pagina "olvido "junto al php y js
+He creado pagina de "correccion" junto a su php y js
+Personalización de php incluida
+RESPONSIVE terminado
+El php esta adaptado a la base de datos
+

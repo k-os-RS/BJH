@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>BJH</title>
+        <link rel="stylesheet" href="css/update.css">
+    </head>
+    <body>
+        <form name="formulario" action="php/rescue.php" method="POST">
+            <div class="container">
+                <div class="container-control2" id="cont">
+                    <div class="head">
+                        <h2>BJH</h2>
+                    </div>
+                    <fieldset class="box2">
+                        <div>
+                            <h1>Recuperar cuenta</h1>
+                            <h3>Email<span>*</span></h3>
+                            <input type="text" name="email" id="email" class="texto">
+                            <h3>Usuario<span>*</span></h3>
+                            <input type="text" name="usuario" id="usuario" class="texto">
+                            <h3>Dni<span>*</span></h3>
+                            <input type="text" name="dni" id="dni" class="texto" maxlength="9">
+                        </div>
+                        <hr>
+                        <div class="button">
+                            <input type="submit" id="siguiente" value="Recuperar" class="boton" onclick="recupera()" onfocus="recupera()"> 
+                            <hr id="Keh">
+                            <a href="log.html" >
+                                <input class="nuevo" type="button" value="Iniciar sesión" id="cuenta">
+                            </a>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+        <script src="js/animation3.js"></script>
+    </body>
+</html>
