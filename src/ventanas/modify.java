@@ -8,42 +8,42 @@ import java.awt.event.*;
 
 @SuppressWarnings("serial")
 public class modify extends JFrame implements ActionListener {
-	
-	private JLabel lblBjh, lblSelect, lblDNI, lblName, lblLastnames, lblAddress, lblEmail, lblUsername, lblPassword, lblFooter;
+
+	private JLabel lblBjh, lblSelect, lblDNI, lblName, lblLastnames, lblAddress, lblEmail, lblUsername, lblPassword, lblFooter, lblFondo;
 	private JTextField txtDNI, txtName, txtLastnames, txtAddress, txtEmail, txtUsername;
 	private JButton btnChangeData, btnCancel;
 	private JPasswordField txtPassword;
 	metodos_db metodo = new metodos_db();
 	private JComboBox<String> cbbEdit;
-	
+
 	public modify() {
 		//Frame
 		setLayout(null);
 		setResizable(false);
-		setTitle("Administration Panel | Admin");
+		setTitle("Modidy employee panel");
 		setBounds(0, 0, 640, 540);
 		setLocationRelativeTo(null);
 		setBackground(new Color(54, 54, 54));
 		setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo_bjh.png")).getImage());
-		
+
 		//Fonts
 		Font title = new Font("Frank Ruehl CLM", 1, 62);
 		Font scroll = new Font("Andale Mono", 0, 18);
 		Font text_message = new Font("Comic Sans MS", 3, 16);
-		
+
 		//Components
 		lblBjh = new JLabel("B J H");
 		lblBjh.setFont(title);
-		lblBjh.setBounds(230, 20, 170, 70);
+		lblBjh.setBounds(236, 20, 170, 70);
 		lblBjh.setForeground(new Color(246, 190, 82));
 		add(lblBjh);
-		
+
 		lblSelect = new JLabel("Select to be modified");
 		lblSelect.setFont(scroll);
-		lblSelect.setBounds(230, 60, 170, 70);
+		lblSelect.setBounds(230, 80, 170, 30);
 		lblSelect.setForeground(new Color(54, 54, 54));
 		add(lblSelect);
-		
+
 		cbbEdit = new JComboBox<String>();
 		cbbEdit.setBounds(200, 120, 220, 25);
 		cbbEdit.setBackground(new Color(246, 190, 82));
@@ -63,8 +63,9 @@ public class modify extends JFrame implements ActionListener {
 		lblDNI.setBounds(50, 160, 110, 30);
 		lblDNI.setForeground(new Color(54, 54, 54));
 		add(lblDNI);
-		
+
 		txtDNI = new JTextField();
+		txtDNI.setBorder(null);
 		txtDNI.setBounds(170, 160, 110, 30);
 		txtDNI.setForeground(new Color(54, 54, 54));
 		txtDNI.setBackground(new Color (224, 224, 224));
@@ -79,6 +80,7 @@ public class modify extends JFrame implements ActionListener {
 		add(lblName);
 		
 		txtName = new JTextField();
+		txtName.setBorder(null);
 		txtName.setBounds(170, 210, 110, 30);
 		txtName.setEnabled(false);
 		txtName.setForeground(new Color(54, 54, 54));
@@ -94,6 +96,7 @@ public class modify extends JFrame implements ActionListener {
 		add(lblLastnames);
 		
 		txtLastnames = new JTextField();
+		txtLastnames.setBorder(null);
 		txtLastnames.setBounds(170, 260, 110, 30);
 		txtLastnames.setEnabled(false);
 		txtLastnames.setForeground(new Color(54, 54, 54));
@@ -109,6 +112,7 @@ public class modify extends JFrame implements ActionListener {
 		add(lblAddress);
 
 		txtAddress = new JTextField();
+		txtAddress.setBorder(null);
 		txtAddress.setBounds(170, 310, 110, 30);
 		txtAddress.setEnabled(false);
 		txtAddress.setForeground(new Color(54, 54, 54));
@@ -124,6 +128,7 @@ public class modify extends JFrame implements ActionListener {
 		add(lblEmail);
 		
 		txtEmail = new JTextField();
+		txtEmail.setBorder(null);
 		txtEmail.setBounds(410, 160, 110, 30);
 		txtEmail.setEnabled(false);
 		txtEmail.setForeground(new Color(54, 54, 54));
@@ -139,6 +144,7 @@ public class modify extends JFrame implements ActionListener {
 		add(lblUsername);
 		
 		txtUsername = new JTextField();
+		txtUsername.setBorder(null);
 		txtUsername.setBounds(410, 210, 110, 30);
 		txtUsername.setEnabled(false);
 		txtUsername.setForeground(new Color(54, 54, 54));
@@ -154,6 +160,7 @@ public class modify extends JFrame implements ActionListener {
 		add(lblPassword);
 		
 		txtPassword = new JPasswordField();
+		txtPassword.setBorder(null);
 		txtPassword.setBounds(410, 260, 110, 30);
 		txtPassword.setEnabled(false);
 		txtPassword.setEchoChar('⬛');
@@ -185,8 +192,15 @@ public class modify extends JFrame implements ActionListener {
 		lblFooter.setBounds(250, 480, 385, 30);
 		lblFooter.setForeground(new Color(246, 190, 82));
 		add(lblFooter);
+		
+		ImageIcon fondo = new ImageIcon(getClass().getResource("/imagenes/fondo_panel.png"));
+		lblFondo = new JLabel(fondo);
+		lblFondo.setBounds(0, 0, 640, 540);
+		add(lblFondo);
+		
 	}
 	
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object event = e.getSource();
 		

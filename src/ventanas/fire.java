@@ -1,6 +1,7 @@
 package ventanas;
 
 import gestion_db.metodos_db;
+import java.sql.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,8 +11,9 @@ import java.awt.event.*;
 public class fire extends JFrame implements ActionListener {
 
 	public static boolean fired = false;
-	private JLabel lblBjh, lblDNI, lblIncorrect, lblFooter;
+	private JLabel lblBjh, lblDNI, lblIncorrect, lblFooter, lblFondo;
 	private JTextField txtDNI;
+	private ResultSet data;
 	private JButton btnSaved, btnCancel;
 	metodos_db metodo = new metodos_db();
 	String dni;
@@ -65,7 +67,7 @@ public class fire extends JFrame implements ActionListener {
 		btnSaved.setBackground(new Color(246, 190, 82));
 		add(btnSaved);
 		
-		btnCancel = new JButton("Close");
+		btnCancel = new JButton("Cancel");
 		btnCancel.setBorder(null);
 		btnCancel.setFocusable(false);
 		btnCancel.addActionListener(this);
@@ -79,6 +81,11 @@ public class fire extends JFrame implements ActionListener {
 		lblFooter.setBounds(250, 480, 385, 30);
 		lblFooter.setForeground(new Color(246, 190, 82));
 		add(lblFooter);
+		
+		ImageIcon fondo = new ImageIcon(getClass().getResource("/imagenes/fondo_panel.png"));
+		lblFondo = new JLabel(fondo);
+		lblFondo.setBounds(0, 0, 350, 450);
+		add(lblFondo);
 
 	}
 
@@ -91,6 +98,11 @@ public class fire extends JFrame implements ActionListener {
 				dni = txtDNI.getText().trim();
 				
 				if (metodo.EmployeeExist(dni)) {
+					data = metodo.ShowEmployee(dni);
+					data.next();
+					String id = data.getString(1);
+					System.out.println(id);
+					metodo.EmployeesFireConnect(id);
 					fired = true;
 					management FrameManagement = new management();
 					FrameManagement.setVisible(true);
@@ -106,7 +118,9 @@ public class fire extends JFrame implements ActionListener {
 		}
 
 		if (event.equals(btnCancel) ) {
-			dispose();
+			management FrameManagement = new management();
+			FrameManagement.setVisible(true);
+			this.setVisible(false);
 		}
 		
 	}

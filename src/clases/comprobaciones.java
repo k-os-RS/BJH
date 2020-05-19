@@ -39,7 +39,20 @@ public class comprobaciones {
     	
     	return valido;
     	
+    	
     }
+
+    public boolean isNumberInt (String numeroE) {
+		boolean verdadero= false;
+		
+		if (numeroE.matches("[0-9]+")) {
+			verdadero= true;
+		} else {
+			verdadero= false;
+		}//Fin del if
+		
+		return verdadero;
+	}
 
 	//Obtencion de la fecha y hora actual
     public String isFechaActual () {

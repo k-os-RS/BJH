@@ -226,14 +226,22 @@ public class changepass extends JFrame implements ActionListener {
 		
 		//Accion cuando se pulsa el boton Cancel
 		if (event.equals(btnCancel)) {
-			if (username.equals("admin")) {
-				management FrameManagement = new management();
-				FrameManagement.setVisible(true);
-				this.setVisible(false);
-			} else {
-				employee FrameEmployee = new employee();
-				FrameEmployee.setVisible(true);
-				this.setVisible(false);
+			try {
+				if (username.equals("admin")) {
+					management FrameManagement = new management();
+					FrameManagement.setVisible(true);
+					this.setVisible(false);
+				} else if (metodo.isEmployeeUser(username)) {
+					employee FrameEmployee = new employee();
+					FrameEmployee.setVisible(true);
+					this.setVisible(false);
+				} else {
+					client FrameClient = new client();
+					FrameClient.setVisible(true);
+					this.setVisible(false);
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
 			}
 		}
 		

@@ -142,9 +142,13 @@ public class login extends JFrame implements ActionListener {
 						management FrameManagement = new management();
 						FrameManagement.setVisible(true);
 						this.setVisible(false);
-					} else {
+					} else if (metodo.isEmployee(user, pass)){
 						employee FrameEmployee = new employee();
 						FrameEmployee.setVisible(true);
+						this.setVisible(false);
+					} else {
+						client FrameClient = new client();
+						FrameClient.setVisible(true);
 						this.setVisible(false);
 					}
 				} else {

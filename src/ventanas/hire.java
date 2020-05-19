@@ -1,6 +1,7 @@
 package ventanas;
 
 import gestion_db.metodos_db;
+import java.sql.*;
 import clases.comprobaciones;
 
 import javax.swing.*;
@@ -11,10 +12,11 @@ import java.awt.event.*;
 public class hire extends JFrame implements ActionListener {
 
 	public static boolean hired = false;
-	private JLabel lblBjh, lblDNI, lblName, lblLastnames, lblAddress, lblEmail, lblUsername, lblPassword, lblNoDNI, lblNoEmail, lblNoPass, lblExist, lblFooter;
+	private JLabel lblBjh, lblDNI, lblName, lblLastnames, lblAddress, lblEmail, lblUsername, lblPassword, lblNoDNI, lblNoEmail, lblNoPass, lblExist, lblFooter, lblFondo;
 	private JTextField txtDNI, txtName, txtLastnames, txtAddress, txtEmail, txtUsername;
 	private JPasswordField txtPassword;
 	private JButton btnSave, btnCancel;
+	private ResultSet data;
 	metodos_db metodo = new metodos_db();
 	comprobaciones comprob = new comprobaciones();
 	String dni, name, last_names, address, email, username, password, empleado = "si";
@@ -27,16 +29,16 @@ public class hire extends JFrame implements ActionListener {
 		setBounds(0, 0, 640, 540);
 		setLocationRelativeTo(null);
 		setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo_bjh.png")).getImage());
-
+		
 		//Fonts
 		Font title = new Font("Frank Ruehl CLM", 1, 62);
 		Font fields = new Font("Comic Sans MS", 1, 16);
 		Font text_message = new Font("Comic Sans MS", 3, 16);
-		
+
 		//Components
 		lblBjh = new JLabel("B J H");
 		lblBjh.setFont(title);
-		lblBjh.setBounds(230, 20, 170, 70);
+		lblBjh.setBounds(236, 20, 170, 70);
 		lblBjh.setForeground(new Color(246, 190, 82));
 		add(lblBjh);
 		
@@ -47,6 +49,7 @@ public class hire extends JFrame implements ActionListener {
 		add(lblDNI);
 		
 		txtDNI = new JTextField();
+		txtDNI.setBorder(null);
 		txtDNI.setBounds(170, 100, 110, 30);
 		txtDNI.setForeground(new Color(54, 54, 54));
 		txtDNI.setBackground(new Color (224, 224, 224));
@@ -60,6 +63,7 @@ public class hire extends JFrame implements ActionListener {
 		add(lblName);
 		
 		txtName = new JTextField();
+		txtName.setBorder(null);
 		txtName.setBounds(170, 160, 110, 30);
 		txtName.setForeground(new Color(54, 54, 54));
 		txtName.setBackground(new Color (224, 224, 224));
@@ -73,6 +77,7 @@ public class hire extends JFrame implements ActionListener {
 		add(lblLastnames);
 		
 		txtLastnames = new JTextField();
+		txtLastnames.setBorder(null);
 		txtLastnames.setBounds(170, 220, 110, 30);
 		txtLastnames.setForeground(new Color(54, 54, 54));
 		txtLastnames.setBackground(new Color (224, 224, 224));
@@ -86,6 +91,7 @@ public class hire extends JFrame implements ActionListener {
 		add(lblAddress);
 
 		txtAddress = new JTextField();
+		txtAddress.setBorder(null);
 		txtAddress.setBounds(170, 280, 110, 30);
 		txtAddress.setForeground(new Color(54, 54, 54));
 		txtAddress.setBackground(new Color (224, 224, 224));
@@ -99,6 +105,8 @@ public class hire extends JFrame implements ActionListener {
 		add(lblEmail);
 		
 		txtEmail = new JTextField();
+		txtEmail.setBorder(null);
+		txtEmail.setText("@bjh.com");
 		txtEmail.setBounds(410, 130, 110, 30);
 		txtEmail.setForeground(new Color(54, 54, 54));
 		txtEmail.setBackground(new Color (224, 224, 224));
@@ -112,6 +120,7 @@ public class hire extends JFrame implements ActionListener {
 		add(lblUsername);
 		
 		txtUsername = new JTextField();
+		txtUsername.setBorder(null);
 		txtUsername.setBounds(410, 190, 110, 30);
 		txtUsername.setForeground(new Color(54, 54, 54));
 		txtUsername.setBackground(new Color (224, 224, 224));
@@ -125,8 +134,9 @@ public class hire extends JFrame implements ActionListener {
 		add(lblPassword);
 		
 		txtPassword = new JPasswordField();
-		txtPassword.setBounds(410, 250, 110, 30);
+		txtPassword.setBorder(null);
 		txtPassword.setEchoChar('⬛');
+		txtPassword.setBounds(410, 250, 110, 30);
 		txtPassword.setForeground(new Color(54, 54, 54));
 		txtPassword.setBackground(new Color (224, 224, 224));
 		txtPassword.setHorizontalAlignment(SwingConstants.CENTER);
@@ -178,12 +188,16 @@ public class hire extends JFrame implements ActionListener {
 		btnCancel.setBackground(new Color(246, 190, 82));
 		add(btnCancel);
 		
-		
 		lblFooter = new JLabel("© 2020 BJH Anime Store | All rights reserved");
 		lblFooter.setFont(text_message);
 		lblFooter.setBounds(250, 480, 385, 30);
 		lblFooter.setForeground(new Color(246, 190, 82));
 		add(lblFooter);
+		
+		ImageIcon fondo = new ImageIcon(getClass().getResource("/imagenes/fondo_panel.png"));
+		lblFondo = new JLabel(fondo);
+		lblFondo.setBounds(0, 0, 640, 540);
+		add(lblFondo);
 
 	}
 
@@ -208,6 +222,10 @@ public class hire extends JFrame implements ActionListener {
 							if (comprob.isEmail(email)) {
 								if (password.length() >= 6) {
 									if (metodo.HireEmployee(dni, name, last_names, address, email, username, password, empleado)) {
+										data = metodo.ShowEmployee(dni);
+										data.next();
+										String id = data.getString(1);
+										metodo.EmployeesConnect(id);
 										hired = true;
 										management FrameManagement = new management();
 										FrameManagement.setVisible(true);
