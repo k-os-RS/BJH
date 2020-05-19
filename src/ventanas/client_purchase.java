@@ -17,7 +17,7 @@ public class client_purchase extends JPanel implements ActionListener {
 	private JTable table;
 	private JScrollPane scrollpane;
 	private DefaultTableModel modelo = new DefaultTableModel();
-	private String [] data = new String [4];
+	private String [] data = new String [5];
 	metodos_db metodo = new metodos_db(); 
 	
 	public client_purchase() {
@@ -46,7 +46,7 @@ public class client_purchase extends JPanel implements ActionListener {
 		table.setFont(tabled);
 		table.setModel(modelo);
 		try {
-
+			
 			result = metodo.ShowProducts();
 			modelo.setRowCount(0);
 			while (result.next()) {
@@ -73,7 +73,7 @@ public class client_purchase extends JPanel implements ActionListener {
 		btnUpdateList.setBorder(null);
 		btnUpdateList.setFocusable(false);
 		btnUpdateList.addActionListener(this);
-		btnUpdateList.setBounds(265, 400, 120, 30);
+		btnUpdateList.setBounds(170, 400, 120, 30);
 		btnUpdateList.setForeground(new Color(54, 54, 54));
 		btnUpdateList.setBackground(new Color(246, 190, 82));
 		add(btnUpdateList);

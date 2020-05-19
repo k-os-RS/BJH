@@ -379,8 +379,9 @@ public class metodos_db {
 		try {
 			command = (Statement) connect.createStatement();
 			data = command.executeQuery(sql);
-			data.next();
-			quantity = data.getInt(1);
+			while (data.next()) {
+				quantity = data.getInt(1);
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -421,30 +422,81 @@ public class metodos_db {
 		return data;
 		
 	}
-//	public boolean addPurchase (String username, String id_product, String quant_pro) throws SQLException {
-//		
-//		boolean verify = false;
-//		int confirm = 0;
-//		int id_type = ProductType(type);
-//		connect = connecting.getConexion();
-//		String sql = "INSERT INTO producto (id_tipo_aux,name,quantity,price) values ('"+id_type+"','"+name+"','"+quantity+"','"+price+"')";
-//		
-//		try {
-//			command = (Statement) connect.createStatement();
-//			confirm = command.executeUpdate(sql);
-//			
-//			while (confirm == 1) {
-//				verify = true;
-//			}
-//			command.close();
-//			connect.close();
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		return verify;
-//		
-//	}
+	public int PersonID (String username) throws SQLException {
+		
+		int id = 0;
+		connect = connecting.getConexion();
+		String sql = "SELECT id_persona FROM persona WHERE name='"+username+"'";
+
+		try {
+			command = (Statement) connect.createStatement();
+			data = command.executeQuery(sql);
+			
+			while (data.next()) {
+				id = data.getInt(1);
+			}
+			
+			command.close();
+			connect.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return id;
+		
+	}
+	public int ClienteID (String username) throws SQLException {
+		
+		int id = 0;
+		int id_persona_aux = PersonID(username);
+		connect = connecting.getConexion();
+		String sql = "SELECT id_cliente FROM cliente WHERE id_persona_aux='"+id_persona_aux+"'";
+
+		try {
+			command = (Statement) connect.createStatement();
+			data = command.executeQuery(sql);
+			
+			while (data.next()) {
+				id = data.getInt(1);
+			}
+			
+			command.close();
+			connect.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return id;
+		
+	}
+	
+	public boolean addPurchase (String username, String id_product, int quant_pro) throws SQLException {
+		
+		boolean verify = false;
+		int confirm = 0;
+		String date = "now()", state = "Waiting";
+		int id_cliente = ClienteID(username);
+		connect = connecting.getConexion();
+		String sql = "INSERT INTO compra (id_cliente_aux,id_producto_aux,quantity_sold,date,state) values ('"+id_cliente+"','"+id_product+"','"+quant_pro+"','"+date+"','"+state+"')";
+		
+		try {
+			command = (Statement) connect.createStatement();
+			confirm = command.executeUpdate(sql);
+			
+			while (confirm == 1) {
+				verify = true;
+			}
+			command.close();
+			connect.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return verify;
+
+	}
 	
 }

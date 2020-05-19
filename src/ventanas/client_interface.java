@@ -11,14 +11,14 @@ import java.sql.ResultSet;
 @SuppressWarnings("serial")
 public class client_interface extends JPanel implements ActionListener {
 
-	private JLabel lblBjh, lblIDProduct, lblQuantity, lblEmpty, lblIDExist, lblNoQuantity, lblFooter, lblFondo;
-	private JButton btnPurchase, btnReserv, btnUpdateList, btnChangePass, btnLogout;
+	private JLabel lblBjh, lblIDProduct, lblQuantity, lblEmpty, lblIDExist, lblNoQuantity, lblSuccess, lblFooter, lblFondo;
+	private JButton btnPurchase, btnReserv, btnUpdateList, btnChangePass;
 	private JTextField txtIDProduct, txtQuantity;
 	private ResultSet result, result2;
 	private JTable table;
 	private JScrollPane scrollpane;
 	private DefaultTableModel modelo = new DefaultTableModel();
-	private String [] data = new String [4];
+	private String [] data = new String [5];
 	metodos_db metodo = new metodos_db();
 	String username = login.user;
 	String id_product, quantity_product;
@@ -150,6 +150,13 @@ public class client_interface extends JPanel implements ActionListener {
 		lblIDExist.setForeground(new Color(255, 0, 0));
 		add(lblIDExist);
 		
+		lblSuccess = new JLabel("The purchase was successful.");
+		lblSuccess.setFont(scroll);
+		lblSuccess.setVisible(false);
+		lblSuccess.setBounds(190, 370, 340, 30);
+		lblSuccess.setForeground(new Color(0, 255, 0));
+		add(lblSuccess);
+		
 		btnChangePass = new JButton("Change Password");
 		btnChangePass.setBorder(null);
 		btnChangePass.setFocusable(false);
@@ -158,15 +165,6 @@ public class client_interface extends JPanel implements ActionListener {
 		btnChangePass.setForeground(new Color(54, 54, 54));
 		btnChangePass.setBackground(new Color(246, 190, 82));
 		add(btnChangePass);
-		
-		btnLogout = new JButton("Log out");
-		btnLogout.setBorder(null);
-		btnLogout.setFocusable(false);
-		btnLogout.addActionListener(this);
-		btnLogout.setBounds(310, 400, 120, 30);
-		btnLogout.setForeground(new Color(54, 54, 54));
-		btnLogout.setBackground(new Color(246, 190, 82));
-		add(btnLogout);
 		
 		lblFooter = new JLabel("© 2020 BJH Anime Store | All rights reserved");
 		lblFooter.setFont(text_message);
@@ -193,30 +191,38 @@ public class client_interface extends JPanel implements ActionListener {
 
 		if (event.equals(btnPurchase) ) {
 			try {
-				
+
 				id_product = txtIDProduct.getText().trim();
 				quantity_product = txtQuantity.getText().trim();
-				quant_pro = Integer.parseInt(quantity_product);
 				cliente_quantity = metodo.ShowQuantityProduct(id_product);
-				
+
 				if (!id_product.isEmpty() || !quantity_product.isEmpty()) {
-					if (metodo.IDProductExist(id_product)) {
-						if (cliente_quantity >= quant_pro) {
-							//metodo.addPurchase(username, id_product, quant_pro);
+					if (!metodo.IDProductExist(id_product)) {
+						quant_pro = Integer.parseInt(quantity_product);
+						if (cliente_quantity <= quant_pro) {
+							System.out.println(quant_pro);
+							metodo.addPurchase(username, id_product, quant_pro);
+							lblEmpty.setVisible(false);
+							lblNoQuantity.setVisible(false);
+							lblIDExist.setVisible(false);
+							lblSuccess.setVisible(true);
 						} else {
 							lblEmpty.setVisible(false);
 							lblNoQuantity.setVisible(true);
 							lblIDExist.setVisible(false);
+							lblSuccess.setVisible(false);
 						}
 					} else {
 						lblEmpty.setVisible(false);
 						lblNoQuantity.setVisible(false);
 						lblIDExist.setVisible(true);
+						lblSuccess.setVisible(false);
 					}
 				} else {
 					lblEmpty.setVisible(true);
 					lblNoQuantity.setVisible(false);
 					lblIDExist.setVisible(false);
+					lblSuccess.setVisible(false);
 				}
 				
 			} catch (Exception e2) {
@@ -248,12 +254,7 @@ public class client_interface extends JPanel implements ActionListener {
 			
 		}
 
-		if (event.equals(btnLogout) ) {
-			login FrameLogin = new login();
-			FrameLogin.setVisible(true);
-			this.setVisible(false);
-			
-		}
+		
 		
 	}
 
