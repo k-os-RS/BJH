@@ -1,6 +1,7 @@
 package gestion_db;
 
 import java.sql.*;
+
 import com.mysql.jdbc.Statement;
 
 public class metodos_db {
@@ -131,6 +132,73 @@ public class metodos_db {
 		}
 		
 		return verify;
+		
+	}
+	public boolean ClientExist (String id_client) throws SQLException {
+		
+		boolean verify = false;
+		connect = connecting.getConexion();
+		String sql = "SELECT * FROM cliente WHERE id_cliente='"+id_client+"'";
+		
+		try {
+			command = (Statement) connect.createStatement();
+			data = command.executeQuery(sql);
+			
+			while (data.next()) {
+				verify = true;
+			}
+			command.close();
+			connect.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return verify;
+		
+	}
+	public boolean PurchaseExist (String id_client, String id_producto) throws SQLException {
+
+		boolean verify = false;
+		String state = "Waiting";
+		connect = connecting.getConexion();
+		String sql = "SELECT * FROM compra WHERE id_cliente_aux='"+id_client+"' and id_producto_aux='"+id_producto+"' and state='"+state+"'";
+		
+		try {
+			command = (Statement) connect.createStatement();
+			data = command.executeQuery(sql);
+			
+			while (data.next()) {
+				verify = true;
+			}
+			command.close();
+			connect.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return verify;
+		
+	}
+	public void PurchaseAcept (String id_client, String id_product, int quantity) throws SQLException {
+
+		connect = connecting.getConexion();
+		String state = "Completed";
+		String sql = "UPDATE producto SET quantity='"+quantity+"' WHERE producto.id_producto='"+id_product+"'";
+		String sql2 = "UPDATE compra SET state='"+state+"' WHERE compra.id_cliente_aux='"+id_client+"' and compra.id_producto_aux='"+id_product+"'";
+		
+		try {
+			command = (Statement) connect.createStatement();
+			command.executeUpdate(sql);
+			command.executeUpdate(sql2);
+			
+			command.close();
+			connect.close();
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	public boolean isEmployee (String user, String pass) throws SQLException {
@@ -390,6 +458,42 @@ public class metodos_db {
 		return quantity;
 		
 	}
+	public int ShowQuantityPurchase (String id_cliente, String id_product) throws SQLException {
+		
+		int quantity = 0;
+		String sql = "SELECT quantity_sold FROM compra WHERE id_cliente_aux='"+id_cliente+"' and id_producto_aux='"+id_product+"'";
+		connect = connecting.getConexion();
+		
+		try {
+			command = (Statement) connect.createStatement();
+			data = command.executeQuery(sql);
+			while (data.next()) {
+				quantity = data.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return quantity;
+		
+	}
+	public ResultSet ShowQuanProduct (String id_product) throws SQLException {
+		
+		String sql = "SELECT quantity FROM producto WHERE id_producto='"+id_product+"'";
+		connect = connecting.getConexion();
+		
+		try {
+			command = (Statement) connect.createStatement();
+			data = command.executeQuery(sql);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return data;
+		
+	}
 	public ResultSet ShowProducts () throws SQLException {
 		
 		String sql = "SELECT * FROM producto";
@@ -406,9 +510,26 @@ public class metodos_db {
 		return data;
 		
 	}
+
 	public ResultSet ShowTypes (int id_tipo) throws SQLException {
 		
 		String sql = "SELECT * FROM tipo WHERE id_tipo='"+id_tipo+"'";
+		connect = connecting.getConexion();
+		
+		try {
+			command = (Statement) connect.createStatement();
+			data = command.executeQuery(sql);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return data;
+		
+	}
+	public ResultSet ShowPurchases () throws SQLException {
+		
+		String sql = "SELECT * FROM compra";
 		connect = connecting.getConexion();
 		
 		try {
@@ -426,7 +547,7 @@ public class metodos_db {
 		
 		int id = 0;
 		connect = connecting.getConexion();
-		String sql = "SELECT id_persona FROM persona WHERE name='"+username+"'";
+		String sql = "SELECT id_persona FROM persona WHERE username='"+username+"'";
 
 		try {
 			command = (Statement) connect.createStatement();
@@ -476,10 +597,10 @@ public class metodos_db {
 		
 		boolean verify = false;
 		int confirm = 0;
-		String date = "now()", state = "Waiting";
+		String date = "NOW()", state = "Waiting";
 		int id_cliente = ClienteID(username);
 		connect = connecting.getConexion();
-		String sql = "INSERT INTO compra (id_cliente_aux,id_producto_aux,quantity_sold,date,state) values ('"+id_cliente+"','"+id_product+"','"+quant_pro+"','"+date+"','"+state+"')";
+		String sql = "INSERT INTO compra (id_cliente_aux,id_producto_aux,quantity_sold,date,state) values ('"+id_cliente+"','"+id_product+"','"+quant_pro+"',"+date+",'"+state+"')";
 		
 		try {
 			command = (Statement) connect.createStatement();

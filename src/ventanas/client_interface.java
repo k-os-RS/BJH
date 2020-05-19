@@ -50,7 +50,7 @@ public class client_interface extends JPanel implements ActionListener {
 
 		txtIDProduct = new JTextField();
 		txtIDProduct.setBorder(null);
-		txtIDProduct.setBounds(100, 210, 130, 30);
+		txtIDProduct.setBounds(100, 140, 130, 30);
 		txtIDProduct.setForeground(new Color(54, 54, 54));
 		txtIDProduct.setBackground(new Color (224, 224, 224));
 		txtIDProduct.setHorizontalAlignment(SwingConstants.CENTER);
@@ -64,7 +64,7 @@ public class client_interface extends JPanel implements ActionListener {
 
 		txtQuantity = new JTextField();
 		txtQuantity.setBorder(null);
-		txtQuantity.setBounds(100, 140, 130, 30);
+		txtQuantity.setBounds(100, 210, 130, 30);
 		txtQuantity.setForeground(new Color(54, 54, 54));
 		txtQuantity.setBackground(new Color (224, 224, 224));
 		txtQuantity.setHorizontalAlignment(SwingConstants.CENTER);
@@ -194,14 +194,12 @@ public class client_interface extends JPanel implements ActionListener {
 
 				id_product = txtIDProduct.getText().trim();
 				quantity_product = txtQuantity.getText().trim();
-				cliente_quantity = metodo.ShowQuantityProduct(id_product);
-
+				quant_pro = metodo.ShowQuantityProduct(id_product);
 				if (!id_product.isEmpty() || !quantity_product.isEmpty()) {
-					if (!metodo.IDProductExist(id_product)) {
-						quant_pro = Integer.parseInt(quantity_product);
+					if (metodo.IDProductExist(id_product)) {
+						cliente_quantity = Integer.parseInt(quantity_product);
 						if (cliente_quantity <= quant_pro) {
-							System.out.println(quant_pro);
-							metodo.addPurchase(username, id_product, quant_pro);
+							metodo.addPurchase(username, id_product, cliente_quantity);
 							lblEmpty.setVisible(false);
 							lblNoQuantity.setVisible(false);
 							lblIDExist.setVisible(false);

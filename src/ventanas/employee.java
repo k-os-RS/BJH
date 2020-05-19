@@ -19,9 +19,9 @@ public class employee extends JFrame implements ActionListener {
 	private JTable table;
 	private JScrollPane scrollpane;
 	private DefaultTableModel modelo = new DefaultTableModel();
-	private String [] data = new String [4];
+	private String [] data = new String [6];
 	metodos_db metodo = new metodos_db();
-	String username = login.user, id_product;
+	String username = login.user, id_product, id_client;
 	
 	public employee() {
 		//Frame
@@ -60,7 +60,7 @@ public class employee extends JFrame implements ActionListener {
 
 		txtIDClient = new JTextField();
 		txtIDClient.setBorder(null);
-		txtIDClient.setBounds(100, 210, 130, 30);
+		txtIDClient.setBounds(100, 140, 130, 30);
 		txtIDClient.setForeground(new Color(54, 54, 54));
 		txtIDClient.setBackground(new Color (224, 224, 224));
 		txtIDClient.setHorizontalAlignment(SwingConstants.CENTER);
@@ -74,7 +74,7 @@ public class employee extends JFrame implements ActionListener {
 
 		txtIDProduct = new JTextField();
 		txtIDProduct.setBorder(null);
-		txtIDProduct.setBounds(100, 140, 130, 30);
+		txtIDProduct.setBounds(100, 210, 130, 30);
 		txtIDProduct.setForeground(new Color(54, 54, 54));
 		txtIDProduct.setBackground(new Color (224, 224, 224));
 		txtIDProduct.setHorizontalAlignment(SwingConstants.CENTER);
@@ -99,26 +99,28 @@ public class employee extends JFrame implements ActionListener {
 		add(btnApply);
 
 		table = new JTable();
-		modelo.addColumn("ID");
-		modelo.addColumn("Name");
-		modelo.addColumn("Type");
-		modelo.addColumn("Quantity");
-		modelo.addColumn("Price");
+		modelo.addColumn("Id_cliente");
+		modelo.addColumn("Id_product");
+		modelo.addColumn("Quantity product");
+		modelo.addColumn("Quantity sold");
+		modelo.addColumn("Date");
+		modelo.addColumn("State");
 		table.setFont(tabled);
 		table.setModel(modelo);
 		try {
-			
-			result = metodo.ShowProducts();
+
+			result = metodo.ShowPurchases();
 			modelo.setRowCount(0);
 			while (result.next()) {
-				result2 = metodo.ShowTypes(result.getInt(2));
+				result2 = metodo.ShowQuanProduct(result.getString(2));
 				data[0] = result.getString(1);
+				data[1] = result.getString(2);
 				while (result2.next()) {
-					data[1] = result2.getString(2);
+					data[2] = result2.getString(1);
 				}
-				data[2] = result.getString(3);
-				data[3] = result.getString(4);
-				data[4] = result.getString(5);
+				data[3] = result.getString(3);
+				data[4] = result.getString(4);
+				data[5] = result.getString(5);
 				modelo.addRow(data);
 			}
 			
@@ -184,6 +186,38 @@ public class employee extends JFrame implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		Object event = e.getSource();
+		
+		if (event.equals(btnComplete) ) {
+			try {
+				int quantity_product, quantiy_sold, operation;
+				id_client = txtIDClient.getText().trim();
+				id_product = txtIDProduct.getText().trim();
+				
+				if (!id_client.isEmpty() || !id_product.isEmpty()) {
+					if (metodo.ClientExist(id_client) && metodo.IDProductExist(id_product)) {
+						if (metodo.PurchaseExist(id_client, id_product)) {
+							quantity_product = metodo.ShowQuantityProduct(id_product);
+							quantiy_sold = metodo.ShowQuantityPurchase(id_client, id_product);
+							operation = quantity_product - quantiy_sold;
+							metodo.PurchaseAcept(id_client, id_product, operation);
+							txtIDClient.setText("");
+							txtIDProduct.setText("");
+							
+						} else {
+							JOptionPane.showConfirmDialog(null, "Fallo al agregar");
+						}
+					} else {
+						JOptionPane.showConfirmDialog(null, "No existe");
+					}
+				} else {
+					JOptionPane.showConfirmDialog(null, "Empty");
+				}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
+		}
 		
 		if (event.equals(btnApply) ) {
 			try {

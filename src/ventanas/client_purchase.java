@@ -17,7 +17,7 @@ public class client_purchase extends JPanel implements ActionListener {
 	private JTable table;
 	private JScrollPane scrollpane;
 	private DefaultTableModel modelo = new DefaultTableModel();
-	private String [] data = new String [5];
+	private String [] data = new String [6];
 	metodos_db metodo = new metodos_db(); 
 	
 	public client_purchase() {
@@ -39,25 +39,27 @@ public class client_purchase extends JPanel implements ActionListener {
 
 		table = new JTable();
 		modelo.addColumn("Id_cliente");
-		modelo.addColumn("Product");
+		modelo.addColumn("Id_product");
+		modelo.addColumn("Quantity product");
 		modelo.addColumn("Quantity sold");
 		modelo.addColumn("Date");
 		modelo.addColumn("State");
 		table.setFont(tabled);
 		table.setModel(modelo);
 		try {
-			
-			result = metodo.ShowProducts();
+
+			result = metodo.ShowPurchases();
 			modelo.setRowCount(0);
 			while (result.next()) {
-				result2 = metodo.ShowTypes(result.getInt(2));
+				result2 = metodo.ShowQuanProduct(result.getString(2));
 				data[0] = result.getString(1);
+				data[1] = result.getString(2);
 				while (result2.next()) {
-					data[1] = result2.getString(2);
+					data[2] = result2.getString(1);
 				}
-				data[2] = result.getString(3);
-				data[3] = result.getString(4);
-				data[4] = result.getString(5);
+				data[3] = result.getString(3);
+				data[4] = result.getString(4);
+				data[5] = result.getString(5);
 				modelo.addRow(data);
 			}
 			
@@ -96,18 +98,19 @@ public class client_purchase extends JPanel implements ActionListener {
 		
 		if (event.equals(btnUpdateList) ) {
 			try {
-				
-				result = metodo.ShowProducts();
+
+				result = metodo.ShowPurchases();
 				modelo.setRowCount(0);
 				while (result.next()) {
-					result2 = metodo.ShowTypes(result.getInt(2));
+					result2 = metodo.ShowQuanProduct(result.getString(2));
 					data[0] = result.getString(1);
+					data[1] = result.getString(2);
 					while (result2.next()) {
-						data[1] = result2.getString(2);
+						data[2] = result2.getString(1);
 					}
-					data[2] = result.getString(3);
-					data[3] = result.getString(4);
-					data[4] = result.getString(5);
+					data[3] = result.getString(3);
+					data[4] = result.getString(4);
+					data[5] = result.getString(5);
 					modelo.addRow(data);
 				}
 				
