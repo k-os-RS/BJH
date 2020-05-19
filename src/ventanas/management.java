@@ -9,8 +9,8 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class management extends JFrame implements ActionListener {
 
-	private JLabel lblBjh, lblHired, lblFired, lblFooter, lblFondo;
-	private JButton btnHire, btnFired, btnEmployees, btnModify, btnRequest, btnShowStock, btnChangePass, btnLogout;
+	private JLabel lblBjh, lblFooter, lblFondo;
+	private JButton btnHire, btnFired, btnEmployees, btnModifyEmployee, btnModifyProduct, btnShowStock, btnChangePass, btnLogout;
 	metodos_db metodo = new metodos_db();
 
 	public management() {
@@ -25,7 +25,6 @@ public class management extends JFrame implements ActionListener {
 		
 		//Fonts
 		Font title = new Font("Frank Ruehl CLM", 1, 62);
-		Font scroll = new Font("Andale Mono", 0, 18);
 		Font text_message = new Font("Comic Sans MS", 3, 16);
 		
 		//Components
@@ -53,14 +52,14 @@ public class management extends JFrame implements ActionListener {
 		btnFired.setBackground(new Color(246, 190, 82));
 		add(btnFired);
 		
-		btnModify = new JButton("Modify employee");
-		btnModify.setBorder(null);
-		btnModify.setFocusable(false);
-		btnModify.addActionListener(this);
-		btnModify.setBounds(150, 250, 130, 30);
-		btnModify.setForeground(new Color(54, 54, 54));
-		btnModify.setBackground(new Color(246, 190, 82));
-		add(btnModify);
+		btnModifyEmployee = new JButton("Modify employee");
+		btnModifyEmployee.setBorder(null);
+		btnModifyEmployee.setFocusable(false);
+		btnModifyEmployee.addActionListener(this);
+		btnModifyEmployee.setBounds(150, 250, 130, 30);
+		btnModifyEmployee.setForeground(new Color(54, 54, 54));
+		btnModifyEmployee.setBackground(new Color(246, 190, 82));
+		add(btnModifyEmployee);
 		
 		btnEmployees = new JButton("Employees");
 		btnEmployees.setBorder(null);
@@ -80,36 +79,14 @@ public class management extends JFrame implements ActionListener {
 		btnShowStock.setBackground(new Color(246, 190, 82));
 		add(btnShowStock);
 		
-		btnRequest = new JButton("Modify product");
-		btnRequest.setBorder(null);
-		btnRequest.setFocusable(false);
-		btnRequest.addActionListener(this);
-		btnRequest.setBounds(350, 250, 130, 30);
-		btnRequest.setForeground(new Color(54, 54, 54));
-		btnRequest.setBackground(new Color(246, 190, 82));
-		add(btnRequest);
-
-		lblHired = new JLabel("The employee has been successfully hired.");
-		lblHired.setFont(scroll);
-		lblHired.setBounds(140, 350, 350, 30);
-		lblHired.setForeground(new Color(0, 255, 0));
-		if (hire.hired) {
-			lblHired.setVisible(true);
-		} else {
-			lblHired.setVisible(false);
-		}
-		add(lblHired);
-
-		lblFired = new JLabel("The employee has been successfully fired.");
-		lblFired.setFont(scroll);
-		lblFired.setBounds(140, 350, 350, 30);
-		lblFired.setForeground(new Color(0, 255, 0));
-		if (fire.fired) {
-			lblFired.setVisible(true);
-		} else {
-			lblFired.setVisible(false);
-		}
-		add(lblFired);
+		btnModifyProduct = new JButton("Modify product");
+		btnModifyProduct.setBorder(null);
+		btnModifyProduct.setFocusable(false);
+		btnModifyProduct.addActionListener(this);
+		btnModifyProduct.setBounds(350, 250, 130, 30);
+		btnModifyProduct.setForeground(new Color(54, 54, 54));
+		btnModifyProduct.setBackground(new Color(246, 190, 82));
+		add(btnModifyProduct);
 
 		btnChangePass = new JButton("Change Password");
 		btnChangePass.setBorder(null);
@@ -170,9 +147,9 @@ public class management extends JFrame implements ActionListener {
 			this.setVisible(false);
 		}
 
-		if (event.equals(btnModify)) {
-			modify FrameModify = new modify();
-			FrameModify.setVisible(true);
+		if (event.equals(btnModifyEmployee)) {
+			modify_employee FrameModifyEmployee = new modify_employee();
+			FrameModifyEmployee.setVisible(true);
 			this.setVisible(false);
 		}
 
@@ -182,9 +159,9 @@ public class management extends JFrame implements ActionListener {
 			this.setVisible(false);
 		}
 
-		if (event.equals(btnRequest)) {
-			modify FrameModify = new modify();
-			FrameModify.setVisible(true);
+		if (event.equals(btnModifyProduct)) {
+			modify_product FrameModifyProduct = new modify_product();
+			FrameModifyProduct.setVisible(true);
 			this.setVisible(false);
 		}
 

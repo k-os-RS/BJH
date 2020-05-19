@@ -26,6 +26,7 @@ public class workers extends JFrame implements ActionListener {
 		//Frame
 		setLayout(null);
 		setResizable(false);
+		setUndecorated(true);
 		setTitle("Workers panel");
 		setBounds(0, 0, 640, 540);
 		setLocationRelativeTo(null);
@@ -89,7 +90,7 @@ public class workers extends JFrame implements ActionListener {
 		table.setModel(modelo);
 		
 		scrollpane = new JScrollPane(table);
-		scrollpane.setBounds(250, 110, 350, 250);
+		scrollpane.setBounds(250, 110, 385, 250);
 		add(scrollpane);
 		
 		lblDNIEmpty = new JLabel("Please fill in the DNI field.");

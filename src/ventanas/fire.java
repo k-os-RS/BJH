@@ -10,8 +10,7 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class fire extends JFrame implements ActionListener {
 
-	public static boolean fired = false;
-	private JLabel lblBjh, lblDNI, lblIncorrect, lblFooter, lblFondo;
+	private JLabel lblBjh, lblDNI, lblIncorrect, lblFired, lblFooter, lblFondo;
 	private JTextField txtDNI;
 	private ResultSet data;
 	private JButton btnSaved, btnCancel;
@@ -58,6 +57,13 @@ public class fire extends JFrame implements ActionListener {
 		lblIncorrect.setForeground(new Color(255, 0, 0));
 		add(lblIncorrect);
 		
+		lblFired = new JLabel("The employee has been successfully fired.");
+		lblFired.setFont(fields);
+		lblFired.setBounds(10, 300, 330, 30);
+		lblFired.setForeground(new Color(0, 255, 0));
+		lblFired.setVisible(false);
+		add(lblFired);
+		
 		btnSaved = new JButton("Save employee");
 		btnSaved.setBorder(null);
 		btnSaved.setFocusable(false);
@@ -101,15 +107,14 @@ public class fire extends JFrame implements ActionListener {
 					data = metodo.ShowEmployee(dni);
 					data.next();
 					String id = data.getString(1);
-					System.out.println(id);
 					metodo.EmployeesFireConnect(id);
-					fired = true;
-					management FrameManagement = new management();
-					FrameManagement.setVisible(true);
-					this.setVisible(false);
 					metodo.FireEmployee(dni);
+					txtDNI.setText("");
+					lblIncorrect.setVisible(false);
+					lblFired.setVisible(true);
 				} else {
 					lblIncorrect.setVisible(true);
+					lblFired.setVisible(false);
 				}
 				
 			} catch (Exception e2) {

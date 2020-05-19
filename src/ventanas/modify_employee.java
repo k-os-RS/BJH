@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 @SuppressWarnings("serial")
-public class modify extends JFrame implements ActionListener {
+public class modify_employee extends JFrame implements ActionListener {
 
 	private JLabel lblBjh, lblSelect, lblDNI, lblName, lblLastnames, lblAddress, lblEmail, lblUsername, lblPassword, lblFooter, lblFondo;
 	private JTextField txtDNI, txtName, txtLastnames, txtAddress, txtEmail, txtUsername;
@@ -16,10 +16,11 @@ public class modify extends JFrame implements ActionListener {
 	metodos_db metodo = new metodos_db();
 	private JComboBox<String> cbbEdit;
 
-	public modify() {
+	public modify_employee() {
 		//Frame
 		setLayout(null);
 		setResizable(false);
+		setUndecorated(true);
 		setTitle("Modidy employee panel");
 		setBounds(0, 0, 640, 540);
 		setLocationRelativeTo(null);
@@ -56,6 +57,7 @@ public class modify extends JFrame implements ActionListener {
 		cbbEdit.addItem(" Email");
 		cbbEdit.addItem(" Username");
 		cbbEdit.addItem(" Password");
+		cbbEdit.addItem(" All");
 		add(cbbEdit);
 		
 		lblDNI = new JLabel("DNI: ");

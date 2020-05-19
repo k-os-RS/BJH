@@ -22,6 +22,7 @@ public class products extends JFrame implements ActionListener {
 		//Frame
 		setLayout(null);
 		setResizable(false);
+		setUndecorated(true);
 		setTitle("Add product panel");
 		setBounds(0, 0, 640, 540);
 		setLocationRelativeTo(null);
@@ -94,29 +95,29 @@ public class products extends JFrame implements ActionListener {
 		lblPriceLess.setForeground(new Color(255, 0, 0));
 		lblPriceLess.setVisible(false);
 		add(lblPriceLess);
-		
+
 		lblEmpty = new JLabel("Please fill in the fields.");
 		lblEmpty.setFont(fields);
-		lblEmpty.setBounds(180, 350, 350, 30);
+		lblEmpty.setBounds(210, 350, 200, 30);
 		lblEmpty.setForeground(new Color(255, 0, 0));
 		lblEmpty.setVisible(false);
 		add(lblEmpty);
 		
 		lblExist = new JLabel("There's already an product with that name and type.");
 		lblExist.setFont(fields);
-		lblExist.setBounds(100, 350, 404, 30);
+		lblExist.setBounds(100, 350, 425, 30);
 		lblExist.setForeground(new Color(255, 0, 0));
 		lblExist.setVisible(false);
 		add(lblExist);
 		
 		lbladdProduct = new JLabel("Product successfully added.");
 		lbladdProduct.setFont(fields);
-		lbladdProduct.setBounds(180, 350, 350, 30);
+		lbladdProduct.setBounds(200, 350, 220, 30);
 		lbladdProduct.setForeground(new Color(0, 255, 0));
 		lbladdProduct.setVisible(false);
 		add(lbladdProduct);
 		
-		btnSave = new JButton("Save employee");
+		btnSave = new JButton("Save product");
 		btnSave.setBorder(null);
 		btnSave.setFocusable(false);
 		btnSave.addActionListener(this);
@@ -154,24 +155,24 @@ public class products extends JFrame implements ActionListener {
 			try {
 
 				name = txtName.getText().trim();
-				type = txtType.getText();
-				price = txtPrice.getText();
+				type = txtType.getText().trim();
+				price = txtPrice.getText().trim();
 				
 				if (!name.isEmpty() && !type.isEmpty() && !price.isEmpty()) {
 					if (comprob.isNumberInt(price)) {
 						if (!metodo.ProductExist(name, type)) { 
-							if (price.length() <= 0) {
+							if (price.length() > 0) {
 								if (metodo.addProduct(name, type, price, quantity)) {
 									lblPriceNumer.setVisible(false);
 									lblPriceLess.setVisible(false);
-									lblEmpty.setVisible(true);
+									lblEmpty.setVisible(false);
 									lblExist.setVisible(false);
 									lbladdProduct.setVisible(true);
 								}
 							} else {
 								lblPriceNumer.setVisible(false);
-								lblPriceLess.setVisible(false);
-								lblEmpty.setVisible(true);
+								lblPriceLess.setVisible(true);
+								lblEmpty.setVisible(false);
 								lblExist.setVisible(false);
 								lbladdProduct.setVisible(false);
 							}
@@ -201,10 +202,11 @@ public class products extends JFrame implements ActionListener {
 				e2.printStackTrace();
 			}
 		}
+
 		
 		if (event.equals(btnCancel) ) {
-			management FrameManagement = new management();
-			FrameManagement.setVisible(true);
+			stock FrameStock = new stock();
+			FrameStock.setVisible(true);
 			this.setVisible(false);
 		}
 		

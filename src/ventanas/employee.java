@@ -12,16 +12,16 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class employee extends JFrame implements ActionListener {
 
-	private JLabel lblBjh, lblWelcome, lblIDClient ,lblIDProduct, lblFooter, lblFondo;
+	private JLabel lblBjh, lblWelcome, lblIDClient, lblIDProduct, lblStock, lblIDEmpty, lblIDExist, lblFooter, lblFondo;
 	private JTextField txtIDClient, txtIDProduct;
 	private JButton btnComplete, btnApply, btnChangePass, btnLogout;
-	private ResultSet result;
+	private ResultSet result, result2;
 	private JTable table;
 	private JScrollPane scrollpane;
 	private DefaultTableModel modelo = new DefaultTableModel();
 	private String [] data = new String [4];
 	metodos_db metodo = new metodos_db();
-	String username = login.user;
+	String username = login.user, id_product;
 	
 	public employee() {
 		//Frame
@@ -97,19 +97,60 @@ public class employee extends JFrame implements ActionListener {
 		btnApply.setForeground(new Color(54, 54, 54));
 		btnApply.setBackground(new Color(246, 190, 82));
 		add(btnApply);
-		
+
 		table = new JTable();
 		modelo.addColumn("ID");
+		modelo.addColumn("Name");
 		modelo.addColumn("Type");
-		modelo.addColumn("Stock");
+		modelo.addColumn("Quantity");
 		modelo.addColumn("Price");
 		table.setFont(tabled);
 		table.setModel(modelo);
+		try {
+			
+			result = metodo.ShowProducts();
+			modelo.setRowCount(0);
+			while (result.next()) {
+				result2 = metodo.ShowTypes(result.getInt(2));
+				data[0] = result.getString(1);
+				while (result2.next()) {
+					data[1] = result2.getString(2);
+				}
+				data[2] = result.getString(3);
+				data[3] = result.getString(4);
+				data[4] = result.getString(5);
+				modelo.addRow(data);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		scrollpane = new JScrollPane(table);
-		scrollpane.setBounds(250, 110, 350, 250);
+		scrollpane.setBounds(250, 110, 380, 250);
 		add(scrollpane);
-
+		
+		lblStock = new JLabel("Still in stock, no need to order.");
+		lblStock.setFont(scroll);
+		lblStock.setVisible(false);
+		lblStock.setBounds(180, 380, 260, 30);
+		lblStock.setForeground(new Color(255, 0, 0));
+		add(lblStock);
+		
+		lblIDEmpty = new JLabel("Please fill in the ID Product field.");
+		lblIDEmpty.setFont(scroll);
+		lblIDEmpty.setVisible(false);
+		lblIDEmpty.setBounds(180, 380, 260, 30);
+		lblIDEmpty.setForeground(new Color(255, 0, 0));
+		add(lblIDEmpty);
+		
+		lblIDExist = new JLabel("This ID Product don't exists.");
+		lblIDExist.setFont(scroll);
+		lblIDExist.setVisible(false);
+		lblIDExist.setBounds(180, 380, 230, 30);
+		lblIDExist.setForeground(new Color(255, 0, 0));
+		add(lblIDExist);
+		
 		btnChangePass = new JButton("Change Password");
 		btnChangePass.setBorder(null);
 		btnChangePass.setFocusable(false);
@@ -143,6 +184,40 @@ public class employee extends JFrame implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		Object event = e.getSource();
+		
+		if (event.equals(btnApply) ) {
+			try {
+				
+				id_product = txtIDProduct.getText().trim();
+				
+				if (!id_product.isEmpty()) {
+					if (metodo.IDProductExist(id_product)) {
+						int quantity_product = metodo.ShowQuantityProduct(id_product);
+						if (quantity_product == 0) {
+							request_product FrameRequest = new request_product();
+							FrameRequest.setVisible(true);
+							this.setVisible(false);
+						} else {
+							lblStock.setVisible(true);
+							lblIDEmpty.setVisible(false);
+							lblIDExist.setVisible(false);
+						}
+					} else {
+						lblStock.setVisible(false);
+						lblIDEmpty.setVisible(false);
+						lblIDExist.setVisible(true);
+					}
+				} else {
+					lblStock.setVisible(false);
+					lblIDEmpty.setVisible(true);
+					lblIDExist.setVisible(false);
+				}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
+		}
 		
 		if (event.equals(btnChangePass) ) {
 			changepass FrameChangePass = new changepass();

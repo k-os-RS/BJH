@@ -12,20 +12,23 @@ import java.sql.ResultSet;
 @SuppressWarnings("serial")
 public class stock extends JFrame implements ActionListener {
 
-	private JLabel lblBjh, lblIDProduct, lblIDEmpty, lblIDExist, lblFooter, lblFondo;
+	public static String id_pro;
+	private JLabel lblBjh, lblIDProduct, lblStock, lblIDEmpty, lblIDExist, lblFooter, lblFondo;
 	private JButton btnRequestProduct, btnAddProduct, btnUpdateList, btnCancel;
 	private JTextField txtIDProduct;
-	private ResultSet result;
+	private ResultSet result, result2;
 	private JTable table;
 	private JScrollPane scrollpane;
 	private DefaultTableModel modelo = new DefaultTableModel();
 	private String [] data = new String [5];
 	metodos_db metodo = new metodos_db();
+	String id_product;
 	
 	public stock() {
 		//Frame
 		setLayout(null);
 		setResizable(false);
+		setUndecorated(true);
 		setTitle("Stock panel");
 		setBounds(0, 0, 640, 540);
 		setLocationRelativeTo(null);
@@ -44,7 +47,7 @@ public class stock extends JFrame implements ActionListener {
 		lblBjh.setBounds(236, 20, 170, 70);
 		lblBjh.setForeground(new Color(246, 190, 82));
 		add(lblBjh);
-		
+
 		lblIDProduct = new JLabel("ID Product: ");
 		lblIDProduct.setFont(scroll);
 		lblIDProduct.setBounds(50, 130, 100, 30);
@@ -94,22 +97,48 @@ public class stock extends JFrame implements ActionListener {
 		modelo.addColumn("Price");
 		table.setFont(tabled);
 		table.setModel(modelo);
-		
+		try {
+			
+			result = metodo.ShowProducts();
+			modelo.setRowCount(0);
+			while (result.next()) {
+				result2 = metodo.ShowTypes(result.getInt(2));
+				data[0] = result.getString(1);
+				while (result2.next()) {
+					data[1] = result2.getString(2);
+				}
+				data[2] = result.getString(3);
+				data[3] = result.getString(4);
+				data[4] = result.getString(5);
+				modelo.addRow(data);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		scrollpane = new JScrollPane(table);
-		scrollpane.setBounds(250, 110, 350, 250);
+		scrollpane.setBounds(250, 110, 385, 250);
 		add(scrollpane);
+		
+		lblStock = new JLabel("Still in stock, no need to order.");
+		lblStock.setFont(scroll);
+		lblStock.setVisible(false);
+		lblStock.setBounds(180, 380, 260, 30);
+		lblStock.setForeground(new Color(255, 0, 0));
+		add(lblStock);
 		
 		lblIDEmpty = new JLabel("Please fill in the ID Product field.");
 		lblIDEmpty.setFont(scroll);
 		lblIDEmpty.setVisible(false);
-		lblIDEmpty.setBounds(200, 380, 210, 30);
+		lblIDEmpty.setBounds(180, 380, 260, 30);
 		lblIDEmpty.setForeground(new Color(255, 0, 0));
 		add(lblIDEmpty);
 		
 		lblIDExist = new JLabel("This ID Product don't exists.");
 		lblIDExist.setFont(scroll);
 		lblIDExist.setVisible(false);
-		lblIDExist.setBounds(220, 380, 210, 30);
+		lblIDExist.setBounds(180, 380, 230, 30);
 		lblIDExist.setForeground(new Color(255, 0, 0));
 		add(lblIDExist);
 		
@@ -139,9 +168,37 @@ public class stock extends JFrame implements ActionListener {
 		Object event = e.getSource();
 		
 		if (event.equals(btnRequestProduct) ) {
-			products FrameProducts = new products();
-			FrameProducts.setVisible(true);
-			this.setVisible(false);
+			try {
+				
+				id_product = txtIDProduct.getText().trim();
+				
+				if (!id_product.isEmpty()) {
+					if (metodo.IDProductExist(id_product)) {
+						int quantity_product = metodo.ShowQuantityProduct(id_product);
+						if (quantity_product == 0) {
+							id_pro = id_product;
+							request_product FrameRequest = new request_product();
+							FrameRequest.setVisible(true);
+							this.setVisible(false);
+						} else {
+							lblStock.setVisible(true);
+							lblIDEmpty.setVisible(false);
+							lblIDExist.setVisible(false);
+						}
+					} else {
+						lblStock.setVisible(false);
+						lblIDEmpty.setVisible(false);
+						lblIDExist.setVisible(true);
+					}
+				} else {
+					lblStock.setVisible(false);
+					lblIDEmpty.setVisible(true);
+					lblIDExist.setVisible(false);
+				}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 			
 		}
 		
@@ -153,9 +210,25 @@ public class stock extends JFrame implements ActionListener {
 		}
 		
 		if (event.equals(btnUpdateList) ) {
-			products FrameProducts = new products();
-			FrameProducts.setVisible(true);
-			this.setVisible(false);
+			try {
+				
+				result = metodo.ShowProducts();
+				modelo.setRowCount(0);
+				while (result.next()) {
+					result2 = metodo.ShowTypes(result.getInt(2));
+					data[0] = result.getString(1);
+					while (result2.next()) {
+						data[1] = result2.getString(2);
+					}
+					data[2] = result.getString(3);
+					data[3] = result.getString(4);
+					data[4] = result.getString(5);
+					modelo.addRow(data);
+				}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 			
 		}
 		

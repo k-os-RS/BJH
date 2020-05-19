@@ -60,7 +60,7 @@ public class metodos_db {
 	public void EmployeesConnect (String id_persona) throws SQLException {
 		
 		connect = connecting.getConexion();
-		String sql = "INSERT INTO employee (id_persona_aux) values ('"+id_persona+"')";
+		String sql = "INSERT INTO empleado (id_persona_aux) values ('"+id_persona+"')";
 		
 		try {
 			command = (Statement) connect.createStatement();
@@ -95,7 +95,7 @@ public class metodos_db {
 	public void EmployeesFireConnect (String id_persona) throws SQLException {
 
 		connect = connecting.getConexion();
-		String sql = "DELETE FROM employee WHERE id_persona_aux='"+id_persona+"'";
+		String sql = "DELETE FROM empleado WHERE id_persona_aux='"+id_persona+"'";
 		
 		try {
 			command = (Statement) connect.createStatement();
@@ -243,15 +243,40 @@ public class metodos_db {
 	public boolean addProduct (String name, String type, String price, String quantity) throws SQLException {
 		
 		boolean verify = false;
-		String id_type = ProductType(type);
+		int confirm = 0;
+		int id_type = ProductType(type);
 		connect = connecting.getConexion();
 		String sql = "INSERT INTO producto (id_tipo_aux,name,quantity,price) values ('"+id_type+"','"+name+"','"+quantity+"','"+price+"')";
 		
 		try {
 			command = (Statement) connect.createStatement();
-			data = command.executeQuery(sql);
+			confirm = command.executeUpdate(sql);
 			
-			while (data.next()) {
+			while (confirm == 1) {
+				verify = true;
+			}
+			command.close();
+			connect.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return verify;
+		
+	}
+	public boolean addQuantity (String id_product, int quantity) throws SQLException {
+		
+		boolean verify = false;
+		int confirm = 0;
+		connect = connecting.getConexion();
+		String sql = "UPDATE producto SET quantity='"+quantity+"' WHERE producto.id_producto='"+id_product+"'";
+		
+		try {
+			command = (Statement) connect.createStatement();
+			confirm = command.executeUpdate(sql);
+			
+			while (confirm == 1) {
 				verify = true;
 			}
 			command.close();
@@ -267,7 +292,7 @@ public class metodos_db {
 	public boolean ProductExist (String name, String type) throws SQLException {
 		
 		boolean verify = false;
-		String id_type = ProductType(type);
+		int id_type = ProductType(type);
 		connect = connecting.getConexion();
 		String sql = "SELECT * FROM producto WHERE id_tipo_aux='"+id_type+"' and name='"+name+"'";
 		
@@ -288,9 +313,9 @@ public class metodos_db {
 		return verify;
 		
 	}
-	public String ProductType (String type) throws SQLException {
+	public int ProductType (String type) throws SQLException {
 		
-		String id = "";
+		int id = 0;
 		boolean verify = false;
 		connect = connecting.getConexion();
 		String sql = "SELECT * FROM tipo WHERE type_name='"+type+"'";
@@ -301,17 +326,15 @@ public class metodos_db {
 			data = command.executeQuery(sql);
 			
 			while (data.next()) {
+				id = data.getInt(1);
 				verify = true;
 			}
-			
-			if (verify) {
-				id = data.getString(1);
-			} else {
-				command.executeQuery(sql2);
+
+			if (!verify) {
+				command.executeUpdate(sql2);
 				data = command.executeQuery(sql);
 				data.next();
-				id = data.getString(1);
-				
+				id = data.getInt(1);
 			}
 			
 			command.close();
@@ -322,6 +345,80 @@ public class metodos_db {
 		}
 		
 		return id;
+		
+	}
+	public boolean IDProductExist (String id_product) throws SQLException {
+		
+		boolean verify = false;
+		connect = connecting.getConexion();
+		String sql = "SELECT * FROM producto WHERE id_producto='"+id_product+"'";
+		
+		try {
+			command = (Statement) connect.createStatement();
+			data = command.executeQuery(sql);
+			
+			while (data.next()) {
+				verify = true;
+			}
+			command.close();
+			connect.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return verify;
+		
+	}
+	public int ShowQuantityProduct (String id_product) throws SQLException {
+		
+		int quantity = 0;
+		String sql = "SELECT quantity FROM producto WHERE id_producto='"+id_product+"'";
+		connect = connecting.getConexion();
+		
+		try {
+			command = (Statement) connect.createStatement();
+			data = command.executeQuery(sql);
+			data.next();
+			quantity = data.getInt(1);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return quantity;
+		
+	}
+	public ResultSet ShowProducts () throws SQLException {
+		
+		String sql = "SELECT * FROM producto";
+		connect = connecting.getConexion();
+		
+		try {
+			command = (Statement) connect.createStatement();
+			data = command.executeQuery(sql);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return data;
+		
+	}
+	public ResultSet ShowTypes (int id_tipo) throws SQLException {
+		
+		String sql = "SELECT * FROM tipo WHERE id_tipo='"+id_tipo+"'";
+		connect = connecting.getConexion();
+		
+		try {
+			command = (Statement) connect.createStatement();
+			data = command.executeQuery(sql);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return data;
 		
 	}
 	

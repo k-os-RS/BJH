@@ -11,8 +11,7 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class hire extends JFrame implements ActionListener {
 
-	public static boolean hired = false;
-	private JLabel lblBjh, lblDNI, lblName, lblLastnames, lblAddress, lblEmail, lblUsername, lblPassword, lblNoDNI, lblNoEmail, lblNoPass, lblExist, lblFooter, lblFondo;
+	private JLabel lblBjh, lblDNI, lblName, lblLastnames, lblAddress, lblEmail, lblUsername, lblPassword, lblNoDNI, lblNoEmail, lblNoPass, lblExist, lblHired, lblFooter, lblFondo;
 	private JTextField txtDNI, txtName, txtLastnames, txtAddress, txtEmail, txtUsername;
 	private JPasswordField txtPassword;
 	private JButton btnSave, btnCancel;
@@ -25,6 +24,7 @@ public class hire extends JFrame implements ActionListener {
 		//Frame
 		setLayout(null);
 		setResizable(false);
+		setUndecorated(true);
 		setTitle("Recruitment panel");
 		setBounds(0, 0, 640, 540);
 		setLocationRelativeTo(null);
@@ -170,6 +170,13 @@ public class hire extends JFrame implements ActionListener {
 		lblExist.setVisible(false);
 		add(lblExist);
 		
+		lblHired = new JLabel("The employee has been successfully hired.");
+		lblHired.setFont(fields);
+		lblHired.setBounds(140, 350, 350, 30);
+		lblHired.setForeground(new Color(0, 255, 0));
+		lblHired.setVisible(false);
+		add(lblHired);
+		
 		btnSave = new JButton("Save employee");
 		btnSave.setBorder(null);
 		btnSave.setFocusable(false);
@@ -226,34 +233,46 @@ public class hire extends JFrame implements ActionListener {
 										data.next();
 										String id = data.getString(1);
 										metodo.EmployeesConnect(id);
-										hired = true;
-										management FrameManagement = new management();
-										FrameManagement.setVisible(true);
-										this.setVisible(false);
+										txtDNI.setText("");
+										txtName.setText("");
+										txtLastnames.setText("");
+										txtAddress.setText("");
+										txtEmail.setText("@bjh.com");
+										txtUsername.setText("");
+										txtPassword.setText("");
+										lblNoDNI.setVisible(false);
+										lblNoEmail.setVisible(false);
+										lblNoPass.setVisible(false);
+										lblExist.setVisible(false);
+										lblHired.setVisible(true);
 									}
 								} else {
 									lblNoDNI.setVisible(false);
 									lblNoEmail.setVisible(false);
 									lblNoPass.setVisible(true);
 									lblExist.setVisible(false);
+									lblHired.setVisible(false);
 								}
 							} else {
 								lblNoDNI.setVisible(false);
 								lblNoEmail.setVisible(true);
 								lblNoPass.setVisible(false);
 								lblExist.setVisible(false);
+								lblHired.setVisible(false);
 							}
 						} else {
 							lblNoDNI.setVisible(false);
 							lblNoEmail.setVisible(false);
 							lblNoPass.setVisible(false);
 							lblExist.setVisible(true);
+							lblHired.setVisible(false);
 						}
 					} else {
 						lblNoDNI.setVisible(true);
 						lblNoEmail.setVisible(false);
 						lblNoPass.setVisible(false);
 						lblExist.setVisible(false);
+						lblHired.setVisible(false);
 					}
 				}
 				
