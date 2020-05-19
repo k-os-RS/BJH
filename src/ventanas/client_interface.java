@@ -11,15 +11,18 @@ import java.sql.ResultSet;
 @SuppressWarnings("serial")
 public class client_interface extends JPanel implements ActionListener {
 
-	private JLabel lblBjh, lblIDProduct, lblQuantity, lblFooter, lblFondo;
-	private JButton btnPurchase, btnReserv, btnChangePass, btnLogout;
+	private JLabel lblBjh, lblIDProduct, lblQuantity, lblEmpty, lblIDExist, lblNoQuantity, lblFooter, lblFondo;
+	private JButton btnPurchase, btnReserv, btnUpdateList, btnChangePass, btnLogout;
 	private JTextField txtIDProduct, txtQuantity;
 	private ResultSet result, result2;
 	private JTable table;
 	private JScrollPane scrollpane;
 	private DefaultTableModel modelo = new DefaultTableModel();
 	private String [] data = new String [4];
-	metodos_db metodo = new metodos_db(); 
+	metodos_db metodo = new metodos_db();
+	String username = login.user;
+	String id_product, quantity_product;
+	int cliente_quantity, quant_pro;
 	
 	public client_interface() {
 		//Frame
@@ -71,7 +74,7 @@ public class client_interface extends JPanel implements ActionListener {
 		btnPurchase.setBorder(null);
 		btnPurchase.setFocusable(false);
 		btnPurchase.addActionListener(this);
-		btnPurchase.setBounds(50, 280, 180, 30);
+		btnPurchase.setBounds(50, 250, 180, 30);
 		btnPurchase.setForeground(new Color(54, 54, 54));
 		btnPurchase.setBackground(new Color(246, 190, 82));
 		add(btnPurchase);
@@ -80,10 +83,19 @@ public class client_interface extends JPanel implements ActionListener {
 		btnReserv.setBorder(null);
 		btnReserv.setFocusable(false);
 		btnReserv.addActionListener(this);
-		btnReserv.setBounds(50, 330, 180, 30);
+		btnReserv.setBounds(50, 290, 180, 30);
 		btnReserv.setForeground(new Color(54, 54, 54));
 		btnReserv.setBackground(new Color(246, 190, 82));
 		add(btnReserv);
+		
+		btnUpdateList = new JButton("Update list");
+		btnUpdateList.setBorder(null);
+		btnUpdateList.setFocusable(false);
+		btnUpdateList.addActionListener(this);
+		btnUpdateList.setBounds(50, 330, 180, 30);
+		btnUpdateList.setForeground(new Color(54, 54, 54));
+		btnUpdateList.setBackground(new Color(246, 190, 82));
+		add(btnUpdateList);
 		
 		table = new JTable();
 		modelo.addColumn("ID");
@@ -114,14 +126,35 @@ public class client_interface extends JPanel implements ActionListener {
 		}
 
 		scrollpane = new JScrollPane(table);
-		scrollpane.setBounds(250, 110, 385, 250);
+		scrollpane.setBounds(250, 110, 380, 250);
 		add(scrollpane);
+		
+		lblEmpty = new JLabel("Please fill all fields.");
+		lblEmpty.setFont(scroll);
+		lblEmpty.setVisible(false);
+		lblEmpty.setBounds(220, 370, 260, 30);
+		lblEmpty.setForeground(new Color(255, 0, 0));
+		add(lblEmpty);
+		
+		lblNoQuantity = new JLabel("Insufficient quantity, needs to be reserved.");
+		lblNoQuantity.setFont(scroll);
+		lblNoQuantity.setVisible(false);
+		lblNoQuantity.setBounds(130, 370, 340, 30);
+		lblNoQuantity.setForeground(new Color(255, 0, 0));
+		add(lblNoQuantity);
+
+		lblIDExist = new JLabel("This ID Product don't exists.");
+		lblIDExist.setFont(scroll);
+		lblIDExist.setVisible(false);
+		lblIDExist.setBounds(190, 370, 340, 30);
+		lblIDExist.setForeground(new Color(255, 0, 0));
+		add(lblIDExist);
 		
 		btnChangePass = new JButton("Change Password");
 		btnChangePass.setBorder(null);
 		btnChangePass.setFocusable(false);
 		btnChangePass.addActionListener(this);
-		btnChangePass.setBounds(170, 420, 120, 30);
+		btnChangePass.setBounds(170, 400, 120, 30);
 		btnChangePass.setForeground(new Color(54, 54, 54));
 		btnChangePass.setBackground(new Color(246, 190, 82));
 		add(btnChangePass);
@@ -130,14 +163,14 @@ public class client_interface extends JPanel implements ActionListener {
 		btnLogout.setBorder(null);
 		btnLogout.setFocusable(false);
 		btnLogout.addActionListener(this);
-		btnLogout.setBounds(310, 420, 120, 30);
+		btnLogout.setBounds(310, 400, 120, 30);
 		btnLogout.setForeground(new Color(54, 54, 54));
 		btnLogout.setBackground(new Color(246, 190, 82));
 		add(btnLogout);
 		
 		lblFooter = new JLabel("© 2020 BJH Anime Store | All rights reserved");
 		lblFooter.setFont(text_message);
-		lblFooter.setBounds(250, 480, 385, 30);
+		lblFooter.setBounds(250, 450, 385, 30);
 		lblFooter.setForeground(new Color(246, 190, 82));
 		add(lblFooter);
 		
@@ -155,6 +188,63 @@ public class client_interface extends JPanel implements ActionListener {
 			changepass FrameChangePass = new changepass();
 			FrameChangePass.setVisible(true);
 			this.setVisible(false);
+			
+		}
+
+		if (event.equals(btnPurchase) ) {
+			try {
+				
+				id_product = txtIDProduct.getText().trim();
+				quantity_product = txtQuantity.getText().trim();
+				quant_pro = Integer.parseInt(quantity_product);
+				cliente_quantity = metodo.ShowQuantityProduct(id_product);
+				
+				if (!id_product.isEmpty() || !quantity_product.isEmpty()) {
+					if (metodo.IDProductExist(id_product)) {
+						if (cliente_quantity >= quant_pro) {
+							//metodo.addPurchase(username, id_product, quant_pro);
+						} else {
+							lblEmpty.setVisible(false);
+							lblNoQuantity.setVisible(true);
+							lblIDExist.setVisible(false);
+						}
+					} else {
+						lblEmpty.setVisible(false);
+						lblNoQuantity.setVisible(false);
+						lblIDExist.setVisible(true);
+					}
+				} else {
+					lblEmpty.setVisible(true);
+					lblNoQuantity.setVisible(false);
+					lblIDExist.setVisible(false);
+				}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
+		}
+		
+		if (event.equals(btnUpdateList) ) {
+			try {
+				
+				result = metodo.ShowProducts();
+				modelo.setRowCount(0);
+				while (result.next()) {
+					result2 = metodo.ShowTypes(result.getInt(2));
+					data[0] = result.getString(1);
+					while (result2.next()) {
+						data[1] = result2.getString(2);
+					}
+					data[2] = result.getString(3);
+					data[3] = result.getString(4);
+					data[4] = result.getString(5);
+					modelo.addRow(data);
+				}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 			
 		}
 

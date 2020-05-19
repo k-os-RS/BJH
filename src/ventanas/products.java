@@ -10,7 +10,6 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class products extends JFrame implements ActionListener {
 
-	public static boolean hired = false;
 	private JLabel lblBjh, lblName, lblType, lblPrice, lblPriceNumer, lblPriceLess, lblEmpty, lblExist, lbladdProduct, lblFooter, lblFondo;
 	private JTextField txtName, txtType, txtPrice;
 	private JButton btnSave, btnCancel;
@@ -162,13 +161,12 @@ public class products extends JFrame implements ActionListener {
 					if (comprob.isNumberInt(price)) {
 						if (!metodo.ProductExist(name, type)) { 
 							if (price.length() > 0) {
-								if (metodo.addProduct(name, type, price, quantity)) {
-									lblPriceNumer.setVisible(false);
-									lblPriceLess.setVisible(false);
-									lblEmpty.setVisible(false);
-									lblExist.setVisible(false);
-									lbladdProduct.setVisible(true);
-								}
+								metodo.addProduct(name, type, price, quantity);
+								lblPriceNumer.setVisible(false);
+								lblPriceLess.setVisible(false);
+								lblEmpty.setVisible(false);
+								lblExist.setVisible(false);
+								lbladdProduct.setVisible(true);
 							} else {
 								lblPriceNumer.setVisible(false);
 								lblPriceLess.setVisible(true);

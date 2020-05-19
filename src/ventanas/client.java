@@ -3,55 +3,37 @@ package ventanas;
 import gestion_db.metodos_db;
 
 import javax.swing.*;
-import javax.swing.table.*;
-
-import GRAFICOS.solicitud1;
-
 import java.awt.*;
-import java.awt.event.*;
-import java.sql.ResultSet;
 
 @SuppressWarnings("serial")
-public class client extends JFrame implements ActionListener {
+public class client extends JFrame {
 	
-	private JLabel lblBjh, lblIDProduct, lblQuantity, lblFooter, lblFondo;
-	private JButton btnPurchase, btnReserv, btnChangePass, btnLogout;
-	private JTextField txtIDProduct, txtQuantity;
-	private ResultSet result, result2;
-	private JTable table;
-	private JScrollPane scrollpane;
-	private DefaultTableModel modelo = new DefaultTableModel();
 	private JTabbedPane tab;
-	private String [] data = new String [4];
 	metodos_db metodo = new metodos_db(); 
 	String username = login.user;
-	
+
 	public client() {
 		//Frame
-		setLayout(null);
+		getContentPane().setLayout(null);
 		setResizable(false);
-		setTitle("Client Panel | "+username);
+		setUndecorated(false);
 		setBounds(0, 0, 640, 540);
 		setLocationRelativeTo(null);
 		setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo_bjh.png")).getImage());
 		
 		tab = new JTabbedPane(JTabbedPane.TOP);
-		tab.setFont(new Font("Gabriola", Font.BOLD, 25));
+		tab.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+		tab.setFont(new Font("Andale Mono", 0, 14));
 		tab.setBackground(new Color(224, 224, 224));
 		tab.setBounds(0, 0, 640, 540);
-		add(tab);
+		getContentPane().add(tab);
 		
 		client_interface ClientInterface = new client_interface();
-		tab.addTab("Crear solicitud", ClientInterface);
+		tab.addTab(username, ClientInterface);
 		
 		client_purchase ClientPurchase = new client_purchase();
-		tab.addTab("Crear solicitud", ClientPurchase);
+		tab.addTab("Purchases", ClientPurchase);
 
-	}
-
-	public void actionPerformed(ActionEvent e) {
-		Object event = e.getSource();
-		
 	}
 
 }

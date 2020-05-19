@@ -421,5 +421,30 @@ public class metodos_db {
 		return data;
 		
 	}
+//	public boolean addPurchase (String username, String id_product, String quant_pro) throws SQLException {
+//		
+//		boolean verify = false;
+//		int confirm = 0;
+//		int id_type = ProductType(type);
+//		connect = connecting.getConexion();
+//		String sql = "INSERT INTO producto (id_tipo_aux,name,quantity,price) values ('"+id_type+"','"+name+"','"+quantity+"','"+price+"')";
+//		
+//		try {
+//			command = (Statement) connect.createStatement();
+//			confirm = command.executeUpdate(sql);
+//			
+//			while (confirm == 1) {
+//				verify = true;
+//			}
+//			command.close();
+//			connect.close();
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return verify;
+//		
+//	}
 	
 }
