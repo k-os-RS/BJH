@@ -1,6 +1,7 @@
 package ventanas;
 
 import gestion_db.metodos_db;
+import clases.comprobaciones;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,11 +10,14 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class modify_product extends JFrame implements ActionListener {
 
-	private JLabel lblBjh, lblSelect, lblDNI, lblName, lblType, lblPrice, lblFooter, lblFondo;
-	private JTextField txtDNI, txtName, txtType, txtPrice;
+	private JLabel lblBjh, lblSelect, lblId, lblName, lblType, lblPrice, lblFooter, lblFondo;
+	private JTextField txtID, txtName, txtType, txtPrice;
 	private JButton btnChangeData, btnCancel;
+	private String name,type,price,ID;
 	metodos_db metodo = new metodos_db();
 	private JComboBox<String> cbbEdit;
+	comprobaciones comprob = new comprobaciones();
+
 
 	public modify_product() {
 		//Frame
@@ -55,20 +59,22 @@ public class modify_product extends JFrame implements ActionListener {
 		cbbEdit.addItem(" Price");
 		cbbEdit.addItem(" All");
 		add(cbbEdit);
-		
-		lblDNI = new JLabel("ID Product: ");
-		lblDNI.setFont(scroll);
-		lblDNI.setBounds(50, 160, 110, 30);
-		lblDNI.setForeground(new Color(54, 54, 54));
-		add(lblDNI);
+		cbbEdit.addActionListener(this);
 
-		txtDNI = new JTextField();
-		txtDNI.setBorder(null);
-		txtDNI.setBounds(170, 160, 110, 30);
-		txtDNI.setForeground(new Color(54, 54, 54));
-		txtDNI.setBackground(new Color (224, 224, 224));
-		txtDNI.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtDNI);
+		
+		lblId = new JLabel("ID Product: ");
+		lblId.setFont(scroll);
+		lblId.setBounds(50, 160, 110, 30);
+		lblId.setForeground(new Color(54, 54, 54));
+		add(lblId);
+
+		txtID = new JTextField();
+		txtID.setBorder(null);
+		txtID.setBounds(170, 160, 110, 30);
+		txtID.setForeground(new Color(54, 54, 54));
+		txtID.setBackground(new Color (224, 224, 224));
+		txtID.setHorizontalAlignment(SwingConstants.CENTER);
+		add(txtID);
 		
 		lblName = new JLabel("Name: ");
 		lblName.setFont(scroll);
@@ -136,7 +142,7 @@ public class modify_product extends JFrame implements ActionListener {
 		btnCancel.setBackground(new Color(246, 190, 82));
 		add(btnCancel);
 		
-		lblFooter = new JLabel("© 2020 BJH Anime Store | All rights reserved");
+		lblFooter = new JLabel("Â© 2020 BJH Anime Store | All rights reserved");
 		lblFooter.setFont(text_message);
 		lblFooter.setBounds(250, 480, 385, 30);
 		lblFooter.setForeground(new Color(246, 190, 82));
@@ -153,11 +159,97 @@ public class modify_product extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object event = e.getSource();
 		
-		if (event.equals(btnChangeData) ) {
-			changepass FrameChangePass = new changepass();
-			FrameChangePass.setVisible(true);
-			this.setVisible(false);
+		if (event.equals(cbbEdit) ) {
+
 			
+			String text = cbbEdit.getSelectedItem().toString();
+			
+			if (text == " Name") {
+				
+				lblName.setEnabled(true);
+				lblPrice.setEnabled(false);
+				lblType.setEnabled(false);
+				txtName.setEnabled(true);
+				txtPrice.setEnabled(false);
+				txtType.setEnabled(false);
+
+			}
+			else if (text == " Price") {
+				
+				lblName.setEnabled(false);
+				lblPrice.setEnabled(true);
+				lblType.setEnabled(false);
+				txtName.setEnabled(false);
+				txtPrice.setEnabled(true);
+				txtType.setEnabled(false);
+			}
+			else if (text == " Type") {
+				
+				lblName.setEnabled(false);
+				lblPrice.setEnabled(false);
+				lblType.setEnabled(true);
+				txtName.setEnabled(false);
+				txtPrice.setEnabled(false);
+				txtType.setEnabled(true);
+			}
+			else if (text == " All") {
+				
+				lblName.setEnabled(true);
+				lblPrice.setEnabled(true);
+				lblType.setEnabled(true);
+				txtName.setEnabled(true);
+				txtPrice.setEnabled(true);
+				txtType.setEnabled(true);
+			}
+			
+		}
+		if (event.equals(btnChangeData)) {
+			try {
+				
+				price = txtPrice.getText().trim();
+				name = txtName.getText().trim();
+				type = txtType.getText().trim();
+				ID = txtID.getText().trim();
+				
+					if (txtName.isEnabled() == true) {
+						txtName.setEnabled(true);
+						if (!ID.isEmpty() || !name.isEmpty()) {
+							metodo.UpdateProductName(ID, name);
+							JOptionPane.showMessageDialog(null, "Data successfully changed.");
+						} else {
+							JOptionPane.showMessageDialog(null, "Please fill all fields.");
+						}
+					} else if (txtType.isEnabled() == true) {
+						txtType.setEnabled(true);
+						if (!ID.isEmpty() || !type.isEmpty()) {
+							metodo.UpdateProductType(ID, type);
+							JOptionPane.showMessageDialog(null, "Data successfully changed.");
+						} else {
+							JOptionPane.showMessageDialog(null, "Please fill all fields.");
+						}
+					} else if (txtPrice.isEnabled() == true) {
+						txtPrice.setEnabled(true);
+						if (!ID.isEmpty() || !price.isEmpty()) {
+							metodo.UpdateProductPrice(ID, price);
+							JOptionPane.showMessageDialog(null, "Data successfully changed.");
+						} else {
+							JOptionPane.showMessageDialog(null, "Please fill all fields.");
+						}
+					} else if (cbbEdit.equals(" All")) {
+						txtName.setEnabled(true);
+						txtType.setEnabled(true);
+						txtPrice.setEnabled(true);
+						if (!ID.isEmpty() || !name.isEmpty() || !type.isEmpty() || !price.isEmpty()) {
+							metodo.UpdateProductAll(ID, name, type, price);
+							JOptionPane.showMessageDialog(null, "Data successfully changed.");
+						} else {
+							JOptionPane.showMessageDialog(null, "Please fill all fields.");
+						}
+					}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 		
 		if (event.equals(btnCancel) ) {

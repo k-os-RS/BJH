@@ -1,6 +1,7 @@
 package ventanas;
 
 import gestion_db.metodos_db;
+import clases.comprobaciones;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,12 +10,14 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class modify_employee extends JFrame implements ActionListener {
 
-	private JLabel lblBjh, lblSelect, lblDNI, lblName, lblLastnames, lblAddress, lblEmail, lblUsername, lblPassword, lblFooter, lblFondo;
+	private JLabel lblBjh, lblSelect, lblDNI, lblName, lblLastnames, lblAddress, lblEmail, lblUsername, lblPassword, lblFooter, lblFondo,alerta;
 	private JTextField txtDNI, txtName, txtLastnames, txtAddress, txtEmail, txtUsername;
 	private JButton btnChangeData, btnCancel;
 	private JPasswordField txtPassword;
+	private String dni,name,last_names,address,email,username,password;
 	metodos_db metodo = new metodos_db();
 	private JComboBox<String> cbbEdit;
+	comprobaciones comprob = new comprobaciones();
 
 	public modify_employee() {
 		//Frame
@@ -59,6 +62,8 @@ public class modify_employee extends JFrame implements ActionListener {
 		cbbEdit.addItem(" Password");
 		cbbEdit.addItem(" All");
 		add(cbbEdit);
+		cbbEdit.addActionListener(this);
+
 		
 		lblDNI = new JLabel("DNI: ");
 		lblDNI.setFont(scroll);
@@ -165,7 +170,6 @@ public class modify_employee extends JFrame implements ActionListener {
 		txtPassword.setBorder(null);
 		txtPassword.setBounds(410, 260, 110, 30);
 		txtPassword.setEnabled(false);
-		txtPassword.setEchoChar('⬛');
 		txtPassword.setForeground(new Color(54, 54, 54));
 		txtPassword.setBackground(new Color (224, 224, 224));
 		txtPassword.setHorizontalAlignment(SwingConstants.CENTER);
@@ -189,7 +193,14 @@ public class modify_employee extends JFrame implements ActionListener {
 		btnCancel.setBackground(new Color(246, 190, 82));
 		add(btnCancel);
 		
-		lblFooter = new JLabel("© 2020 BJH Anime Store | All rights reserved");
+		alerta = new JLabel("F\nasdasdasdasdasd");
+		alerta.setVisible(false);
+		alerta.setFont(text_message);
+		alerta.setBounds(170, 420, 115, 30);
+		alerta.setForeground(new Color(246, 190, 82));
+		add(alerta);
+		
+		lblFooter = new JLabel("Â© 2020 BJH Anime Store | All rights reserved");
 		lblFooter.setFont(text_message);
 		lblFooter.setBounds(250, 480, 385, 30);
 		lblFooter.setForeground(new Color(246, 190, 82));
@@ -205,12 +216,271 @@ public class modify_employee extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object event = e.getSource();
-		
-		if (event.equals(btnChangeData) ) {
-			changepass FrameChangePass = new changepass();
-			FrameChangePass.setVisible(true);
-			this.setVisible(false);
+		/*-- Acciones para el combobox --*/
+		if (event.equals(cbbEdit)) {
 			
+			String text = cbbEdit.getSelectedItem().toString();
+			
+			if (text == " Name") {
+				
+				lblName.setEnabled(true);
+				lblLastnames.setEnabled(false);
+				lblAddress.setEnabled(false);
+				lblEmail.setEnabled(false);
+				lblUsername.setEnabled(false);
+				lblPassword.setEnabled(false);
+				txtName.setEnabled(true);
+				txtLastnames.setEnabled(false);
+				txtAddress.setEnabled(false);
+				txtEmail.setEnabled(false);
+				txtUsername.setEnabled(false);
+				txtPassword.setEnabled(false);
+
+			}
+			else if (text == " Last names") {
+				
+				lblLastnames.setEnabled(true);
+				lblName.setEnabled(false);
+				lblAddress.setEnabled(false);
+				lblEmail.setEnabled(false);
+				lblUsername.setEnabled(false);
+				lblPassword.setEnabled(false);
+				txtName.setEnabled(false);
+				txtLastnames.setEnabled(true);
+				txtAddress.setEnabled(false);
+				txtEmail.setEnabled(false);
+				txtUsername.setEnabled(false);
+				txtPassword.setEnabled(false);
+			}
+			else if (text == " Address") {
+				
+				lblAddress.setEnabled(true);
+				lblName.setEnabled(false);
+				lblLastnames.setEnabled(false);
+				lblEmail.setEnabled(false);
+				lblUsername.setEnabled(false);
+				lblPassword.setEnabled(false);
+				txtName.setEnabled(false);
+				txtLastnames.setEnabled(false);
+				txtAddress.setEnabled(true);
+				txtEmail.setEnabled(false);
+				txtUsername.setEnabled(false);
+				txtPassword.setEnabled(false);
+			}
+			else if (text == " Email") {
+				
+				lblEmail.setEnabled(true);
+				lblName.setEnabled(false);
+				lblLastnames.setEnabled(false);
+				lblAddress.setEnabled(false);
+				lblUsername.setEnabled(false);
+				lblPassword.setEnabled(false);
+				txtName.setEnabled(false);
+				txtLastnames.setEnabled(false);
+				txtAddress.setEnabled(false);
+				txtEmail.setEnabled(true);
+				txtUsername.setEnabled(false);
+				txtPassword.setEnabled(false);
+			}
+			else if (text == " Username") {
+				
+				lblUsername.setEnabled(true);
+				lblName.setEnabled(false);
+				lblLastnames.setEnabled(false);
+				lblAddress.setEnabled(false);
+				lblEmail.setEnabled(false);
+				lblPassword.setEnabled(false);
+				txtName.setEnabled(false);
+				txtLastnames.setEnabled(false);
+				txtAddress.setEnabled(false);
+				txtEmail.setEnabled(false);
+				txtUsername.setEnabled(true);
+				txtPassword.setEnabled(false);
+			}
+			else if (text == " Password") {
+				lblPassword.setEnabled(true);
+				lblName.setEnabled(false);
+				lblLastnames.setEnabled(false);
+				lblAddress.setEnabled(false);
+				lblEmail.setEnabled(false);
+				lblUsername.setEnabled(false);
+				txtName.setEnabled(false);
+				txtLastnames.setEnabled(false);
+				txtAddress.setEnabled(false);
+				txtEmail.setEnabled(false);
+				txtUsername.setEnabled(false);
+				txtPassword.setEnabled(true);
+			}
+			else if (text == " All") {
+				
+				lblName.setEnabled(true);
+				lblLastnames.setEnabled(true);
+				lblAddress.setEnabled(true);
+				lblEmail.setEnabled(true);
+				lblUsername.setEnabled(true);
+				lblPassword.setEnabled(true);
+				txtName.setEnabled(true);
+				txtLastnames.setEnabled(true);
+				txtAddress.setEnabled(true);
+				txtEmail.setEnabled(true);
+				txtUsername.setEnabled(true);
+				txtPassword.setEnabled(true);
+			}
+		}
+		if (event.equals(btnChangeData) ) {
+			try {
+				
+			char[] ArrayPass = txtPassword.getPassword();
+			dni = txtDNI.getText().trim();
+			name = txtName.getText().trim();
+			last_names = txtLastnames.getText().trim();
+			address = txtAddress.getText().trim();
+			email = txtEmail.getText().trim();
+			username = txtUsername.getText().trim();
+			password = new String(ArrayPass);
+
+				if (!txtDNI.getText().isEmpty()) {
+					if (comprob.isDNI(dni)) {
+						if(metodo.EmployeeExist(dni)) {
+							if (txtName.isEnabled() == true && txtLastnames.isEnabled() == true && txtAddress.isEnabled() == true && txtEmail.isEnabled() == true && txtUsername.isEnabled() == true && txtPassword.isEnabled() == true) {
+								if (txtName.getText().isEmpty() || txtLastnames.getText().isEmpty() || txtAddress.getText().isEmpty() || txtEmail.getText().isEmpty() || txtUsername.getText().isEmpty() || password.isEmpty()) {
+									JOptionPane.showMessageDialog(null, "if you don't introduce anything, you don't change anything.");
+								}
+								else if (!comprob.isEmail(email)) {
+									JOptionPane.showMessageDialog(null, "Fix the email.");
+									alerta.setVisible(true);
+								}
+								else if (password.length() >= 6) {
+									JOptionPane.showMessageDialog(null, "The password must be more than 6 characters.");
+								}
+								else {
+									if (metodo.UpdateEmployee(dni, name, last_names, address, email, username, password)) {
+										JOptionPane.showMessageDialog(null,"Data successfully changed.");
+									}
+								}
+							}
+							else if (txtName.isEnabled() == true) {
+
+								last_names = "0";
+								address = "0";
+								email = "0";
+								username = "0";
+								password = "0";
+								if (txtName.getText().isEmpty()) {
+									JOptionPane.showMessageDialog(null, "if you don't introduce anything, you don't change anything.");
+									
+								}
+								else {
+									if (metodo.UpdateEmployee(dni, name, last_names, address, email, username, password)) {
+										JOptionPane.showMessageDialog(null,"Data successfully changed.");
+									}
+								}
+							}
+							else if (txtLastnames.isEnabled() == true) {
+								
+								name = "0";
+								address = "0";
+								email = "0";
+								username = "0";
+								password = "0";
+								if (txtLastnames.getText().isEmpty()) {
+									JOptionPane.showMessageDialog(null, "if you don't introduce anything, you don't change anything.");
+									
+								}
+								else {
+									if (metodo.UpdateEmployee(dni, name, last_names, address, email, username, password)) {
+										JOptionPane.showMessageDialog(null,"Data successfully changed.");
+									}
+								}
+							}
+							else if (txtAddress.isEnabled() == true) {
+								
+								name = "0";
+								last_names = "0";
+								email = "0";
+								username = "0";
+								password = "0";
+								if (txtAddress.getText().isEmpty()) {
+									JOptionPane.showMessageDialog(null, "if you don't introduce anything, you don't change anything.");
+									
+								}
+								else {
+									if (metodo.UpdateEmployee(dni, name, last_names, address, email, username, password)) {
+										JOptionPane.showMessageDialog(null,"Data successfully changed.");
+									}
+								}
+							}
+							else if (txtEmail.isEnabled() == true) {
+								
+								name = "0";
+								last_names = "0";
+								address = "0";
+								username = "0";
+								password = "0";
+								if (txtEmail.getText().isEmpty()) {
+									JOptionPane.showMessageDialog(null, "if you don't introduce anything, you don't change anything.");
+									
+								}
+								else {
+									if (!comprob.isEmail(email)) {
+										JOptionPane.showMessageDialog(null, "Fix the email.");
+									}
+									else {
+										if (metodo.UpdateEmployee(dni, name, last_names, address, email, username, password)) {
+											JOptionPane.showMessageDialog(null,"Data successfully changed.");
+										}
+									}
+								}
+							}
+							else if (txtUsername.isEnabled() == true) {
+								
+								name = "0";
+								last_names = "0";
+								address = "0";
+								email = "0";
+								password = "0";
+								if (txtUsername.getText().isEmpty()) {
+									JOptionPane.showMessageDialog(null, "if you don't introduce anything, you don't change anything.");
+									
+								}
+								else {
+									if (metodo.UpdateEmployee(dni, name, last_names, address, email, username, password)) {
+										JOptionPane.showMessageDialog(null,"Data successfully changed.");
+									}
+								}
+							}
+							else if (txtPassword.isEnabled() == true) {
+								
+								name = "0";
+								last_names = "0";
+								address = "0";
+								email = "0";
+								username = "0";
+								if (password.isEmpty()) {
+									JOptionPane.showMessageDialog(null, "if you don't introduce anything, you don't change anything.");
+									
+								}else {
+									if (password.length() >= 6) {
+										JOptionPane.showMessageDialog(null, "The password must be more than 6 characters.");
+									}else {
+										if (metodo.UpdateEmployee(dni, name, last_names, address, email, username, password)) {
+											JOptionPane.showMessageDialog(null,"Data successfully changed.");
+										}
+									}
+								}
+							}
+						}
+						else {
+							JOptionPane.showMessageDialog(null,"that person is not an employee.");
+						}
+					}
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "If you don't enter your DNI you can't change anything.");
+				}
+			}  catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 		
 		if (event.equals(btnCancel) ) {

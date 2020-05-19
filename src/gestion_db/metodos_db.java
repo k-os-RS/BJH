@@ -619,5 +619,197 @@ public class metodos_db {
 		return verify;
 
 	}
+	public boolean UpdateEmployee (String dni, String name, String last_names, String address, String email, String username, String password) throws SQLException {
+		
+		boolean verify = false;
+		int confirm = 0;
+		connect = connecting.getConexion();
+		String sql = "UPDATE persona SET name = '"+name+"' ,last_names = '"+last_names+"' ,address = '"+address+"',email = '"+email+"',username = '"+username+"',password = '"+password+"' WHERE DNI = '"+dni+"'";
+		
+		if (address == "0" && last_names == "0" && email == "0" && username == "0" && password == "0") {
+			sql = "UPDATE persona SET name = '"+name+"' WHERE DNI = '"+dni+"'";
+			try {
+				command = (Statement) connect.createStatement();
+				confirm = command.executeUpdate(sql);
+				
+				if (confirm == 1) {
+					verify = true;
+				}
+				command.close();
+				connect.close();
+		
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		else if (name == "0" && address == "0" && email == "0" && username == "0" && password == "0") {
+			sql = "UPDATE persona SET last_names = '"+last_names+"' WHERE DNI = '"+dni+"'";
+			try {
+				connect = connecting.getConexion();
+				command = (Statement) connect.createStatement();
+				confirm = command.executeUpdate(sql);
+				
+				if (confirm == 1) {
+					verify = true;
+				}
+				command.close();
+				connect.close();
+		
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		else if (name == "0" && last_names == "0" && email == "0" && username == "0" && password == "0") {
+			sql = "UPDATE persona SET address = '"+address+"' WHERE DNI = '"+dni+"'";
+			try {
+				connect = connecting.getConexion();
+				command = (Statement) connect.createStatement();
+				confirm = command.executeUpdate(sql);
+				
+				if (confirm == 1) {
+					verify = true;
+				}
+				command.close();
+				connect.close();
+		
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		else if (name == "0" && last_names == "0" &&  address == "0" && username == "0" && password == "0") {
+			sql = "UPDATE persona SET email = '"+email+"' WHERE DNI = '"+dni+"'";
+			try {
+				connect = connecting.getConexion();
+				command = (Statement) connect.createStatement();
+				confirm = command.executeUpdate(sql);
+				
+				if (confirm == 1) {
+					verify = true;
+				}
+				command.close();
+				connect.close();
+		
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		else if (name == "0" && last_names == "0" && address == "0" && password == "0" && email == "0") {
+			sql = "UPDATE persona SET username = '"+username+"' WHERE DNI = '"+dni+"'";
+			try {
+				connect = connecting.getConexion();
+				command = (Statement) connect.createStatement();
+				confirm = command.executeUpdate(sql);
+				
+				if (confirm == 1) {
+					verify = true;
+				}
+				command.close();
+				connect.close();
+		
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		else if (name == "0" && last_names == "0" && address == "0" && username == "0" && email == "0" ) {
+			sql = "UPDATE persona SET password = '"+password+"' WHERE DNI = '"+dni+"'";
+			try {
+				command = (Statement) connect.createStatement();
+				confirm = command.executeUpdate(sql);
+				
+				if (confirm == 1) {
+					verify = true;
+				}
+				command.close();
+				connect.close();
+		
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		else {
+			try {
+				command = (Statement) connect.createStatement();
+				confirm = command.executeUpdate(sql);
+				
+				if (confirm == 1) {
+					verify = true;
+				}
+				command.close();
+				connect.close();
+		
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return verify;
+		
+	}
+	public void UpdateProductAll (String id, String name, String type, String price) throws SQLException {
+		int id_tipo_aux = ProductType(type);
+		connect = connecting.getConexion();
+		String sql = "UPDATE producto SET id_tipo_aux='"+id_tipo_aux+"', name='"+name+"', price='"+price+"' WHERE id_producto='"+id+"'";
+		
+		try {
+			command = (Statement) connect.createStatement();
+			command.executeUpdate(sql);
+
+			command.close();
+			connect.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	public void UpdateProductType (String id, String type) throws SQLException {
+		int id_tipo_aux = ProductType(type);
+		connect = connecting.getConexion();
+		String sql = "UPDATE producto SET id_tipo_aux='"+id_tipo_aux+"' WHERE id_producto='"+id+"'";
+		
+		try {
+			command = (Statement) connect.createStatement();
+			command.executeUpdate(sql);
+
+			command.close();
+			connect.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	public void UpdateProductName (String id, String name) throws SQLException {
+		connect = connecting.getConexion();
+		String sql = "UPDATE producto SET name='"+name+"' WHERE id_producto='"+id+"'";
+		
+		try {
+			command = (Statement) connect.createStatement();
+			command.executeUpdate(sql);
+
+			command.close();
+			connect.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	public void UpdateProductPrice (String id, String price) throws SQLException {
+		connect = connecting.getConexion();
+		String sql = "UPDATE producto SET price='"+price+"' WHERE id_producto='"+id+"'";
+		
+		try {
+			command = (Statement) connect.createStatement();
+			command.executeUpdate(sql);
+
+			command.close();
+			connect.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 }
