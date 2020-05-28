@@ -8,16 +8,18 @@
     <body>
         <form name="formulario" action="php/conex.php" method="POST">
             <div class="container">
-                <div class="container-control">
+                <div class="container-control" id="cont">
                     <div class="head">
                         <h2>BJH</h2>
                     </div>
                     <fieldset class="box">
                         <h1>Inicio</h1>
                         <h3>Usuario<span>*</span></h3>
-                        <input type="text" name="usuario" id="usuario" value="" class="texto">
+                        <input type="text" name="usuario" id="usuario" value="" class="texto" oninput="invisible()">
+                        <p id="usuarioE">error</p>
                         <h3>Contraseña<span>*</span></h3>
-                        <input type="password" name="contrasena" id="contrasena" value="" class="texto">
+                        <input type="password" name="contrasena" id="contrasena" value="" class="texto" oninput="invisible()">
+                        <p id="contrasenaE">error</p>
                         <hr>
                         <div class="button">
                             <input type="submit" name="evaluar" value="Entrar" class="boton" onfocus="registro()">

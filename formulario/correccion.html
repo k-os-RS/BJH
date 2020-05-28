@@ -15,15 +15,20 @@
                     <fieldset class="box2">
                         <div >
                             <h3>Nombre<span>*</span></h3>
-                            <input type="text" id="nombre" name="nombre" class="texto">
+                            <input type="text" id="nombre" name="nombre" class="texto" oninput="invisible()">
+                            <p id="nombreE">error</p>
                             <h3>Apellidos<span>*</span></h3>
-                            <input type="text" id="apellidos" name="apellidos" class="texto">
+                            <input type="text" id="apellidos" name="apellidos" class="texto" oninput="invisible()">
+                            <p id="apellidoE">error</p>
                             <h3>Dni<span>*</span></h3>
-                            <input type="text" id="dni" name="dni" class="texto" maxlength="9">
+                            <input type="text" id="dni" name="dni" class="texto" maxlength="9" oninput="invisible()">
+                            <p id="dniE">error</p>
                             <h3>Dirección<span>*</span></h3>
-                            <input type="text" id="direccion" name="direccion" class="texto">
+                            <input type="text" id="direccion" name="direccion" class="texto" oninput="invisible()">
+                            <p id="direccionE">error</p>
                             <h3>Usuario<span>*</span></h3>
-                            <input type="text" id="usuario" name="usuario" class="texto">
+                            <input type="text" id="usuario" name="usuario" class="texto" oninput="invisible()">
+                            <p id="usuarioE">error</p>
                         </div>
                         <hr>
                         <div class="button">

@@ -16,28 +16,36 @@
                         <div id="uno">
                             <h1>Crear una cuenta</h1>
                             <h3>Email<span>*</span></h3>
-                            <input type="text" id="email" name="email" class="texto">
+                            <input type="text" id="email" name="email" class="texto" oninput="invisible()">
+                            <p id="emailE">error</p>
                             <h3>Contraseña<span>*</span></h3>
-                            <input type="text" id="contrasena" value="" name="contrasena" class="texto">
+                            <input type="password" id="contrasena" value="" name="contrasena" class="texto" oninput="invisible()">
+                            <p id="contrasenaE">error</p>
                             <h3>Confirma Contraseña<span>*</span></h3>
-                            <input type="text" id="comprobar" value="" name="comprobar" class="texto">
+                            <input type="password" id="comprobar" value="" name="comprobar" class="texto" oninput="invisible()">
+                            <p id="compruebaE">error</p>
                         </div>
                         <div id="dos">
                             <h3>Nombre<span>*</span></h3>
-                            <input type="text" id="nombre" name="nombre" class="texto">
+                            <input type="text" id="nombre" name="nombre" class="texto" oninput="invisible2()">
+                            <p id="nombreE">error</p>
                             <h3>Apellidos<span>*</span></h3>
-                            <input type="text" id="apellidos" name="apellidos" class="texto">
+                            <input type="text" id="apellidos" name="apellidos" class="texto" oninput="invisible2()">
+                            <p id="apellidoE">error</p>
                             <h3>Dni<span>*</span></h3>
-                            <input type="text" id="dni" name="dni" class="texto" maxlength="9">
+                            <input type="text" id="dni" name="dni" class="texto" maxlength="9" oninput="invisible2()">
+                            <p id="dniE">error</p>
                             <h3>Dirección<span>*</span></h3>
-                            <input type="text" id="direccion" name="direccion" class="texto">
+                            <input type="text" id="direccion" name="direccion" class="texto" oninput="invisible2()">
+                            <p id="direccionE">error</p>
                             <h3>Usuario<span>*</span></h3>
-                            <input type="text" id="usuario" name="usuario" class="texto">
+                            <input type="text" id="usuario" name="usuario" class="texto" oninput="invisible2()">
+                            <p id="usuarioE">error</p>
                         </div>
                         <hr>
                         <div class="button">
                             <input type="button" id="siguiente" value="Siguiente" class="boton" onclick="return validar()" onfocus="return validar()"> 
-                            <input type="submit" name="registro" value="Enviar" id="registro" onclick="return registros()" onfocus="return registro()">
+                            <input type="submit" name="registro" value="Enviar" id="registro" onclick="return insertar()" onfocus="return insertar()">
                             <hr id="Keh">
                             <a href="log.html" >
                                 <input class="nuevo" type="button" value="Ya tengo cuenta" id="cuenta">

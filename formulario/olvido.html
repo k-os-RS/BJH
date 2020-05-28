@@ -16,15 +16,18 @@
                         <div>
                             <h1>Recuperar cuenta</h1>
                             <h3>Email<span>*</span></h3>
-                            <input type="text" name="email" id="email" class="texto">
+                            <input type="text" name="email" id="email" class="texto" oninput="invisible()">
+                            <p id="emailE">error</p>
                             <h3>Usuario<span>*</span></h3>
-                            <input type="text" name="usuario" id="usuario" class="texto">
+                            <input type="text" name="usuario" id="usuario" class="texto" oninput="invisible()">
+                            <p id="usuarioE">error</p>
                             <h3>Dni<span>*</span></h3>
-                            <input type="text" name="dni" id="dni" class="texto" maxlength="9">
+                            <input type="text" name="dni" id="dni" class="texto" maxlength="9" oninput="invisible()">
+                            <p id="dniE">error</p>
                         </div>
                         <hr>
                         <div class="button">
-                            <input type="submit" id="siguiente" value="Recuperar" class="boton" onclick="recupera()" onfocus="recupera()"> 
+                            <input type="submit" id="siguiente" value="Recuperar" class="boton" onclick="return recupera()" onfocus="return recupera()"> 
                             <hr id="Keh">
                             <a href="log.html" >
                                 <input class="nuevo" type="button" value="Iniciar sesión" id="cuenta">

@@ -1,5 +1,58 @@
-/*-- Facilitamos la introduccionde datos --*/
-formulario.email.focus();
+window.onload=iniciar();
+/*-- Al iniciar tiene que señalar el email y ocultar error --*/
+function iniciar(){
+    formulario.email.focus();
+    document.getElementById("emailE").style.display='none';
+    document.getElementById("contrasenaE").style.display='none';
+    document.getElementById("compruebaE").style.display='none';
+    document.getElementById("nombreE").style.display='none';
+    document.getElementById("apellidoE").style.display='none';
+    document.getElementById("dniE").style.display='none';
+    document.getElementById("direccionE").style.display='none';
+    document.getElementById("usuarioE").style.display='none';
+    /*-- responsive --*/
+    if (window.innerWidth > 1800) {
+        document.getElementById("cont").style.height = '570px';
+    }
+}
+/*-- Vuelve invisible el error cuando se solventa --*/
+function invisible (){
+    if (document.getElementById("emailE").style.display='block') {
+        document.getElementById("emailE").style.display='none';
+        document.getElementById("cont").style.height = '430px';
+    }
+    if (document.getElementById("contrasenaE").style.display='block') {
+        document.getElementById("contrasenaE").style.display='none';
+        document.getElementById("cont").style.height = '430px';
+    }
+    if (document.getElementById("compruebaE").style.display='block') {
+        document.getElementById("compruebaE").style.display='none';
+        document.getElementById("cont").style.height = '430px';
+    }
+}
+    /*-- Parte 2 --*/
+function invisible2 () {
+    if (document.getElementById("nombreE").style.display='block') {
+        document.getElementById("nombreE").style.display='none';
+        document.getElementById("cont").style.height = '450px';
+    }
+    if (document.getElementById("apellidoE").style.display='block') {
+        document.getElementById("apellidoE").style.display='none';
+        document.getElementById("cont").style.height = '450px';
+    }
+    if (document.getElementById("dniE").style.display='block') {
+        document.getElementById("dniE").style.display='none';
+        document.getElementById("cont").style.height = '450px';
+    }
+    if (document.getElementById("direccionE").style.display='block') {
+        document.getElementById("direccionE").style.display='none';
+        document.getElementById("cont").style.height = '450px';
+    }
+    if (document.getElementById("usuarioE").style.display='block') {
+        document.getElementById("usuarioE").style.display='none';
+        document.getElementById("cont").style.height = '450px';
+    }
+}
 /*-- Quitamos el boton de intro para que nose envie el formulario por error --*/
 window.addEventListener("keypress", function(event){
     if (event.keyCode == 13){
@@ -15,8 +68,8 @@ function pasa(){
     document.getElementById("siguiente").style.display = 'none';
     document.getElementById("Keh").style.display = 'none';
     document.getElementById("cont").style.height = '450px';
+    /*-- Responsive js --*/
     if (window.innerWidth > 1800) {
-        alert(window.innerWidth);
         document.getElementById("cont").style.height = '650px';
     }
     formulario.nombre.focus();
@@ -29,10 +82,37 @@ function validar() {
     contrasena = document.getElementById("contrasena").value;
     comprueba = document.getElementById("comprobar").value;
     expresion = /\w+@+\w+\.+[a-z]/;
-    /*-- Comprueba que el email y la contraseña son escritos --*/
-    if( email ===""  || contrasena ==="") {
+    /*-- Comprueba que el email, la contraseña y la comprobacion estan escritas --*/
+    if( email ===""  && contrasena ==="" && comprueba === "") {
         alert('Todos los campos son obligatorios');
         document.getElementById("email").focus();
+        return false;
+    }
+    /*-- Comprueba que el email esta escrito --*/
+    else if(email ==="") {
+        document.getElementById("emailE").style.display='block';
+        document.getElementById("emailE").style.color='red';
+        document.getElementById("emailE").innerHTML = ("El email es obligatorio");
+        document.getElementById("email").focus();
+        document.getElementById("cont").style.height = '460px';
+        return false;
+    }
+    /*-- Comprueba que el contrasena esta escrito --*/
+    else if(contrasena ==="") {
+        document.getElementById("contrasenaE").style.display='block';
+        document.getElementById("contrasenaE").style.color='red';
+        document.getElementById("contrasenaE").innerHTML = ("La contraseña es obligatoria");
+        document.getElementById("cont").style.height = '460px';
+        document.getElementById("contrasena").focus();
+        return false;
+    }
+    /*-- Comprueba que el email esta escrito --*/
+    else if(comprueba ==="") {
+        document.getElementById("compruebaE").style.display='block';
+        document.getElementById("compruebaE").style.color='red';
+        document.getElementById("compruebaE").innerHTML = ("La comprobación es obligatoria");
+        document.getElementById("cont").style.height = '460px';
+        document.getElementById("comprobar").focus();
         return false;
     }
     /*-- Comprueba que el email no supera el limite de caracteres --*/
@@ -43,7 +123,10 @@ function validar() {
     }
     /*-- Comprueba que el email tenga un formato valido --*/
     else if(!expresion.test(email)) {
-        alert("Tu email no es valido, compruebalo");
+        document.getElementById("emailE").style.display='block';
+        document.getElementById("emailE").style.color='red';
+        document.getElementById("emailE").innerHTML = ("Tu email no es valido, compruebalo");
+        document.getElementById("cont").style.height = '460px';
         document.getElementById("email").focus();
         return false;
     }
@@ -61,7 +144,10 @@ function validar() {
     }
     /*-- Comprobar que la contraseña coincide con la otra --*/
     else if( contrasena != comprueba) {
-        alert('Las contraseñas no coinciden');
+        document.getElementById("compruebaE").style.display='block';
+        document.getElementById("compruebaE").style.color='red';
+        document.getElementById("compruebaE").innerHTML = ("Las contraseñas no coinciden");
+        document.getElementById("cont").style.height = '460px';
         document.getElementById("comprobar").focus();
         return false;
     }
@@ -71,7 +157,7 @@ function validar() {
     }
 }
 /*-- Validamos los datos de registro en la segunda pagina de index --*/
-function registro() {
+function insertar() {
     /*-- variables generales --*/
     var nombre,apellidos,direccion,dni,usuario;
     nombre = document.getElementById("nombre").value;
@@ -80,9 +166,49 @@ function registro() {
     direccion = document.getElementById("direccion").value;
     usuario = document.getElementById("usuario").value;
     /*-- Comprobamos que tenemos todos los campos rellenados --*/
-    if(nombre ==="" || apellidos ===""  || dni === "" || direccion ==="" || usuario ==="") {
+    if(nombre === "" && apellidos === ""  && dni === "" && direccion === "" && usuario === "") {
         alert('Todos los campos son obligatorios');
         document.getElementById("nombre").focus();
+        return false;
+    }
+    else if (nombre === "") {
+        document.getElementById("nombreE").style.display='block';
+        document.getElementById("nombreE").style.color='red';
+        document.getElementById("nombreE").innerHTML = ("Escribe tu nombre");
+        document.getElementById("cont").style.height = '480px';
+        document.getElementById("nombre").focus();
+        return false;
+    }
+    else if (apellidos === "") {
+        document.getElementById("apellidoE").style.display='block';
+        document.getElementById("apellidoE").style.color='red';
+        document.getElementById("apellidoE").innerHTML = ("Escribe tus apellidos");
+        document.getElementById("cont").style.height = '480px';
+        document.getElementById("napellidosombre").focus();
+        return false;
+    }
+    else if (dni === "") {
+        document.getElementById("dniE").style.display='block';
+        document.getElementById("dniE").style.color='red';
+        document.getElementById("dniE").innerHTML = ("Escribe tu dni");
+        document.getElementById("cont").style.height = '480px';
+        document.getElementById("dni").focus();
+        return false;
+    }
+    else if (direccion === "") {
+        document.getElementById("direccionE").style.display='block';
+        document.getElementById("direccionE").style.color='red';
+        document.getElementById("direccionE").innerHTML = ("Escribe tu direccion");
+        document.getElementById("cont").style.height = '480px';
+        document.getElementById("direccion").focus();
+        return false;
+    }
+    else if (usuario === "") {
+        document.getElementById("usuarioE").style.display='block';
+        document.getElementById("usuarioE").style.color='red';
+        document.getElementById("usuarioE").innerHTML = ("Escribe tu usuario");
+        document.getElementById("cont").style.height = '490px';
+        document.getElementById("usuario").focus();
         return false;
     }
     /*-- Comprobamos que el nombre no supere el limite establecido en la base de datos --*/
@@ -99,7 +225,10 @@ function registro() {
     }
     /*-- Comprobamos que el DNI llegue a los caracteres que debe tener --*/
     else if(dni.length < 9) {
-        alert("Tu DNI debe tener 8 numeros y una letra. \nNo llegaste a los 9 caracteres.");
+        document.getElementById("dniE").style.display='block';
+        document.getElementById("dniE").style.color='red';
+        document.getElementById("dniE").innerHTML = ("No llegaste a los 9 caracteres.");
+        document.getElementById("cont").style.height = '480px';
         document.getElementById("dni").focus();
         return false;
     }
@@ -108,8 +237,7 @@ function registro() {
         /*-- variables para el dni --*/
         var letraDni,numDni,operacion,charDni,caracter,i;
         i = 0;
-        numDni = dni.substring(0,8);
-        alert(numDni); 
+        numDni = dni.substring(0,8); 
         letraDni = dni.substring(8,9);
         operacion = numDni % 23;
         charDni = ["T","R","W","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E"];
@@ -120,14 +248,20 @@ function registro() {
             i++;
           } while (i < numDni.length && valido);
           if (!valido) {
-            alert("Introduzca su DNI con números");
-            document.getElementById("dni").value = "";
+            document.getElementById("dniE").style.display='block';
+            document.getElementById("dniE").style.color='red';
+            document.getElementById("dniE").innerHTML = ("Introduzca su DNI con números");
+            document.getElementById("cont").style.height = '480px';
             document.getElementById("dni").focus();
+            document.getElementById("dni").value = "";
             return false;
           }
         /*-- Comprobamos que la letra del dni sea la correcta --*/
-        if(charDni[operacion] != letraDni) {
-            alert('La letra de tu DNI es incorrecta compruebela')
+        if(charDni[operacion] != letraDni.toUpperCase()) {
+            document.getElementById("dniE").style.display='block';
+            document.getElementById("dniE").style.color='red';
+            document.getElementById("dniE").innerHTML = ('La letra de tu DNI es incorrecta compruebela');
+            document.getElementById("cont").style.height = '495px';
             document.getElementById("dni").focus();
             document.getElementById("dni").value = "";
             return false;
