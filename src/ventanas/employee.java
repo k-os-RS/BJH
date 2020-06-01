@@ -28,7 +28,7 @@ public class employee extends JFrame implements ActionListener {
 		setLayout(null);
 		setResizable(false);
 		setTitle("Employee Panel | "+username);
-		setBounds(0, 0, 640, 540);
+		setBounds(0, 0, 840, 640);
 		setLocationRelativeTo(null);
 		setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo_bjh.png")).getImage());
 		

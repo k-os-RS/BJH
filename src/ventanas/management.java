@@ -18,7 +18,7 @@ public class management extends JFrame implements ActionListener {
 		setLayout(null);
 		setResizable(false);
 		setTitle("Administration Panel | Admin");
-		setBounds(0, 0, 640, 540);
+		setBounds(0, 0, 840, 640);
 		setLocationRelativeTo(null);
 		setBackground(new Color(54, 54, 54));
 		setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo_bjh.png")).getImage());

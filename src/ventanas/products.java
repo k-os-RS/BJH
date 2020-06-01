@@ -159,7 +159,7 @@ public class products extends JFrame implements ActionListener {
 				
 				if (!name.isEmpty() && !type.isEmpty() && !price.isEmpty()) {
 					if (comprob.isNumberInt(price)) {
-						if (!metodo.ProductExist(name, type)) { 
+						if (!metodo.ProductExist(name, type)) {
 							if (price.length() > 0) {
 								metodo.addProduct(name, type, price, quantity);
 								lblPriceNumer.setVisible(false);

@@ -47,7 +47,6 @@ public class client_purchase extends JPanel implements ActionListener {
 		table.setFont(tabled);
 		table.setModel(modelo);
 		try {
-
 			result = metodo.ShowPurchases();
 			modelo.setRowCount(0);
 			while (result.next()) {
@@ -70,7 +69,7 @@ public class client_purchase extends JPanel implements ActionListener {
 		scrollpane = new JScrollPane(table);
 		scrollpane.setBounds(40, 110, 560, 250);
 		add(scrollpane);
-		
+
 		btnUpdateList = new JButton("Update list");
 		btnUpdateList.setBorder(null);
 		btnUpdateList.setFocusable(false);

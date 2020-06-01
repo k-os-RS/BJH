@@ -2,7 +2,7 @@ package gestion_db;
 
 import java.sql.*;
 
-import com.mysql.jdbc.Statement;
+//import com.mysql.jdbc.Statement;
 
 public class metodos_db {
 	
@@ -308,21 +308,16 @@ public class metodos_db {
 		return data;
 		
 	}
-	public boolean addProduct (String name, String type, String price, String quantity) throws SQLException {
+	public void addProduct (String name, String type, String price, String quantity) throws SQLException {
 		
-		boolean verify = false;
-		int confirm = 0;
 		int id_type = ProductType(type);
 		connect = connecting.getConexion();
 		String sql = "INSERT INTO producto (id_tipo_aux,name,quantity,price) values ('"+id_type+"','"+name+"','"+quantity+"','"+price+"')";
 		
 		try {
 			command = (Statement) connect.createStatement();
-			confirm = command.executeUpdate(sql);
-			
-			while (confirm == 1) {
-				verify = true;
-			}
+			command.executeUpdate(sql);
+
 			command.close();
 			connect.close();
 
@@ -330,7 +325,6 @@ public class metodos_db {
 			e.printStackTrace();
 		}
 		
-		return verify;
 		
 	}
 	public boolean addQuantity (String id_product, int quantity) throws SQLException {
@@ -593,10 +587,8 @@ public class metodos_db {
 		
 	}
 	
-	public boolean addPurchase (String username, String id_product, int quant_pro) throws SQLException {
+	public void addPurchase (String username, String id_product, int quant_pro) throws SQLException {
 		
-		boolean verify = false;
-		int confirm = 0;
 		String date = "NOW()", state = "Waiting";
 		int id_cliente = ClienteID(username);
 		connect = connecting.getConexion();
@@ -604,19 +596,13 @@ public class metodos_db {
 		
 		try {
 			command = (Statement) connect.createStatement();
-			confirm = command.executeUpdate(sql);
-			
-			while (confirm == 1) {
-				verify = true;
-			}
+			command.executeUpdate(sql);
 			command.close();
 			connect.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		return verify;
 
 	}
 	public boolean UpdateEmployee (String dni, String name, String last_names, String address, String email, String username, String password) throws SQLException {
