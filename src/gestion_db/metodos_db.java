@@ -12,7 +12,7 @@ public class metodos_db {
 	private ResultSet data;
 	
 	public boolean LogInCorrect (String username, String password) throws SQLException {
-		
+
 		boolean verify = false;
 		connect = connecting.getConexion();
 		String sql = "SELECT * FROM persona WHERE username='"+username+"' and password='"+password+"'";
@@ -28,7 +28,9 @@ public class metodos_db {
 			connect.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getStackTrace();
+		} catch (NullPointerException e) {
+			e.getStackTrace();
 		}
 		
 		return verify;
@@ -157,12 +159,12 @@ public class metodos_db {
 		return verify;
 		
 	}
-	public boolean PurchaseExist (String id_client, String id_producto) throws SQLException {
+	public boolean PurchaseExist (String id_client) throws SQLException {
 
 		boolean verify = false;
 		String state = "Waiting";
 		connect = connecting.getConexion();
-		String sql = "SELECT * FROM compra WHERE id_cliente_aux='"+id_client+"' and id_producto_aux='"+id_producto+"' and state='"+state+"'";
+		String sql = "SELECT * FROM compra WHERE code_purchase='"+id_client+"' and state='"+state+"'";
 		
 		try {
 			command = (Statement) connect.createStatement();
@@ -181,17 +183,15 @@ public class metodos_db {
 		return verify;
 		
 	}
-	public void PurchaseAcept (String id_client, String id_product, int quantity) throws SQLException {
+	public void PurchaseAccept (String id_client) throws SQLException {
 
 		connect = connecting.getConexion();
 		String state = "Completed";
-		String sql = "UPDATE producto SET quantity='"+quantity+"' WHERE producto.id_producto='"+id_product+"'";
-		String sql2 = "UPDATE compra SET state='"+state+"' WHERE compra.id_cliente_aux='"+id_client+"' and compra.id_producto_aux='"+id_product+"'";
+		String sql = "UPDATE compra SET state='"+state+"' WHERE compra.code_purchase='"+id_client+"'";
 		
 		try {
 			command = (Statement) connect.createStatement();
 			command.executeUpdate(sql);
-			command.executeUpdate(sql2);
 			
 			command.close();
 			connect.close();
@@ -502,6 +502,22 @@ public class metodos_db {
 		}
 		
 		return data;
+
+	}
+	public ResultSet ShowProduct (String id_product) throws SQLException {
+		
+		String sql = "SELECT * FROM producto WHERE id_producto='"+id_product+"'";
+		connect = connecting.getConexion();
+		
+		try {
+			command = (Statement) connect.createStatement();
+			data = command.executeQuery(sql);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return data;
 		
 	}
 
@@ -591,8 +607,9 @@ public class metodos_db {
 		
 		String date = "NOW()", state = "Waiting";
 		int id_cliente = ClienteID(username);
+		int code_purchase = (int)(Math.random()*9999+1);
 		connect = connecting.getConexion();
-		String sql = "INSERT INTO compra (id_cliente_aux,id_producto_aux,quantity_sold,date,state) values ('"+id_cliente+"','"+id_product+"','"+quant_pro+"',"+date+",'"+state+"')";
+		String sql = "INSERT INTO compra (id_cliente_aux,id_producto_aux,code_purchase,quantity_sold,date,state) values ('"+id_cliente+"','"+id_product+"','"+code_purchase+"','"+quant_pro+"',"+date+",'"+state+"')";
 		
 		try {
 			command = (Statement) connect.createStatement();

@@ -1,5 +1,6 @@
 package gestion_db;
 
+import errors.noconexion;
 import java.sql.*;
 
 public class conexion_db {
@@ -18,14 +19,16 @@ public class conexion_db {
 			
 		} catch (ClassNotFoundException e) {
 			
-			System.out.println(" ERROR > El controlador no has sido encontrado.");
+			noconexion FrameNoConexion = new noconexion();
+			FrameNoConexion.setVisible(true);
 			e.getStackTrace();
 			
 		} catch (SQLException e) {
 			
-			System.out.println(" ERROR > La conexi\u00f3n no ha sido establecida");
+			noconexion FrameNoConexion = new noconexion();
+			FrameNoConexion.setVisible(true);
 			e.getStackTrace();
-			
+
 		}
 		return connect;
 	}

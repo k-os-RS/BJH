@@ -24,9 +24,8 @@ public class workers extends JFrame implements ActionListener {
 
 	public workers() {
 		//Frame
-		setLayout(null);
+		getContentPane().setLayout(null);
 		setResizable(false);
-		setUndecorated(true);
 		setTitle("Workers panel");
 		setBounds(0, 0, 840, 640);
 		setLocationRelativeTo(null);
@@ -42,41 +41,41 @@ public class workers extends JFrame implements ActionListener {
 		//Components
 		lblBjh = new JLabel("B J H");
 		lblBjh.setFont(title);
-		lblBjh.setBounds(236, 20, 170, 70);
+		lblBjh.setBounds(330, 27, 170, 70);
 		lblBjh.setForeground(new Color(246, 190, 82));
-		add(lblBjh);
+		getContentPane().add(lblBjh);
 		
 		lblDNI = new JLabel("DNI: ");
 		lblDNI.setFont(scroll);
-		lblDNI.setBounds(50, 130, 100, 30);
+		lblDNI.setBounds(100, 212, 100, 30);
 		lblDNI.setForeground(new Color(54, 54, 54));
-		add(lblDNI);
+		getContentPane().add(lblDNI);
 		
 		txtDNI = new JTextField();
 		txtDNI.setBorder(null);
-		txtDNI.setBounds(100, 180, 130, 30);
+		txtDNI.setBounds(100, 256, 130, 30);
 		txtDNI.setForeground(new Color(54, 54, 54));
 		txtDNI.setBackground(new Color (224, 224, 224));
 		txtDNI.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtDNI);
+		getContentPane().add(txtDNI);
 		
 		btnShowEmployee = new JButton("Show employee");
 		btnShowEmployee.setBorder(null);
 		btnShowEmployee.setFocusable(false);
 		btnShowEmployee.addActionListener(this);
-		btnShowEmployee.setBounds(50, 230, 180, 30);
+		btnShowEmployee.setBounds(50, 331, 180, 30);
 		btnShowEmployee.setForeground(new Color(54, 54, 54));
 		btnShowEmployee.setBackground(new Color(246, 190, 82));
-		add(btnShowEmployee);
+		getContentPane().add(btnShowEmployee);
 
 		btnShowAllEmployee = new JButton("Show all employees");
 		btnShowAllEmployee.setBorder(null);
 		btnShowAllEmployee.setFocusable(false);
 		btnShowAllEmployee.addActionListener(this);
-		btnShowAllEmployee.setBounds(50, 280, 180, 30);
+		btnShowAllEmployee.setBounds(50, 418, 180, 30);
 		btnShowAllEmployee.setForeground(new Color(54, 54, 54));
 		btnShowAllEmployee.setBackground(new Color(246, 190, 82));
-		add(btnShowAllEmployee);
+		getContentPane().add(btnShowAllEmployee);
 		
 		table = new JTable();
 		modelo.addColumn("DNI");
@@ -90,42 +89,42 @@ public class workers extends JFrame implements ActionListener {
 		table.setModel(modelo);
 		
 		scrollpane = new JScrollPane(table);
-		scrollpane.setBounds(250, 110, 385, 250);
-		add(scrollpane);
+		scrollpane.setBounds(255, 110, 540, 359);
+		getContentPane().add(scrollpane);
 		
 		lblDNIEmpty = new JLabel("Please fill in the DNI field.");
 		lblDNIEmpty.setFont(scroll);
 		lblDNIEmpty.setVisible(false);
-		lblDNIEmpty.setBounds(200, 380, 210, 30);
+		lblDNIEmpty.setBounds(331, 480, 210, 30);
 		lblDNIEmpty.setForeground(new Color(255, 0, 0));
-		add(lblDNIEmpty);
+		getContentPane().add(lblDNIEmpty);
 		
 		lblDNIExist = new JLabel("This DNI don't exists.");
 		lblDNIExist.setFont(scroll);
 		lblDNIExist.setVisible(false);
-		lblDNIExist.setBounds(220, 380, 210, 30);
+		lblDNIExist.setBounds(331, 480, 210, 30);
 		lblDNIExist.setForeground(new Color(255, 0, 0));
-		add(lblDNIExist);
+		getContentPane().add(lblDNIExist);
 		
 		btnCancel = new JButton("Close");
 		btnCancel.setBorder(null);
 		btnCancel.setFocusable(false);
 		btnCancel.addActionListener(this);
-		btnCancel.setBounds(230, 420, 130, 30);
+		btnCancel.setBounds(370, 521, 130, 30);
 		btnCancel.setForeground(new Color(54, 54, 54));
 		btnCancel.setBackground(new Color(246, 190, 82));
-		add(btnCancel);
+		getContentPane().add(btnCancel);
 
 		lblFooter = new JLabel("© 2020 BJH Anime Store | All rights reserved");
 		lblFooter.setFont(text_message);
-		lblFooter.setBounds(250, 480, 385, 30);
+		lblFooter.setBounds(455, 599, 385, 30);
 		lblFooter.setForeground(new Color(246, 190, 82));
-		add(lblFooter);
+		getContentPane().add(lblFooter);
 		
 		ImageIcon fondo = new ImageIcon(getClass().getResource("/imagenes/fondo_panel.png"));
 		lblFondo = new JLabel(fondo);
-		lblFondo.setBounds(0, 0, 640, 540);
-		add(lblFondo);
+		lblFondo.setBounds(0, 0, 840, 640);
+		getContentPane().add(lblFondo);
 		
 	}
 

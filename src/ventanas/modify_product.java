@@ -21,11 +21,11 @@ public class modify_product extends JFrame implements ActionListener {
 
 	public modify_product() {
 		//Frame
-		setLayout(null);
+		getContentPane().setLayout(null);
 		setResizable(false);
 		setUndecorated(true);
 		setTitle("Modidy product panel");
-		setBounds(0, 0, 640, 540);
+		setBounds(0, 0, 840, 640);
 		setLocationRelativeTo(null);
 		setBackground(new Color(54, 54, 54));
 		setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo_bjh.png")).getImage());
@@ -38,18 +38,18 @@ public class modify_product extends JFrame implements ActionListener {
 		//Components
 		lblBjh = new JLabel("B J H");
 		lblBjh.setFont(title);
-		lblBjh.setBounds(236, 20, 170, 70);
+		lblBjh.setBounds(359, 72, 170, 70);
 		lblBjh.setForeground(new Color(246, 190, 82));
-		add(lblBjh);
+		getContentPane().add(lblBjh);
 
 		lblSelect = new JLabel("Select to be modified");
 		lblSelect.setFont(scroll);
-		lblSelect.setBounds(230, 80, 170, 30);
+		lblSelect.setBounds(353, 132, 170, 30);
 		lblSelect.setForeground(new Color(54, 54, 54));
-		add(lblSelect);
+		getContentPane().add(lblSelect);
 
 		cbbEdit = new JComboBox<String>();
-		cbbEdit.setBounds(200, 120, 220, 25);
+		cbbEdit.setBounds(323, 172, 220, 25);
 		cbbEdit.setBackground(new Color(246, 190, 82));
 		cbbEdit.setFont(scroll);
 		cbbEdit.setForeground(new Color(54, 54, 54));
@@ -58,100 +58,99 @@ public class modify_product extends JFrame implements ActionListener {
 		cbbEdit.addItem(" Type");
 		cbbEdit.addItem(" Price");
 		cbbEdit.addItem(" All");
-		add(cbbEdit);
+		getContentPane().add(cbbEdit);
 		cbbEdit.addActionListener(this);
 
-		
-		lblId = new JLabel("ID Product: ");
+		lblId = new JLabel("Product code: ");
 		lblId.setFont(scroll);
-		lblId.setBounds(50, 160, 110, 30);
+		lblId.setBounds(173, 212, 110, 30);
 		lblId.setForeground(new Color(54, 54, 54));
-		add(lblId);
+		getContentPane().add(lblId);
 
 		txtID = new JTextField();
 		txtID.setBorder(null);
-		txtID.setBounds(170, 160, 110, 30);
+		txtID.setBounds(293, 212, 110, 30);
 		txtID.setForeground(new Color(54, 54, 54));
 		txtID.setBackground(new Color (224, 224, 224));
 		txtID.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtID);
+		getContentPane().add(txtID);
 		
 		lblName = new JLabel("Name: ");
 		lblName.setFont(scroll);
-		lblName.setBounds(310, 160, 110, 30);
+		lblName.setBounds(433, 212, 110, 30);
 		lblName.setEnabled(false);
 		lblName.setForeground(new Color(54, 54, 54));
-		add(lblName);
+		getContentPane().add(lblName);
 		
 		txtName = new JTextField();
 		txtName.setBorder(null);
-		txtName.setBounds(410, 160, 110, 30);
+		txtName.setBounds(533, 212, 110, 30);
 		txtName.setEnabled(false);
 		txtName.setForeground(new Color(54, 54, 54));
 		txtName.setBackground(new Color (224, 224, 224));
 		txtName.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtName);
+		getContentPane().add(txtName);
 		
 		lblType = new JLabel("Type: ");
 		lblType.setFont(scroll);
-		lblType.setBounds(310, 210, 110, 30);
+		lblType.setBounds(433, 262, 110, 30);
 		lblType.setEnabled(false);
 		lblType.setForeground(new Color(54, 54, 54));
-		add(lblType);
+		getContentPane().add(lblType);
 
 		txtType = new JTextField();
 		txtType.setBorder(null);
-		txtType.setBounds(410, 210, 110, 30);
+		txtType.setBounds(533, 262, 110, 30);
 		txtType.setEnabled(false);
 		txtType.setForeground(new Color(54, 54, 54));
 		txtType.setBackground(new Color (224, 224, 224));
 		txtType.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtType);
+		getContentPane().add(txtType);
 
 		lblPrice = new JLabel("Price: ");
 		lblPrice.setFont(scroll);
-		lblPrice.setBounds(310, 260, 110, 30);
+		lblPrice.setBounds(433, 312, 110, 30);
 		lblPrice.setEnabled(false);
 		lblPrice.setForeground(new Color(54, 54, 54));
-		add(lblPrice);
+		getContentPane().add(lblPrice);
 		
 		txtPrice = new JTextField();
 		txtPrice.setBorder(null);
-		txtPrice.setBounds(410, 260, 110, 30);
+		txtPrice.setBounds(533, 312, 110, 30);
 		txtPrice.setEnabled(false);
 		txtPrice.setForeground(new Color(54, 54, 54));
 		txtPrice.setBackground(new Color (224, 224, 224));
 		txtPrice.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtPrice);
+		getContentPane().add(txtPrice);
 		
 		btnChangeData = new JButton("Change Data");
 		btnChangeData.setBorder(null);
 		btnChangeData.setFocusable(false);
 		btnChangeData.addActionListener(this);
-		btnChangeData.setBounds(180, 420, 130, 30);
+		btnChangeData.setBounds(236, 517, 130, 30);
 		btnChangeData.setForeground(new Color(54, 54, 54));
 		btnChangeData.setBackground(new Color(246, 190, 82));
-		add(btnChangeData);
+		getContentPane().add(btnChangeData);
 		
 		btnCancel = new JButton("Cancel");
 		btnCancel.setBorder(null);
 		btnCancel.setFocusable(false);
 		btnCancel.addActionListener(this);
-		btnCancel.setBounds(320, 420, 130, 30);
+		btnCancel.setBounds(500, 517, 130, 30);
 		btnCancel.setForeground(new Color(54, 54, 54));
 		btnCancel.setBackground(new Color(246, 190, 82));
-		add(btnCancel);
+		getContentPane().add(btnCancel);
 		
 		lblFooter = new JLabel("Â© 2020 BJH Anime Store | All rights reserved");
 		lblFooter.setFont(text_message);
-		lblFooter.setBounds(250, 480, 385, 30);
+		lblFooter.setBounds(445, 599, 385, 30);
 		lblFooter.setForeground(new Color(246, 190, 82));
-		add(lblFooter);
+		getContentPane().add(lblFooter);
 		
 		ImageIcon fondo = new ImageIcon(getClass().getResource("/imagenes/fondo_panel.png"));
 		lblFondo = new JLabel(fondo);
-		lblFondo.setBounds(0, 0, 640, 540);
-		add(lblFondo);
+		lblFondo.setBounds(0, 0, 840, 640);
+		getContentPane().add(lblFondo);
 		
 	}
 	

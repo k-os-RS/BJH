@@ -22,11 +22,11 @@ public class hire extends JFrame implements ActionListener {
 	
 	public hire() {
 		//Frame
-		setLayout(null);
+		getContentPane().setLayout(null);
 		setResizable(false);
 		setUndecorated(true);
 		setTitle("Recruitment panel");
-		setBounds(0, 0, 640, 540);
+		setBounds(0, 0, 840, 640);
 		setLocationRelativeTo(null);
 		setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo_bjh.png")).getImage());
 		
@@ -38,173 +38,173 @@ public class hire extends JFrame implements ActionListener {
 		//Components
 		lblBjh = new JLabel("B J H");
 		lblBjh.setFont(title);
-		lblBjh.setBounds(236, 20, 170, 70);
+		lblBjh.setBounds(334, 42, 170, 70);
 		lblBjh.setForeground(new Color(246, 190, 82));
-		add(lblBjh);
+		getContentPane().add(lblBjh);
 		
 		lblDNI = new JLabel("DNI: ");
 		lblDNI.setFont(fields);
-		lblDNI.setBounds(50, 100, 110, 30);
+		lblDNI.setBounds(175, 155, 110, 30);
 		lblDNI.setForeground(new Color(54, 54, 54));
-		add(lblDNI);
+		getContentPane().add(lblDNI);
 		
 		txtDNI = new JTextField();
 		txtDNI.setBorder(null);
-		txtDNI.setBounds(170, 100, 110, 30);
+		txtDNI.setBounds(295, 155, 110, 30);
 		txtDNI.setForeground(new Color(54, 54, 54));
 		txtDNI.setBackground(new Color (224, 224, 224));
 		txtDNI.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtDNI);
+		getContentPane().add(txtDNI);
 		
 		lblName = new JLabel("Name: ");
 		lblName.setFont(fields);
-		lblName.setBounds(50, 160, 110, 30);
+		lblName.setBounds(175, 215, 110, 30);
 		lblName.setForeground(new Color(54, 54, 54));
-		add(lblName);
+		getContentPane().add(lblName);
 		
 		txtName = new JTextField();
 		txtName.setBorder(null);
-		txtName.setBounds(170, 160, 110, 30);
+		txtName.setBounds(295, 215, 110, 30);
 		txtName.setForeground(new Color(54, 54, 54));
 		txtName.setBackground(new Color (224, 224, 224));
 		txtName.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtName);
+		getContentPane().add(txtName);
 		
 		lblLastnames = new JLabel("Last names: ");
 		lblLastnames.setFont(fields);
-		lblLastnames.setBounds(50, 220, 110, 30);
+		lblLastnames.setBounds(175, 275, 110, 30);
 		lblLastnames.setForeground(new Color(54, 54, 54));
-		add(lblLastnames);
+		getContentPane().add(lblLastnames);
 		
 		txtLastnames = new JTextField();
 		txtLastnames.setBorder(null);
-		txtLastnames.setBounds(170, 220, 110, 30);
+		txtLastnames.setBounds(295, 275, 110, 30);
 		txtLastnames.setForeground(new Color(54, 54, 54));
 		txtLastnames.setBackground(new Color (224, 224, 224));
 		txtLastnames.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtLastnames);
+		getContentPane().add(txtLastnames);
 		
 		lblAddress = new JLabel("Address: ");
 		lblAddress.setFont(fields);
-		lblAddress.setBounds(50, 280, 110, 30);
+		lblAddress.setBounds(175, 335, 110, 30);
 		lblAddress.setForeground(new Color(54, 54, 54));
-		add(lblAddress);
+		getContentPane().add(lblAddress);
 
 		txtAddress = new JTextField();
 		txtAddress.setBorder(null);
-		txtAddress.setBounds(170, 280, 110, 30);
+		txtAddress.setBounds(295, 335, 110, 30);
 		txtAddress.setForeground(new Color(54, 54, 54));
 		txtAddress.setBackground(new Color (224, 224, 224));
 		txtAddress.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtAddress);
+		getContentPane().add(txtAddress);
 		
 		lblEmail = new JLabel("Email: ");
 		lblEmail.setFont(fields);
-		lblEmail.setBounds(310, 130, 110, 30);
+		lblEmail.setBounds(435, 185, 110, 30);
 		lblEmail.setForeground(new Color(54, 54, 54));
-		add(lblEmail);
+		getContentPane().add(lblEmail);
 		
 		txtEmail = new JTextField();
 		txtEmail.setBorder(null);
 		txtEmail.setText("@bjh.com");
-		txtEmail.setBounds(410, 130, 110, 30);
+		txtEmail.setBounds(535, 185, 110, 30);
 		txtEmail.setForeground(new Color(54, 54, 54));
 		txtEmail.setBackground(new Color (224, 224, 224));
 		txtEmail.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtEmail);
+		getContentPane().add(txtEmail);
 		
 		lblUsername = new JLabel("Username: ");
 		lblUsername.setFont(fields);
-		lblUsername.setBounds(310, 190, 110, 30);
+		lblUsername.setBounds(435, 245, 110, 30);
 		lblUsername.setForeground(new Color(54, 54, 54));
-		add(lblUsername);
+		getContentPane().add(lblUsername);
 		
 		txtUsername = new JTextField();
 		txtUsername.setBorder(null);
-		txtUsername.setBounds(410, 190, 110, 30);
+		txtUsername.setBounds(535, 245, 110, 30);
 		txtUsername.setForeground(new Color(54, 54, 54));
 		txtUsername.setBackground(new Color (224, 224, 224));
 		txtUsername.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtUsername);
+		getContentPane().add(txtUsername);
 		
 		lblPassword = new JLabel("Password: ");
 		lblPassword.setFont(fields);
-		lblPassword.setBounds(310, 250, 110, 30);
+		lblPassword.setBounds(435, 305, 110, 30);
 		lblPassword.setForeground(new Color(54, 54, 54));
-		add(lblPassword);
+		getContentPane().add(lblPassword);
 		
 		txtPassword = new JPasswordField();
 		txtPassword.setBorder(null);
 		txtPassword.setEchoChar('⬛');
-		txtPassword.setBounds(410, 250, 110, 30);
+		txtPassword.setBounds(535, 305, 110, 30);
 		txtPassword.setForeground(new Color(54, 54, 54));
 		txtPassword.setBackground(new Color (224, 224, 224));
 		txtPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtPassword);
+		getContentPane().add(txtPassword);
 		
 		lblNoDNI = new JLabel("The employee's DNI is incorrect.");
 		lblNoDNI.setFont(fields);
-		lblNoDNI.setBounds(180, 350, 350, 30);
+		lblNoDNI.setBounds(282, 466, 269, 30);
 		lblNoDNI.setForeground(new Color(255, 0, 0));
 		lblNoDNI.setVisible(false);
-		add(lblNoDNI);
+		getContentPane().add(lblNoDNI);
 		
 		lblNoEmail = new JLabel("The employee's email is incorrect.");
 		lblNoEmail.setFont(fields);
-		lblNoEmail.setBounds(180, 350, 350, 30);
+		lblNoEmail.setBounds(279, 466, 286, 30);
 		lblNoEmail.setForeground(new Color(255, 0, 0));
 		lblNoEmail.setVisible(false);
-		add(lblNoEmail);
+		getContentPane().add(lblNoEmail);
 		
 		lblNoPass = new JLabel("The password must be at least 6 chars.");
 		lblNoPass.setFont(fields);
-		lblNoPass.setBounds(150, 350, 350, 30);
+		lblNoPass.setBounds(279, 466, 322, 30);
 		lblNoPass.setForeground(new Color(255, 0, 0));
 		lblNoPass.setVisible(false);
-		add(lblNoPass);
+		getContentPane().add(lblNoPass);
 		
 		lblExist = new JLabel("There's already an employee with this DNI.");
 		lblExist.setFont(fields);
-		lblExist.setBounds(150, 350, 350, 30);
+		lblExist.setBounds(251, 466, 350, 30);
 		lblExist.setForeground(new Color(255, 0, 0));
 		lblExist.setVisible(false);
-		add(lblExist);
+		getContentPane().add(lblExist);
 		
 		lblHired = new JLabel("The employee has been successfully hired.");
 		lblHired.setFont(fields);
-		lblHired.setBounds(140, 350, 350, 30);
+		lblHired.setBounds(251, 466, 350, 30);
 		lblHired.setForeground(new Color(0, 255, 0));
 		lblHired.setVisible(false);
-		add(lblHired);
+		getContentPane().add(lblHired);
 		
 		btnSave = new JButton("Save employee");
 		btnSave.setBorder(null);
 		btnSave.setFocusable(false);
 		btnSave.addActionListener(this);
-		btnSave.setBounds(170, 420, 115, 30);
+		btnSave.setBounds(236, 507, 115, 30);
 		btnSave.setForeground(new Color(54, 54, 54));
 		btnSave.setBackground(new Color(246, 190, 82));
-		add(btnSave);
+		getContentPane().add(btnSave);
 		
 		btnCancel = new JButton("Cancel");
 		btnCancel.setBorder(null);
 		btnCancel.setFocusable(false);
 		btnCancel.addActionListener(this);
-		btnCancel.setBounds(310, 420, 115, 30);
+		btnCancel.setBounds(485, 507, 115, 30);
 		btnCancel.setForeground(new Color(54, 54, 54));
 		btnCancel.setBackground(new Color(246, 190, 82));
-		add(btnCancel);
+		getContentPane().add(btnCancel);
 		
 		lblFooter = new JLabel("© 2020 BJH Anime Store | All rights reserved");
 		lblFooter.setFont(text_message);
-		lblFooter.setBounds(250, 480, 385, 30);
+		lblFooter.setBounds(445, 599, 385, 30);
 		lblFooter.setForeground(new Color(246, 190, 82));
-		add(lblFooter);
+		getContentPane().add(lblFooter);
 		
 		ImageIcon fondo = new ImageIcon(getClass().getResource("/imagenes/fondo_panel.png"));
 		lblFondo = new JLabel(fondo);
-		lblFondo.setBounds(0, 0, 640, 540);
-		add(lblFondo);
+		lblFondo.setBounds(0, 0, 840, 640);
+		getContentPane().add(lblFondo);
 
 	}
 

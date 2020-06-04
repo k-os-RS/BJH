@@ -27,7 +27,7 @@ public class client_interface extends JPanel implements ActionListener {
 	public client_interface() {
 		//Frame
 		setLayout(null);
-		setBounds(0, 0, 640, 540);
+		setBounds(0, 0, 840, 640);
 		
 		//Fonts
 		Font title = new Font("Frank Ruehl CLM", 1, 62);
@@ -42,9 +42,9 @@ public class client_interface extends JPanel implements ActionListener {
 		lblBjh.setForeground(new Color(246, 190, 82));
 		add(lblBjh);
 
-		lblIDProduct = new JLabel("ID Product: ");
+		lblIDProduct = new JLabel("Product code: ");
 		lblIDProduct.setFont(scroll);
-		lblIDProduct.setBounds(50, 110, 100, 30);
+		lblIDProduct.setBounds(50, 110, 120, 30);
 		lblIDProduct.setForeground(new Color(54, 54, 54));
 		add(lblIDProduct);
 
@@ -74,7 +74,7 @@ public class client_interface extends JPanel implements ActionListener {
 		btnPurchase.setBorder(null);
 		btnPurchase.setFocusable(false);
 		btnPurchase.addActionListener(this);
-		btnPurchase.setBounds(50, 250, 180, 30);
+		btnPurchase.setBounds(50, 299, 180, 30);
 		btnPurchase.setForeground(new Color(54, 54, 54));
 		btnPurchase.setBackground(new Color(246, 190, 82));
 		add(btnPurchase);
@@ -83,7 +83,7 @@ public class client_interface extends JPanel implements ActionListener {
 		btnReserv.setBorder(null);
 		btnReserv.setFocusable(false);
 		btnReserv.addActionListener(this);
-		btnReserv.setBounds(50, 290, 180, 30);
+		btnReserv.setBounds(50, 358, 180, 30);
 		btnReserv.setForeground(new Color(54, 54, 54));
 		btnReserv.setBackground(new Color(246, 190, 82));
 		add(btnReserv);
@@ -92,13 +92,13 @@ public class client_interface extends JPanel implements ActionListener {
 		btnUpdateList.setBorder(null);
 		btnUpdateList.setFocusable(false);
 		btnUpdateList.addActionListener(this);
-		btnUpdateList.setBounds(50, 330, 180, 30);
+		btnUpdateList.setBounds(50, 412, 180, 30);
 		btnUpdateList.setForeground(new Color(54, 54, 54));
 		btnUpdateList.setBackground(new Color(246, 190, 82));
 		add(btnUpdateList);
 		
 		table = new JTable();
-		modelo.addColumn("ID");
+		modelo.addColumn("Product code");
 		modelo.addColumn("Name");
 		modelo.addColumn("Type");
 		modelo.addColumn("Quantity");
@@ -113,9 +113,9 @@ public class client_interface extends JPanel implements ActionListener {
 				result2 = metodo.ShowTypes(result.getInt(2));
 				data[0] = result.getString(1);
 				while (result2.next()) {
-					data[1] = result2.getString(2);
+					data[2] = result2.getString(2);
 				}
-				data[2] = result.getString(3);
+				data[1] = result.getString(3);
 				data[3] = result.getString(4);
 				data[4] = result.getString(5);
 				modelo.addRow(data);
@@ -126,34 +126,34 @@ public class client_interface extends JPanel implements ActionListener {
 		}
 
 		scrollpane = new JScrollPane(table);
-		scrollpane.setBounds(250, 110, 380, 250);
+		scrollpane.setBounds(250, 110, 550, 332);
 		add(scrollpane);
 		
 		lblEmpty = new JLabel("Please fill all fields.");
 		lblEmpty.setFont(scroll);
 		lblEmpty.setVisible(false);
-		lblEmpty.setBounds(220, 370, 260, 30);
+		lblEmpty.setBounds(330, 453, 159, 30);
 		lblEmpty.setForeground(new Color(255, 0, 0));
 		add(lblEmpty);
 		
 		lblNoQuantity = new JLabel("Insufficient quantity, needs to be reserved.");
 		lblNoQuantity.setFont(scroll);
 		lblNoQuantity.setVisible(false);
-		lblNoQuantity.setBounds(130, 370, 340, 30);
+		lblNoQuantity.setBounds(250, 453, 340, 30);
 		lblNoQuantity.setForeground(new Color(255, 0, 0));
 		add(lblNoQuantity);
 
 		lblIDExist = new JLabel("This ID Product don't exists.");
 		lblIDExist.setFont(scroll);
 		lblIDExist.setVisible(false);
-		lblIDExist.setBounds(190, 370, 340, 30);
+		lblIDExist.setBounds(314, 453, 230, 30);
 		lblIDExist.setForeground(new Color(255, 0, 0));
 		add(lblIDExist);
 		
 		lblSuccess = new JLabel("The purchase was successful.");
 		lblSuccess.setFont(scroll);
 		lblSuccess.setVisible(false);
-		lblSuccess.setBounds(190, 370, 340, 30);
+		lblSuccess.setBounds(314, 453, 250, 30);
 		lblSuccess.setForeground(new Color(0, 255, 0));
 		add(lblSuccess);
 		
@@ -161,20 +161,20 @@ public class client_interface extends JPanel implements ActionListener {
 		btnChangePass.setBorder(null);
 		btnChangePass.setFocusable(false);
 		btnChangePass.addActionListener(this);
-		btnChangePass.setBounds(170, 400, 120, 30);
+		btnChangePass.setBounds(260, 494, 120, 30);
 		btnChangePass.setForeground(new Color(54, 54, 54));
 		btnChangePass.setBackground(new Color(246, 190, 82));
 		add(btnChangePass);
 		
 		lblFooter = new JLabel("© 2020 BJH Anime Store | All rights reserved");
 		lblFooter.setFont(text_message);
-		lblFooter.setBounds(250, 450, 385, 30);
+		lblFooter.setBounds(445, 599, 385, 30);
 		lblFooter.setForeground(new Color(246, 190, 82));
 		add(lblFooter);
 		
 		ImageIcon fondo = new ImageIcon(getClass().getResource("/imagenes/fondo_panel.png"));
 		lblFondo = new JLabel(fondo);
-		lblFondo.setBounds(0, 0, 640, 540);
+		lblFondo.setBounds(0, 0, 840, 640);
 		add(lblFondo);
 		
 	}
@@ -224,7 +224,7 @@ public class client_interface extends JPanel implements ActionListener {
 				}
 				
 			} catch (Exception e2) {
-				e2.printStackTrace();
+				e2.getStackTrace();
 			}
 			
 		}
@@ -247,7 +247,7 @@ public class client_interface extends JPanel implements ActionListener {
 				}
 				
 			} catch (Exception e2) {
-				e2.printStackTrace();
+				e2.getStackTrace();
 			}
 			
 		}

@@ -22,15 +22,15 @@ public class management extends JFrame implements ActionListener {
 		setLocationRelativeTo(null);
 		setBackground(new Color(54, 54, 54));
 		setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo_bjh.png")).getImage());
-		
+
 		//Fonts
 		Font title = new Font("Frank Ruehl CLM", 1, 62);
 		Font text_message = new Font("Comic Sans MS", 3, 16);
-		
+
 		//Components
 		lblBjh = new JLabel("B J H");
 		lblBjh.setFont(title);
-		lblBjh.setBounds(236, 20, 170, 70);
+		lblBjh.setBounds(330, 40, 170, 70);
 		lblBjh.setForeground(new Color(246, 190, 82));
 		add(lblBjh);
 
@@ -38,7 +38,7 @@ public class management extends JFrame implements ActionListener {
 		btnHire.setBorder(null);
 		btnHire.setFocusable(false);
 		btnHire.addActionListener(this);
-		btnHire.setBounds(150, 150, 130, 30);
+		btnHire.setBounds(100, 140, 130, 30);
 		btnHire.setForeground(new Color(54, 54, 54));
 		btnHire.setBackground(new Color(246, 190, 82));
 		add(btnHire);
@@ -47,7 +47,7 @@ public class management extends JFrame implements ActionListener {
 		btnFired.setBorder(null);
 		btnFired.setFocusable(false);
 		btnFired.addActionListener(this);
-		btnFired.setBounds(150, 200, 130, 30);
+		btnFired.setBounds(100, 240, 130, 30);
 		btnFired.setForeground(new Color(54, 54, 54));
 		btnFired.setBackground(new Color(246, 190, 82));
 		add(btnFired);
@@ -56,7 +56,7 @@ public class management extends JFrame implements ActionListener {
 		btnModifyEmployee.setBorder(null);
 		btnModifyEmployee.setFocusable(false);
 		btnModifyEmployee.addActionListener(this);
-		btnModifyEmployee.setBounds(150, 250, 130, 30);
+		btnModifyEmployee.setBounds(100, 340, 130, 30);
 		btnModifyEmployee.setForeground(new Color(54, 54, 54));
 		btnModifyEmployee.setBackground(new Color(246, 190, 82));
 		add(btnModifyEmployee);
@@ -65,7 +65,7 @@ public class management extends JFrame implements ActionListener {
 		btnEmployees.setBorder(null);
 		btnEmployees.setFocusable(false);
 		btnEmployees.addActionListener(this);
-		btnEmployees.setBounds(350, 150, 130, 30);
+		btnEmployees.setBounds(600, 140, 130, 30);
 		btnEmployees.setForeground(new Color(54, 54, 54));
 		btnEmployees.setBackground(new Color(246, 190, 82));
 		add(btnEmployees);
@@ -74,7 +74,7 @@ public class management extends JFrame implements ActionListener {
 		btnShowStock.setBorder(null);
 		btnShowStock.setFocusable(false);
 		btnShowStock.addActionListener(this);
-		btnShowStock.setBounds(350, 200, 130, 30);
+		btnShowStock.setBounds(600, 240, 130, 30);
 		btnShowStock.setForeground(new Color(54, 54, 54));
 		btnShowStock.setBackground(new Color(246, 190, 82));
 		add(btnShowStock);
@@ -83,7 +83,7 @@ public class management extends JFrame implements ActionListener {
 		btnModifyProduct.setBorder(null);
 		btnModifyProduct.setFocusable(false);
 		btnModifyProduct.addActionListener(this);
-		btnModifyProduct.setBounds(350, 250, 130, 30);
+		btnModifyProduct.setBounds(600, 340, 130, 30);
 		btnModifyProduct.setForeground(new Color(54, 54, 54));
 		btnModifyProduct.setBackground(new Color(246, 190, 82));
 		add(btnModifyProduct);
@@ -92,7 +92,7 @@ public class management extends JFrame implements ActionListener {
 		btnChangePass.setBorder(null);
 		btnChangePass.setFocusable(false);
 		btnChangePass.addActionListener(this);
-		btnChangePass.setBounds(180, 420, 130, 30);
+		btnChangePass.setBounds(230, 480, 130, 30);
 		btnChangePass.setForeground(new Color(54, 54, 54));
 		btnChangePass.setBackground(new Color(246, 190, 82));
 		add(btnChangePass);
@@ -101,20 +101,20 @@ public class management extends JFrame implements ActionListener {
 		btnLogout.setBorder(null);
 		btnLogout.setFocusable(false);
 		btnLogout.addActionListener(this);
-		btnLogout.setBounds(320, 420, 130, 30);
+		btnLogout.setBounds(470, 480, 130, 30);
 		btnLogout.setForeground(new Color(54, 54, 54));
 		btnLogout.setBackground(new Color(246, 190, 82));
 		add(btnLogout);
 
 		lblFooter = new JLabel("© 2020 BJH Anime Store | All rights reserved");
 		lblFooter.setFont(text_message);
-		lblFooter.setBounds(250, 480, 385, 30);
+		lblFooter.setBounds(440, 570, 385, 30);
 		lblFooter.setForeground(new Color(246, 190, 82));
 		add(lblFooter);
 		
 		ImageIcon fondo = new ImageIcon(getClass().getResource("/imagenes/fondo_panel.png"));
 		lblFondo = new JLabel(fondo);
-		lblFondo.setBounds(0, 0, 640, 540);
+		lblFondo.setBounds(0, 0, 834, 610);
 		add(lblFondo);
 
 	}

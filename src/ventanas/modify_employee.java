@@ -10,7 +10,7 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class modify_employee extends JFrame implements ActionListener {
 
-	private JLabel lblBjh, lblSelect, lblDNI, lblName, lblLastnames, lblAddress, lblEmail, lblUsername, lblPassword, lblFooter, lblFondo,alerta;
+	private JLabel lblBjh, lblSelect, lblDNI, lblName, lblLastnames, lblAddress, lblEmail, lblUsername, lblPassword, lblFooter, lblFondo;
 	private JTextField txtDNI, txtName, txtLastnames, txtAddress, txtEmail, txtUsername;
 	private JButton btnChangeData, btnCancel;
 	private JPasswordField txtPassword;
@@ -21,11 +21,11 @@ public class modify_employee extends JFrame implements ActionListener {
 
 	public modify_employee() {
 		//Frame
-		setLayout(null);
+		getContentPane().setLayout(null);
 		setResizable(false);
 		setUndecorated(true);
 		setTitle("Modidy employee panel");
-		setBounds(0, 0, 640, 540);
+		setBounds(0, 0, 840, 640);
 		setLocationRelativeTo(null);
 		setBackground(new Color(54, 54, 54));
 		setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo_bjh.png")).getImage());
@@ -38,18 +38,18 @@ public class modify_employee extends JFrame implements ActionListener {
 		//Components
 		lblBjh = new JLabel("B J H");
 		lblBjh.setFont(title);
-		lblBjh.setBounds(236, 20, 170, 70);
+		lblBjh.setBounds(351, 54, 170, 70);
 		lblBjh.setForeground(new Color(246, 190, 82));
-		add(lblBjh);
+		getContentPane().add(lblBjh);
 
 		lblSelect = new JLabel("Select to be modified");
 		lblSelect.setFont(scroll);
-		lblSelect.setBounds(230, 80, 170, 30);
+		lblSelect.setBounds(345, 114, 170, 30);
 		lblSelect.setForeground(new Color(54, 54, 54));
-		add(lblSelect);
+		getContentPane().add(lblSelect);
 
 		cbbEdit = new JComboBox<String>();
-		cbbEdit.setBounds(200, 120, 220, 25);
+		cbbEdit.setBounds(315, 154, 220, 25);
 		cbbEdit.setBackground(new Color(246, 190, 82));
 		cbbEdit.setFont(scroll);
 		cbbEdit.setForeground(new Color(54, 54, 54));
@@ -61,155 +61,148 @@ public class modify_employee extends JFrame implements ActionListener {
 		cbbEdit.addItem(" Username");
 		cbbEdit.addItem(" Password");
 		cbbEdit.addItem(" All");
-		add(cbbEdit);
+		getContentPane().add(cbbEdit);
 		cbbEdit.addActionListener(this);
 
 		
 		lblDNI = new JLabel("DNI: ");
 		lblDNI.setFont(scroll);
-		lblDNI.setBounds(50, 160, 110, 30);
+		lblDNI.setBounds(165, 194, 110, 30);
 		lblDNI.setForeground(new Color(54, 54, 54));
-		add(lblDNI);
+		getContentPane().add(lblDNI);
 
 		txtDNI = new JTextField();
 		txtDNI.setBorder(null);
-		txtDNI.setBounds(170, 160, 110, 30);
+		txtDNI.setBounds(285, 194, 110, 30);
 		txtDNI.setForeground(new Color(54, 54, 54));
 		txtDNI.setBackground(new Color (224, 224, 224));
 		txtDNI.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtDNI);
+		getContentPane().add(txtDNI);
 		
 		lblName = new JLabel("Name: ");
 		lblName.setFont(scroll);
-		lblName.setBounds(50, 210, 110, 30);
+		lblName.setBounds(165, 244, 110, 30);
 		lblName.setEnabled(false);
 		lblName.setForeground(new Color(54, 54, 54));
-		add(lblName);
+		getContentPane().add(lblName);
 		
 		txtName = new JTextField();
 		txtName.setBorder(null);
-		txtName.setBounds(170, 210, 110, 30);
+		txtName.setBounds(285, 244, 110, 30);
 		txtName.setEnabled(false);
 		txtName.setForeground(new Color(54, 54, 54));
 		txtName.setBackground(new Color (224, 224, 224));
 		txtName.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtName);
+		getContentPane().add(txtName);
 		
 		lblLastnames = new JLabel("Last names: ");
 		lblLastnames.setFont(scroll);
-		lblLastnames.setBounds(50, 260, 110, 30);
+		lblLastnames.setBounds(165, 294, 110, 30);
 		lblLastnames.setEnabled(false);
 		lblLastnames.setForeground(new Color(54, 54, 54));
-		add(lblLastnames);
+		getContentPane().add(lblLastnames);
 		
 		txtLastnames = new JTextField();
 		txtLastnames.setBorder(null);
-		txtLastnames.setBounds(170, 260, 110, 30);
+		txtLastnames.setBounds(285, 294, 110, 30);
 		txtLastnames.setEnabled(false);
 		txtLastnames.setForeground(new Color(54, 54, 54));
 		txtLastnames.setBackground(new Color (224, 224, 224));
 		txtLastnames.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtLastnames);
+		getContentPane().add(txtLastnames);
 		
 		lblAddress = new JLabel("Address: ");
 		lblAddress.setFont(scroll);
-		lblAddress.setBounds(50, 310, 110, 30);
+		lblAddress.setBounds(165, 344, 110, 30);
 		lblAddress.setEnabled(false);
 		lblAddress.setForeground(new Color(54, 54, 54));
-		add(lblAddress);
+		getContentPane().add(lblAddress);
 
 		txtAddress = new JTextField();
 		txtAddress.setBorder(null);
-		txtAddress.setBounds(170, 310, 110, 30);
+		txtAddress.setBounds(285, 344, 110, 30);
 		txtAddress.setEnabled(false);
 		txtAddress.setForeground(new Color(54, 54, 54));
 		txtAddress.setBackground(new Color (224, 224, 224));
 		txtAddress.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtAddress);
+		getContentPane().add(txtAddress);
 		
 		lblEmail = new JLabel("Email: ");
 		lblEmail.setFont(scroll);
-		lblEmail.setBounds(310, 160, 110, 30);
+		lblEmail.setBounds(425, 194, 110, 30);
 		lblEmail.setEnabled(false);
 		lblEmail.setForeground(new Color(54, 54, 54));
-		add(lblEmail);
+		getContentPane().add(lblEmail);
 		
 		txtEmail = new JTextField();
 		txtEmail.setBorder(null);
-		txtEmail.setBounds(410, 160, 110, 30);
+		txtEmail.setBounds(525, 194, 110, 30);
 		txtEmail.setEnabled(false);
 		txtEmail.setForeground(new Color(54, 54, 54));
 		txtEmail.setBackground(new Color (224, 224, 224));
 		txtEmail.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtEmail);
+		getContentPane().add(txtEmail);
 		
 		lblUsername = new JLabel("Username: ");
 		lblUsername.setFont(scroll);
-		lblUsername.setBounds(310, 210, 110, 30);
+		lblUsername.setBounds(425, 244, 110, 30);
 		lblUsername.setEnabled(false);
 		lblUsername.setForeground(new Color(54, 54, 54));
-		add(lblUsername);
+		getContentPane().add(lblUsername);
 		
 		txtUsername = new JTextField();
 		txtUsername.setBorder(null);
-		txtUsername.setBounds(410, 210, 110, 30);
+		txtUsername.setBounds(525, 244, 110, 30);
 		txtUsername.setEnabled(false);
 		txtUsername.setForeground(new Color(54, 54, 54));
 		txtUsername.setBackground(new Color (224, 224, 224));
 		txtUsername.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtUsername);
+		getContentPane().add(txtUsername);
 		
 		lblPassword = new JLabel("Password: ");
 		lblPassword.setFont(scroll);
-		lblPassword.setBounds(310, 260, 110, 30);
+		lblPassword.setBounds(425, 294, 110, 30);
 		lblPassword.setEnabled(false);
 		lblPassword.setForeground(new Color(54, 54, 54));
-		add(lblPassword);
+		getContentPane().add(lblPassword);
 		
 		txtPassword = new JPasswordField();
 		txtPassword.setBorder(null);
-		txtPassword.setBounds(410, 260, 110, 30);
+		txtPassword.setBounds(525, 294, 110, 30);
 		txtPassword.setEnabled(false);
 		txtPassword.setForeground(new Color(54, 54, 54));
 		txtPassword.setBackground(new Color (224, 224, 224));
 		txtPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtPassword);
+		getContentPane().add(txtPassword);
 		
 		btnChangeData = new JButton("Change Data");
 		btnChangeData.setBorder(null);
 		btnChangeData.setFocusable(false);
 		btnChangeData.addActionListener(this);
-		btnChangeData.setBounds(180, 420, 130, 30);
+		btnChangeData.setBounds(258, 514, 130, 30);
 		btnChangeData.setForeground(new Color(54, 54, 54));
 		btnChangeData.setBackground(new Color(246, 190, 82));
-		add(btnChangeData);
+		getContentPane().add(btnChangeData);
 		
 		btnCancel = new JButton("Cancel");
 		btnCancel.setBorder(null);
 		btnCancel.setFocusable(false);
 		btnCancel.addActionListener(this);
-		btnCancel.setBounds(320, 420, 130, 30);
+		btnCancel.setBounds(479, 514, 130, 30);
 		btnCancel.setForeground(new Color(54, 54, 54));
 		btnCancel.setBackground(new Color(246, 190, 82));
-		add(btnCancel);
-		
-		alerta = new JLabel("F\nasdasdasdasdasd");
-		alerta.setVisible(false);
-		alerta.setFont(text_message);
-		alerta.setBounds(170, 420, 115, 30);
-		alerta.setForeground(new Color(246, 190, 82));
-		add(alerta);
+		getContentPane().add(btnCancel);
 		
 		lblFooter = new JLabel("Â© 2020 BJH Anime Store | All rights reserved");
 		lblFooter.setFont(text_message);
-		lblFooter.setBounds(250, 480, 385, 30);
+		lblFooter.setBounds(445, 599, 385, 30);
 		lblFooter.setForeground(new Color(246, 190, 82));
-		add(lblFooter);
+		getContentPane().add(lblFooter);
 		
 		ImageIcon fondo = new ImageIcon(getClass().getResource("/imagenes/fondo_panel.png"));
 		lblFondo = new JLabel(fondo);
-		lblFondo.setBounds(0, 0, 640, 540);
-		add(lblFondo);
+		lblFondo.setBounds(0, 0, 840, 640);
+		getContentPane().add(lblFondo);
 		
 	}
 	
@@ -348,7 +341,6 @@ public class modify_employee extends JFrame implements ActionListener {
 								}
 								else if (!comprob.isEmail(email)) {
 									JOptionPane.showMessageDialog(null, "Fix the email.");
-									alerta.setVisible(true);
 								}
 								else if (password.length() >= 6) {
 									JOptionPane.showMessageDialog(null, "The password must be more than 6 characters.");

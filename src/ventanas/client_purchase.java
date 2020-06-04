@@ -23,7 +23,7 @@ public class client_purchase extends JPanel implements ActionListener {
 	public client_purchase() {
 		//Frame
 		setLayout(null);
-		setBounds(0, 0, 640, 540);
+		setBounds(0, 0, 840, 640);
 		
 		//Fonts
 		Font title = new Font("Frank Ruehl CLM", 1, 62);
@@ -33,13 +33,13 @@ public class client_purchase extends JPanel implements ActionListener {
 		//Components
 		lblBjh = new JLabel("B J H");
 		lblBjh.setFont(title);
-		lblBjh.setBounds(236, 20, 170, 70);
+		lblBjh.setBounds(340, 10, 170, 70);
 		lblBjh.setForeground(new Color(246, 190, 82));
 		add(lblBjh);
 
 		table = new JTable();
-		modelo.addColumn("Id_cliente");
-		modelo.addColumn("Id_product");
+		modelo.addColumn("Purchase code");
+		modelo.addColumn("Product");
 		modelo.addColumn("Quantity product");
 		modelo.addColumn("Quantity sold");
 		modelo.addColumn("Date");
@@ -47,74 +47,74 @@ public class client_purchase extends JPanel implements ActionListener {
 		table.setFont(tabled);
 		table.setModel(modelo);
 		try {
+
 			result = metodo.ShowPurchases();
 			modelo.setRowCount(0);
 			while (result.next()) {
-				result2 = metodo.ShowQuanProduct(result.getString(2));
-				data[0] = result.getString(1);
-				data[1] = result.getString(2);
+				result2 = metodo.ShowProduct(result.getString(2));
+				data[0] = result.getString(3);
 				while (result2.next()) {
-					data[2] = result2.getString(1);
+					data[1] = result2.getString(3);
+					data[2] = result2.getString(4);
 				}
-				data[3] = result.getString(3);
-				data[4] = result.getString(4);
-				data[5] = result.getString(5);
+				data[3] = result.getString(4);
+				data[4] = result.getString(5);
+				data[5] = result.getString(6);
 				modelo.addRow(data);
 			}
 			
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception e2) {
+			e2.getStackTrace();
 		}
-
 		scrollpane = new JScrollPane(table);
-		scrollpane.setBounds(40, 110, 560, 250);
+		scrollpane.setBounds(40, 110, 766, 348);
 		add(scrollpane);
 
 		btnUpdateList = new JButton("Update list");
 		btnUpdateList.setBorder(null);
 		btnUpdateList.setFocusable(false);
 		btnUpdateList.addActionListener(this);
-		btnUpdateList.setBounds(170, 400, 120, 30);
+		btnUpdateList.setBounds(260, 483, 120, 30);
 		btnUpdateList.setForeground(new Color(54, 54, 54));
 		btnUpdateList.setBackground(new Color(246, 190, 82));
 		add(btnUpdateList);
 		
 		lblFooter = new JLabel("© 2020 BJH Anime Store | All rights reserved");
 		lblFooter.setFont(text_message);
-		lblFooter.setBounds(250, 450, 385, 30);
+		lblFooter.setBounds(445, 599, 385, 30);
 		lblFooter.setForeground(new Color(246, 190, 82));
 		add(lblFooter);
 		
 		ImageIcon fondo = new ImageIcon(getClass().getResource("/imagenes/fondo_panel.png"));
 		lblFondo = new JLabel(fondo);
-		lblFondo.setBounds(0, 0, 640, 540);
+		lblFondo.setBounds(0, 0, 840, 640);
 		add(lblFondo);
 		
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		Object event = e.getSource();
-		
+
 		if (event.equals(btnUpdateList) ) {
 			try {
 
 				result = metodo.ShowPurchases();
 				modelo.setRowCount(0);
 				while (result.next()) {
-					result2 = metodo.ShowQuanProduct(result.getString(2));
-					data[0] = result.getString(1);
-					data[1] = result.getString(2);
+					result2 = metodo.ShowProduct(result.getString(2));
+					data[0] = result.getString(3);
 					while (result2.next()) {
-						data[2] = result2.getString(1);
+						data[1] = result2.getString(3);
+						data[2] = result2.getString(4);
 					}
-					data[3] = result.getString(3);
-					data[4] = result.getString(4);
-					data[5] = result.getString(5);
+					data[3] = result.getString(4);
+					data[4] = result.getString(5);
+					data[5] = result.getString(6);
 					modelo.addRow(data);
 				}
 				
 			} catch (Exception e2) {
-				e2.printStackTrace();
+				e2.getStackTrace();
 			}
 			
 		}

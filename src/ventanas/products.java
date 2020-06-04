@@ -19,11 +19,11 @@ public class products extends JFrame implements ActionListener {
 	
 	public products() {
 		//Frame
-		setLayout(null);
+		getContentPane().setLayout(null);
 		setResizable(false);
 		setUndecorated(true);
 		setTitle("Add product panel");
-		setBounds(0, 0, 640, 540);
+		setBounds(0, 0, 840, 640);
 		setLocationRelativeTo(null);
 		setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo_bjh.png")).getImage());
 		
@@ -35,15 +35,15 @@ public class products extends JFrame implements ActionListener {
 		//Components
 		lblBjh = new JLabel("B J H");
 		lblBjh.setFont(title);
-		lblBjh.setBounds(236, 20, 170, 70);
+		lblBjh.setBounds(336, 30, 170, 70);
 		lblBjh.setForeground(new Color(246, 190, 82));
-		add(lblBjh);
+		getContentPane().add(lblBjh);
 		
 		lblName = new JLabel("Name: ");
 		lblName.setFont(fields);
 		lblName.setBounds(50, 160, 110, 30);
 		lblName.setForeground(new Color(54, 54, 54));
-		add(lblName);
+		getContentPane().add(lblName);
 		
 		txtName = new JTextField();
 		txtName.setBorder(null);
@@ -51,13 +51,13 @@ public class products extends JFrame implements ActionListener {
 		txtName.setForeground(new Color(54, 54, 54));
 		txtName.setBackground(new Color (224, 224, 224));
 		txtName.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtName);
+		getContentPane().add(txtName);
 		
 		lblType = new JLabel("Tipo: ");
 		lblType.setFont(fields);
 		lblType.setBounds(50, 220, 110, 30);
 		lblType.setForeground(new Color(54, 54, 54));
-		add(lblType);
+		getContentPane().add(lblType);
 		
 		txtType = new JTextField();
 		txtType.setBorder(null);
@@ -65,85 +65,85 @@ public class products extends JFrame implements ActionListener {
 		txtType.setForeground(new Color(54, 54, 54));
 		txtType.setBackground(new Color (224, 224, 224));
 		txtType.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtType);
+		getContentPane().add(txtType);
 		
 		lblPrice = new JLabel("Precio: ");
 		lblPrice.setFont(fields);
-		lblPrice.setBounds(310, 190, 110, 30);
+		lblPrice.setBounds(495, 190, 110, 30);
 		lblPrice.setForeground(new Color(54, 54, 54));
-		add(lblPrice);
+		getContentPane().add(lblPrice);
 		
 		txtPrice = new JTextField();
 		txtPrice.setBorder(null);
-		txtPrice.setBounds(410, 190, 110, 30);
+		txtPrice.setBounds(610, 193, 110, 30);
 		txtPrice.setForeground(new Color(54, 54, 54));
 		txtPrice.setBackground(new Color (224, 224, 224));
 		txtPrice.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtPrice);
+		getContentPane().add(txtPrice);
 		
 		lblPriceNumer = new JLabel("The price has to be a number.");
 		lblPriceNumer.setFont(fields);
-		lblPriceNumer.setBounds(180, 350, 350, 30);
+		lblPriceNumer.setBounds(312, 485, 248, 30);
 		lblPriceNumer.setForeground(new Color(255, 0, 0));
 		lblPriceNumer.setVisible(false);
-		add(lblPriceNumer);
+		getContentPane().add(lblPriceNumer);
 		
 		lblPriceLess = new JLabel("The price cannot be less than 0€.");
 		lblPriceLess.setFont(fields);
-		lblPriceLess.setBounds(180, 350, 350, 30);
+		lblPriceLess.setBounds(310, 485, 276, 30);
 		lblPriceLess.setForeground(new Color(255, 0, 0));
 		lblPriceLess.setVisible(false);
-		add(lblPriceLess);
+		getContentPane().add(lblPriceLess);
 
 		lblEmpty = new JLabel("Please fill in the fields.");
 		lblEmpty.setFont(fields);
-		lblEmpty.setBounds(210, 350, 200, 30);
+		lblEmpty.setBounds(348, 485, 200, 30);
 		lblEmpty.setForeground(new Color(255, 0, 0));
 		lblEmpty.setVisible(false);
-		add(lblEmpty);
+		getContentPane().add(lblEmpty);
 		
 		lblExist = new JLabel("There's already an product with that name and type.");
 		lblExist.setFont(fields);
-		lblExist.setBounds(100, 350, 425, 30);
+		lblExist.setBounds(236, 485, 425, 30);
 		lblExist.setForeground(new Color(255, 0, 0));
 		lblExist.setVisible(false);
-		add(lblExist);
+		getContentPane().add(lblExist);
 		
 		lbladdProduct = new JLabel("Product successfully added.");
 		lbladdProduct.setFont(fields);
-		lbladdProduct.setBounds(200, 350, 220, 30);
+		lbladdProduct.setBounds(336, 485, 220, 30);
 		lbladdProduct.setForeground(new Color(0, 255, 0));
 		lbladdProduct.setVisible(false);
-		add(lbladdProduct);
+		getContentPane().add(lbladdProduct);
 		
 		btnSave = new JButton("Save product");
 		btnSave.setBorder(null);
 		btnSave.setFocusable(false);
 		btnSave.addActionListener(this);
-		btnSave.setBounds(170, 420, 115, 30);
+		btnSave.setBounds(265, 526, 115, 30);
 		btnSave.setForeground(new Color(54, 54, 54));
 		btnSave.setBackground(new Color(246, 190, 82));
-		add(btnSave);
+		getContentPane().add(btnSave);
 		
 		btnCancel = new JButton("Cancel");
 		btnCancel.setBorder(null);
 		btnCancel.setFocusable(false);
 		btnCancel.addActionListener(this);
-		btnCancel.setBounds(310, 420, 115, 30);
+		btnCancel.setBounds(495, 526, 115, 30);
 		btnCancel.setForeground(new Color(54, 54, 54));
 		btnCancel.setBackground(new Color(246, 190, 82));
-		add(btnCancel);
+		getContentPane().add(btnCancel);
 		
 		lblFooter = new JLabel("© 2020 BJH Anime Store | All rights reserved");
 		lblFooter.setFont(text_message);
-		lblFooter.setBounds(250, 480, 385, 30);
+		lblFooter.setBounds(445, 599, 385, 30);
 		lblFooter.setForeground(new Color(246, 190, 82));
-		add(lblFooter);
+		getContentPane().add(lblFooter);
 		
 		ImageIcon fondo = new ImageIcon(getClass().getResource("/imagenes/fondo_panel.png"));
 		lblFondo = new JLabel(fondo);
-		lblFondo.setBounds(0, 0, 640, 540);
-		add(lblFondo);
+		lblFondo.setBounds(0, 0, 840, 640);
+		getContentPane().add(lblFondo);
 
 	}
 

@@ -26,11 +26,10 @@ public class stock extends JFrame implements ActionListener {
 	
 	public stock() {
 		//Frame
-		setLayout(null);
+		getContentPane().setLayout(null);
 		setResizable(false);
-		setUndecorated(true);
 		setTitle("Stock panel");
-		setBounds(0, 0, 640, 540);
+		setBounds(0, 0, 840, 640);
 		setLocationRelativeTo(null);
 		setBackground(new Color(54, 54, 54));
 		setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo_bjh.png")).getImage());
@@ -44,15 +43,15 @@ public class stock extends JFrame implements ActionListener {
 		//Components
 		lblBjh = new JLabel("B J H");
 		lblBjh.setFont(title);
-		lblBjh.setBounds(236, 20, 170, 70);
+		lblBjh.setBounds(329, 29, 170, 70);
 		lblBjh.setForeground(new Color(246, 190, 82));
-		add(lblBjh);
+		getContentPane().add(lblBjh);
 
-		lblIDProduct = new JLabel("ID Product: ");
+		lblIDProduct = new JLabel("Product code: ");
 		lblIDProduct.setFont(scroll);
-		lblIDProduct.setBounds(50, 130, 100, 30);
+		lblIDProduct.setBounds(50, 130, 130, 30);
 		lblIDProduct.setForeground(new Color(54, 54, 54));
-		add(lblIDProduct);
+		getContentPane().add(lblIDProduct);
 		
 		txtIDProduct = new JTextField();
 		txtIDProduct.setBorder(null);
@@ -60,7 +59,7 @@ public class stock extends JFrame implements ActionListener {
 		txtIDProduct.setForeground(new Color(54, 54, 54));
 		txtIDProduct.setBackground(new Color (224, 224, 224));
 		txtIDProduct.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtIDProduct);
+		getContentPane().add(txtIDProduct);
 		
 		btnRequestProduct = new JButton("Request product");
 		btnRequestProduct.setBorder(null);
@@ -69,7 +68,7 @@ public class stock extends JFrame implements ActionListener {
 		btnRequestProduct.setBounds(50, 230, 180, 30);
 		btnRequestProduct.setForeground(new Color(54, 54, 54));
 		btnRequestProduct.setBackground(new Color(246, 190, 82));
-		add(btnRequestProduct);
+		getContentPane().add(btnRequestProduct);
 
 		btnAddProduct = new JButton("Add new product");
 		btnAddProduct.setBorder(null);
@@ -78,7 +77,7 @@ public class stock extends JFrame implements ActionListener {
 		btnAddProduct.setBounds(50, 280, 180, 30);
 		btnAddProduct.setForeground(new Color(54, 54, 54));
 		btnAddProduct.setBackground(new Color(246, 190, 82));
-		add(btnAddProduct);
+		getContentPane().add(btnAddProduct);
 		
 		btnUpdateList = new JButton("Update list");
 		btnUpdateList.setBorder(null);
@@ -87,10 +86,10 @@ public class stock extends JFrame implements ActionListener {
 		btnUpdateList.setBounds(50, 330, 180, 30);
 		btnUpdateList.setForeground(new Color(54, 54, 54));
 		btnUpdateList.setBackground(new Color(246, 190, 82));
-		add(btnUpdateList);
+		getContentPane().add(btnUpdateList);
 		
 		table = new JTable();
-		modelo.addColumn("ID");
+		modelo.addColumn("Code");
 		modelo.addColumn("Name");
 		modelo.addColumn("Type");
 		modelo.addColumn("Quantity");
@@ -118,49 +117,49 @@ public class stock extends JFrame implements ActionListener {
 		}
 
 		scrollpane = new JScrollPane(table);
-		scrollpane.setBounds(250, 110, 385, 250);
-		add(scrollpane);
+		scrollpane.setBounds(250, 110, 542, 364);
+		getContentPane().add(scrollpane);
 		
 		lblStock = new JLabel("Still in stock, no need to order.");
 		lblStock.setFont(scroll);
 		lblStock.setVisible(false);
-		lblStock.setBounds(180, 380, 260, 30);
+		lblStock.setBounds(281, 473, 260, 30);
 		lblStock.setForeground(new Color(255, 0, 0));
-		add(lblStock);
+		getContentPane().add(lblStock);
 		
 		lblIDEmpty = new JLabel("Please fill in the ID Product field.");
 		lblIDEmpty.setFont(scroll);
 		lblIDEmpty.setVisible(false);
-		lblIDEmpty.setBounds(180, 380, 260, 30);
+		lblIDEmpty.setBounds(281, 473, 260, 30);
 		lblIDEmpty.setForeground(new Color(255, 0, 0));
-		add(lblIDEmpty);
+		getContentPane().add(lblIDEmpty);
 		
 		lblIDExist = new JLabel("This ID Product don't exists.");
 		lblIDExist.setFont(scroll);
 		lblIDExist.setVisible(false);
-		lblIDExist.setBounds(180, 380, 230, 30);
+		lblIDExist.setBounds(299, 473, 230, 30);
 		lblIDExist.setForeground(new Color(255, 0, 0));
-		add(lblIDExist);
+		getContentPane().add(lblIDExist);
 		
 		btnCancel = new JButton("Close");
 		btnCancel.setBorder(null);
 		btnCancel.setFocusable(false);
 		btnCancel.addActionListener(this);
-		btnCancel.setBounds(230, 420, 130, 30);
+		btnCancel.setBounds(355, 521, 130, 30);
 		btnCancel.setForeground(new Color(54, 54, 54));
 		btnCancel.setBackground(new Color(246, 190, 82));
-		add(btnCancel);
+		getContentPane().add(btnCancel);
 
 		lblFooter = new JLabel("© 2020 BJH Anime Store | All rights reserved");
 		lblFooter.setFont(text_message);
-		lblFooter.setBounds(250, 480, 385, 30);
+		lblFooter.setBounds(445, 599, 385, 30);
 		lblFooter.setForeground(new Color(246, 190, 82));
-		add(lblFooter);
+		getContentPane().add(lblFooter);
 		
 		ImageIcon fondo = new ImageIcon(getClass().getResource("/imagenes/fondo_panel.png"));
 		lblFondo = new JLabel(fondo);
-		lblFondo.setBounds(0, 0, 640, 540);
-		add(lblFondo);
+		lblFondo.setBounds(0, 0, 840, 640);
+		getContentPane().add(lblFondo);
 	}
 	
 	@Override
