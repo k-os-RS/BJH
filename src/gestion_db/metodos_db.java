@@ -10,7 +10,7 @@ public class metodos_db {
 	private Connection connect;
 	private Statement command;
 	private ResultSet data;
-	
+
 	public boolean LogInCorrect (String username, String password) throws SQLException {
 
 		boolean verify = false;
@@ -290,7 +290,6 @@ public class metodos_db {
 		return data;
 		
 	}
-	
 	public ResultSet ShowAllEmployees () throws SQLException {
 		
 		String empleado = "si";
@@ -520,7 +519,6 @@ public class metodos_db {
 		return data;
 		
 	}
-
 	public ResultSet ShowTypes (int id_tipo) throws SQLException {
 		
 		String sql = "SELECT * FROM tipo WHERE id_tipo='"+id_tipo+"'";
@@ -602,7 +600,6 @@ public class metodos_db {
 		return id;
 		
 	}
-	
 	public void addPurchase (String username, String id_product, int quant_pro) throws SQLException {
 		
 		String date = "NOW()", state = "Waiting";

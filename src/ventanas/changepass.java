@@ -10,7 +10,7 @@ import java.awt.event.*;
 public class changepass extends JFrame implements ActionListener {
 
 	public static boolean changed = false;
-	private JLabel lblFondo, lblBjh, lblUser, lblPass, lblNPass, lblRNPass, lblMinChar, lblNoEquals,lblIncorrect, lblFooter;
+	private JLabel lblFondo, lblBjh, lblUser, lblPass, lblNPass, lblRNPass, lblMinChar, lblNoEquals, lblIncorrect, lblFooter;
 	private JButton btnChange, btnCancel;
 	private JTextField txtUser;
 	private JPasswordField txtPass, txtNPass, txtRNPass;

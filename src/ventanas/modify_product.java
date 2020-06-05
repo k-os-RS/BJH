@@ -23,7 +23,6 @@ public class modify_product extends JFrame implements ActionListener {
 		//Frame
 		getContentPane().setLayout(null);
 		setResizable(false);
-		setUndecorated(true);
 		setTitle("Modidy product panel");
 		setBounds(0, 0, 840, 640);
 		setLocationRelativeTo(null);
@@ -63,7 +62,7 @@ public class modify_product extends JFrame implements ActionListener {
 
 		lblId = new JLabel("Product code: ");
 		lblId.setFont(scroll);
-		lblId.setBounds(173, 212, 110, 30);
+		lblId.setBounds(160, 210, 120, 30);
 		lblId.setForeground(new Color(54, 54, 54));
 		getContentPane().add(lblId);
 

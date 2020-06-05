@@ -12,9 +12,10 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class employee extends JFrame implements ActionListener {
 
-	private JLabel lblBjh, lblWelcome, lblIDClient, lblStock, lblIDEmpty, lblIDExist, lblFooter, lblFondo;
-	private JTextField txtIDClient;
-	private JButton btnComplete, btnUpdateList, btnChangePass, btnLogout;
+	public static String id_pro;
+	private JLabel lblBjh, lblWelcome, lblIDClient, lblIDProduct, lblStock, lblIDEmpty, lblIDExist, lblFooter, lblFondo;
+	private JTextField txtIDClient, txtIDProduct;
+	private JButton btnComplete, btnRequestProduct, btnUpdateList, btnChangePass, btnLogout;
 	private ResultSet result, result2;
 	private JTable table;
 	private JScrollPane scrollpane;
@@ -25,7 +26,7 @@ public class employee extends JFrame implements ActionListener {
 
 	public employee() {
 		//Frame
-		setLayout(null);
+		getContentPane().setLayout(null);
 		setResizable(false);
 		setTitle("Employee Panel | "+username);
 		setBounds(0, 0, 840, 640);
@@ -44,45 +45,67 @@ public class employee extends JFrame implements ActionListener {
 		lblBjh.setFont(title);
 		lblBjh.setBounds(320, 10, 170, 70);
 		lblBjh.setForeground(new Color(246, 190, 82));
-		add(lblBjh);
+		getContentPane().add(lblBjh);
 
 		lblWelcome = new JLabel("Welcome "+username+" to the employee panel");
 		lblWelcome.setFont(fields);
 		lblWelcome.setBounds(260, 80, 300, 20);
 		lblWelcome.setForeground(new Color(0, 0, 0));
-		add(lblWelcome);
+		getContentPane().add(lblWelcome);
 
 		lblIDClient = new JLabel("Purchase code: ");
 		lblIDClient.setFont(scroll);
-		lblIDClient.setBounds(50, 143, 130, 30);
+		lblIDClient.setBounds(50, 140, 130, 30);
 		lblIDClient.setForeground(new Color(54, 54, 54));
-		add(lblIDClient);
+		getContentPane().add(lblIDClient);
 
 		txtIDClient = new JTextField();
 		txtIDClient.setBorder(null);
-		txtIDClient.setBounds(100, 198, 130, 30);
+		txtIDClient.setBounds(100, 170, 130, 30);
 		txtIDClient.setForeground(new Color(54, 54, 54));
 		txtIDClient.setBackground(new Color (224, 224, 224));
 		txtIDClient.setHorizontalAlignment(SwingConstants.CENTER);
-		add(txtIDClient);
+		getContentPane().add(txtIDClient);
+		
+		lblIDProduct = new JLabel("Product code: ");
+		lblIDProduct.setFont(scroll);
+		lblIDProduct.setBounds(50, 210, 130, 30);
+		lblIDProduct.setForeground(new Color(54, 54, 54));
+		getContentPane().add(lblIDProduct);
+		
+		txtIDProduct = new JTextField();
+		txtIDProduct.setBorder(null);
+		txtIDProduct.setBounds(100, 240, 130, 30);
+		txtIDProduct.setForeground(new Color(54, 54, 54));
+		txtIDProduct.setBackground(new Color (224, 224, 224));
+		txtIDProduct.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(txtIDProduct);
 
 		btnComplete = new JButton("Complete purchase");
 		btnComplete.setBorder(null);
 		btnComplete.setFocusable(false);
 		btnComplete.addActionListener(this);
-		btnComplete.setBounds(50, 330, 180, 30);
+		btnComplete.setBounds(50, 300, 180, 30);
 		btnComplete.setForeground(new Color(54, 54, 54));
 		btnComplete.setBackground(new Color(246, 190, 82));
-		add(btnComplete);
+		getContentPane().add(btnComplete);
+		
+		btnRequestProduct = new JButton("Request product");
+		btnRequestProduct.setForeground(new Color(54, 54, 54));
+		btnRequestProduct.setFocusable(false);
+		btnRequestProduct.setBorder(null);
+		btnRequestProduct.setBackground(new Color(246, 190, 82));
+		btnRequestProduct.setBounds(50, 341, 180, 30);
+		getContentPane().add(btnRequestProduct);
 		
 		btnUpdateList = new JButton("Update list");
 		btnUpdateList.setBorder(null);
 		btnUpdateList.setFocusable(false);
 		btnUpdateList.addActionListener(this);
-		btnUpdateList.setBounds(50, 400, 180, 30);
+		btnUpdateList.setBounds(50, 382, 180, 30);
 		btnUpdateList.setForeground(new Color(54, 54, 54));
 		btnUpdateList.setBackground(new Color(246, 190, 82));
-		add(btnUpdateList);
+		getContentPane().add(btnUpdateList);
 
 		table = new JTable();
 		modelo.addColumn("Purchase code");
@@ -116,28 +139,28 @@ public class employee extends JFrame implements ActionListener {
 
 		scrollpane = new JScrollPane(table);
 		scrollpane.setBounds(258, 111, 535, 332);
-		add(scrollpane);
+		getContentPane().add(scrollpane);
 		
 		lblStock = new JLabel("Still in stock, no need to order.");
 		lblStock.setFont(scroll);
 		lblStock.setVisible(false);
 		lblStock.setBounds(269, 454, 260, 30);
 		lblStock.setForeground(new Color(255, 0, 0));
-		add(lblStock);
+		getContentPane().add(lblStock);
 		
 		lblIDEmpty = new JLabel("Please fill in the ID Product field.");
 		lblIDEmpty.setFont(scroll);
 		lblIDEmpty.setVisible(false);
 		lblIDEmpty.setBounds(258, 454, 260, 30);
 		lblIDEmpty.setForeground(new Color(255, 0, 0));
-		add(lblIDEmpty);
+		getContentPane().add(lblIDEmpty);
 		
 		lblIDExist = new JLabel("This ID Product don't exists.");
 		lblIDExist.setFont(scroll);
 		lblIDExist.setVisible(false);
 		lblIDExist.setBounds(288, 454, 230, 30);
 		lblIDExist.setForeground(new Color(255, 0, 0));
-		add(lblIDExist);
+		getContentPane().add(lblIDExist);
 		
 		btnChangePass = new JButton("Change Password");
 		btnChangePass.setBorder(null);
@@ -146,7 +169,7 @@ public class employee extends JFrame implements ActionListener {
 		btnChangePass.setBounds(212, 495, 130, 30);
 		btnChangePass.setForeground(new Color(54, 54, 54));
 		btnChangePass.setBackground(new Color(246, 190, 82));
-		add(btnChangePass);
+		getContentPane().add(btnChangePass);
 
 		btnLogout = new JButton("Log out");
 		btnLogout.setBorder(null);
@@ -155,18 +178,18 @@ public class employee extends JFrame implements ActionListener {
 		btnLogout.setBounds(480, 495, 130, 30);
 		btnLogout.setForeground(new Color(54, 54, 54));
 		btnLogout.setBackground(new Color(246, 190, 82));
-		add(btnLogout);
+		getContentPane().add(btnLogout);
 
 		lblFooter = new JLabel("© 2020 BJH Anime Store | All rights reserved");
 		lblFooter.setFont(text_message);
 		lblFooter.setBounds(439, 570, 385, 30);
 		lblFooter.setForeground(new Color(246, 190, 82));
-		add(lblFooter);
+		getContentPane().add(lblFooter);
 
 		ImageIcon fondo = new ImageIcon(getClass().getResource("/imagenes/fondo_panel.png"));
 		lblFondo = new JLabel(fondo);
 		lblFondo.setBounds(0, 0, 834, 611);
-		add(lblFondo);
+		getContentPane().add(lblFondo);
 		
 	}
 	
@@ -211,6 +234,41 @@ public class employee extends JFrame implements ActionListener {
 			
 		}
 		
+		if (event.equals(btnRequestProduct) ) {
+			try {
+				
+				id_product = txtIDProduct.getText().trim();
+				
+				if (!id_product.isEmpty()) {
+					if (metodo.IDProductExist(id_product)) {
+						int quantity_product = metodo.ShowQuantityProduct(id_product);
+						if (quantity_product == 0) {
+							id_pro = id_product;
+							request_product FrameRequest = new request_product();
+							FrameRequest.setVisible(true);
+							this.setVisible(false);
+						} else {
+							lblStock.setVisible(true);
+							lblIDEmpty.setVisible(false);
+							lblIDExist.setVisible(false);
+						}
+					} else {
+						lblStock.setVisible(false);
+						lblIDEmpty.setVisible(false);
+						lblIDExist.setVisible(true);
+					}
+				} else {
+					lblStock.setVisible(false);
+					lblIDEmpty.setVisible(true);
+					lblIDExist.setVisible(false);
+				}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
+		}
+		
 		if (event.equals(btnUpdateList) ) {
 			try {
 
@@ -248,5 +306,4 @@ public class employee extends JFrame implements ActionListener {
 		}
 		
 	}
-	
 }

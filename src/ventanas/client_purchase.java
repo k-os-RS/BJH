@@ -18,7 +18,7 @@ public class client_purchase extends JPanel implements ActionListener {
 	private JScrollPane scrollpane;
 	private DefaultTableModel modelo = new DefaultTableModel();
 	private String [] data = new String [6];
-	metodos_db metodo = new metodos_db(); 
+	metodos_db metodo = new metodos_db();
 	
 	public client_purchase() {
 		//Frame
